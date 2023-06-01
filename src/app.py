@@ -1,6 +1,7 @@
 #Import packages
 import pandas as pd
 import streamlit as  st
+import plotly
 import plotly.offline as pyoff
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots

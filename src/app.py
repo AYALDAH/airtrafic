@@ -32,13 +32,13 @@ col1, col2 = st.columns([1, 5])
 
 # Affichage du logo dans la première colonne
 with col1:
-   image = Image.open('C:/Users/AYI KPADONOU Aldah/Pictures/pax.jpg')
+   image = Image.open('Pax.jpg')
    st.image(image)
 # Affichage du titre dans la deuxième colonne
 with col2:
     st.title('Trafic Forecaster')
 #Import data
-df=pd.read_parquet("D:/Documents/traffic_10lines.parquet")
+df=pd.read_parquet("traffic_10lines.parquet")
 df.info()
 #sidebar configuration
 with st.sidebar:

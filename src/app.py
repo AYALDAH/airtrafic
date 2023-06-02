@@ -311,7 +311,7 @@ def predict_model(df):
 
 def main2():
     # Chargement des données (remplacez cette étape par le chargement de vos propres données)
-    df=pd.read_parquet("D:/Documents/traffic_10lines.parquet")  # Remplacez load_data() par votre fonction de chargement de données
+    df=pd.read_parquet("traffic_10lines.parquet")  # Remplacez load_data() par votre fonction de chargement de données
 
     st.subheader("Prediction of other models")
     st.write('You have selected:', model_option)

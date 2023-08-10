@@ -12,4 +12,4 @@ neuralforecast==1.5.0
 xgboost==1.7.5
 seaborn==0.11.2
 openpyxl==3.0.9
-pillow==10.0.0
+

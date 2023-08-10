@@ -72,7 +72,7 @@ def page_dashboard():
     if  Analyse_Exploratoire == 'Analyse_univariée':
         d = pd.DataFrame(attrition_df["churn"].value_counts())
         fig1 = px.pie(d, values = "churn", names = ["Non", "Oui"], hole = 0.5, opacity = 0.8,
-            labels = {"label" :"Potability","Potability":"Number of Samples"})
+            labels = {"label" :"Potability","Potability":"Number of Samples"},showlegend=False)
         fig1.update_layout(title = dict(text = "Attrition et activité principale"), width=400, height=400,annotations=[dict(text='attrition', x=0.50, y=0.5, font_size=20, showarrow=False)])
         fig1.update_traces(textposition = "outside", textinfo = "percent+label")
         plt.figure(figsize=(6, 6))

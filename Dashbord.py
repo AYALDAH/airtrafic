@@ -371,7 +371,7 @@ def page_settings():
             st.image("seaborn_plot.png")
 
         if st.sidebar.button("Silhouette_visualizer"):
-            image_silo = Image.open('Silou_str.jpg')
+            image_silo = Image.open('silou_str.jpg')
             st.image(image_silo)
     
         st.subheader("Résultats du clustering RFM avec l'utilisation des scores")

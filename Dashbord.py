@@ -73,7 +73,7 @@ def page_dashboard():
         d = pd.DataFrame(attrition_df["churn"].value_counts())
         fig1 = px.pie(d, values = "churn", names = ["Non", "Oui"], hole = 0.5, opacity = 0.8,
             labels = {"label" :"Potability","Potability":"Number of Samples"})
-        fig1.update_layout(title = dict(text = "Attrition et activité principale"), width=340, height=400,annotations=[dict(text='attrition', x=0.50, y=0.5, font_size=20, showarrow=False)])
+        fig1.update_layout(title = dict(text = "Pourcentage d'Attrition et effectif des clients par activité principale"), width=340, height=400,annotations=[dict(text='attrition', x=0.50, y=0.5, font_size=20, showarrow=False)])
         fig1.update_traces(textposition = "outside", textinfo = "percent+label")
         fig1.update_layout(showlegend=False)
         plt.figure(figsize=(6, 6))
@@ -176,9 +176,6 @@ def page_dashboard():
                   ,annotations=[
                   dict(text='nb_teu', x=0.5, y=0.5, font_size=20, showarrow=False)])
    
-
-
-              
         col1, col2,col3= st.columns(3)
         with col1:
              st.plotly_chart(fig7)
@@ -205,11 +202,11 @@ def page_dashboard():
 
         with col2:
             st.plotly_chart(fig12)
-        fig13 = px.histogram(attrition_df, x="pays_cl", color="churn", title="<b>Répartition des pays du client selon Churn</b>")
+        fig13 = px.histogram(attrition_df, x="pays_cl", color="churn", title="<b>Répartition des pays du client suivant Churn</b>")
         fig13.update_layout(width=350, height=400, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
-        fig14= px.histogram(attrition_df, x="activite_prin", color="churn", barmode="group", title="<b> Répartition des secteurs d'activités selon churn Churn</b>")
+        fig14= px.histogram(attrition_df, x="activite_prin", color="churn", barmode="group", title="<b> Répartition des secteurs d'activités suivant Churn</b>")
         fig14.update_layout(width=400, height=400, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
@@ -264,7 +261,7 @@ def page_dashboard():
          attrition_long['DATE_RENTA'] = pd.to_datetime(attrition_long['DATE_RENTA'])
          monthly_data_grouped = attrition_long.resample('M', on='DATE_RENTA').mean()
 # Create the line plot using Plotly Express
-         fig_men = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Evolution mensuelle globale', markers=True)
+         fig_men = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Evolution mensuelle globale des volumes en 2022', markers=True)
 
          fig_men.update_layout(width=700, height=500, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
@@ -281,7 +278,7 @@ def page_dashboard():
          monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE_RENTA', freq='M')])['VOLUME'].sum().reset_index()
 
 # Create the cascade bar chart using Plotly Express
-         fig_det = px.bar(monthly_data_grouped, x='DATE_RENTA', y='VOLUME', title='Répartition mensuelle du volume moyen',
+         fig_det = px.bar(monthly_data_grouped, x='DATE_RENTA', y='VOLUME', title='Répartition mensuelle du volume moyen en 2022',
                  labels={'DATE_RENTA': 'Date', 'VOLUME': 'Volume'},
             
                  color_discrete_sequence=px.colors.qualitative.Plotly)
@@ -296,7 +293,7 @@ def page_dashboard():
          monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
 
 # Create the waterfall chart using Plotly Express
-         fig_waterfall = px.bar(monthly_data_grouped, x='DATE_RENTA', y='Change', title='Variation du volume moyen', barmode='overlay', labels={'DATE_RENTA': 'Date', 'Change': 'Change in Volume'},color_discrete_sequence=px.colors.qualitative.Plotly)
+         fig_waterfall = px.bar(monthly_data_grouped, x='DATE_RENTA', y='Change', title='Variation du volume moyen en 2022', barmode='overlay', labels={'DATE_RENTA': 'Date', 'Change': 'Change in Volume'},color_discrete_sequence=px.colors.qualitative.Plotly)
 
 # Update layout and appearance of the plot
          fig_waterfall.update_layout(height=400, width=800)

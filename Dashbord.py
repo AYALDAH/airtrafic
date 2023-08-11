@@ -358,7 +358,7 @@ def page_settings():
             sns.set_style("whitegrid")
             plt.xlabel('Number of Clusters (k)', fontsize=12)
             plt.ylabel('Sum of Squared Errors (SSE)', fontsize=14)
-            plt.title('Elbow Method for Optimal k', fontsize=12),
+            plt.title('', fontsize=12),
             
          # Sauvegarder le graphique Seaborn en tant qu'image temporaire
             plt.savefig("seaborn_plot.png")

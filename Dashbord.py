@@ -353,7 +353,7 @@ def page_settings():
             for k in range (0,10):
                 kmeans=KMeans(n_clusters=k+1, random_state=128).fit(attrition_rfm.iloc[:,3:])
                 SSE.append(kmeans.inertia_)
-            plt.figure(figsize=(10,10))
+            plt.figure(figsize=(10,12))
             sns.pointplot(x=list(range(1,11)),y=SSE)
             sns.set_style("whitegrid")
             plt.xlabel('Number of Clusters (k)', fontsize=12)

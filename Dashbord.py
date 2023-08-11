@@ -187,7 +187,7 @@ def page_dashboard():
     elif Analyse_Exploratoire== 'Analyse_bivariée':
         plt.figure(figsize=(10,8))
         fig11 = px.histogram(attrition_df, x="Site", color="churn", barmode="group", title="<b> Répartition des sites suivant Churn</b>")
-        fig11.update_layout(width=400, height=400, bargap=0.1,
+        fig11.update_layout(width=350, height=400, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
         color_map = {"0":'#c2c2f0', "1":  '#66b3ff'}
@@ -203,7 +203,7 @@ def page_dashboard():
         with col2:
             st.plotly_chart(fig12)
         fig13 = px.histogram(attrition_df, x="pays_cl", color="churn", title="<b>Répartition des pays du client suivant Churn</b>")
-        fig13.update_layout(width=300, height=400, bargap=0.1,
+        fig13.update_layout(width=350, height=400, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
         fig14= px.histogram(attrition_df, x="activite_prin", color="churn", barmode="group", title="<b> Répartition des secteurs d'activités suivant Churn</b>")

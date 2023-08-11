@@ -80,7 +80,7 @@ def page_dashboard():
         sns.set_theme(style='white')
         sns.set(font_scale=2)
         ax2= px.treemap(attrition_df,path=["activite_prin"],title="")
-        fig5=ax2.update_layout( width=450, height=420)
+        fig5=ax2.update_layout( width=400, height=420)
         col1, col2 = st.columns(2)
         with col1:
              st.plotly_chart(fig1)

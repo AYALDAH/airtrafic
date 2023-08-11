@@ -193,7 +193,7 @@ def page_dashboard():
         color_map = {"0":'#c2c2f0', "1":  '#66b3ff'}
         plt.figure(figsize=(10,8))
         fig12 = px.histogram(attrition_df, x="taille_tc", color="churn", title="<b> Répartition des tailles de Teu suivant Churn</b>")
-        fig12.update_layout(width=450, height=400, bargap=0.1,
+        fig12.update_layout(width=400, height=400, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
         col1, col2 = st.columns(2)

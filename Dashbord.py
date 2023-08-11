@@ -95,7 +95,7 @@ def page_dashboard():
         d_pays = pd.DataFrame(attrition_df["pays_cl"].value_counts()).sort_values(by='pays_cl', ascending=True)
         fig3 = px.bar(d_pays, x='pays_cl', y=d_pays.index, orientation='h')
         fig3.update_layout(title = dict(text = "Graphique du pourcentage par site"))
-        fig3.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=250, height=350, xaxis=dict(title="count"),  # Add x-axis label
+        fig3.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=280, height=350, xaxis=dict(title="count"),  # Add x-axis label
                   yaxis=dict(title="Pays_client"),)
         fig3.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(147,112,219)')
         d_zone_geo = pd.DataFrame(attrition_df["zone_geo_prin"].value_counts()).sort_values(by='zone_geo_prin', ascending=True)

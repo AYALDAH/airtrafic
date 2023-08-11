@@ -509,7 +509,7 @@ def page_settings():
         styled_results_df = results_df.style.applymap(highlight_cells)
 
 # Streamlit app
-        st.title('Logistic Regression Results')
+        st.title('Résultats du logit binaire')
 
 # Display the styled results table
         st.dataframe(styled_results_df)

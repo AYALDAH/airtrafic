@@ -73,13 +73,13 @@ def page_dashboard():
         d = pd.DataFrame(attrition_df["churn"].value_counts())
         fig1 = px.pie(d, values = "churn", names = ["Non", "Oui"], hole = 0.5, opacity = 0.8,
             labels = {"label" :"Potability","Potability":"Number of Samples"})
-        fig1.update_layout(title = dict(text = "Pourcentage d'attrition "), width=340, height=400,annotations=[dict(text='attrition', x=0.50, y=0.5, font_size=20, showarrow=False)])
+        fig1.update_layout(title = dict(text = "Attrition et Effectif par secteur "), width=340, height=400,annotations=[dict(text='attrition', x=0.50, y=0.5, font_size=20, showarrow=False)])
         fig1.update_traces(textposition = "outside", textinfo = "percent+label")
         fig1.update_layout(showlegend=False)
         plt.figure(figsize=(6, 6))
         sns.set_theme(style='white')
         sns.set(font_scale=2)
-        ax2= px.treemap(attrition_df,path=["activite_prin"],title=" Effectif des clients par activité principale")
+        ax2= px.treemap(attrition_df,path=["activite_prin"],title="")
         fig5=ax2.update_layout( width=400, height=410)
         col1, col2 = st.columns(2)
         with col1:

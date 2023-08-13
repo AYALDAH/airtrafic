@@ -1,3 +1,7 @@
+#---------------------------------------------------------------------------------------
+#                                Importation des packages
+#---------------------------------------------------------------------------------------
+
 import streamlit as st
 import pandas as pd
 import streamlit as  st
@@ -30,6 +34,10 @@ from sklearn import metrics
 from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
+#---------------------------------------------------------------------------------------
+#                                  Sidebar configuration 
+#---------------------------------------------------------------------------------------
+
 Analyses=('Analyse_univariée','Analyse_bivariée','Analyse_mensuelle')
 Entité=("Marseille","Montoir","Dunkerque","Rouen")
 Approches=("Clustering RFM", "Logit Binaire")
@@ -37,14 +45,6 @@ Approches=("Clustering RFM", "Logit Binaire")
 
 def page_dashboard():
     st.title("")
-    # Ajoutez le contenu de la page de tableau de bord ici
-    #Import packages
-
-#---------------------------------------------------------------------------------------
-#                                  Sidebar configuration 
-#---------------------------------------------------------------------------------------
-  
-# Chemin vers l'image de logo
 # Création d'une mise en page en colonnes avec Streamlit
     col1, col2 = st.columns([1, 5])
 
@@ -68,7 +68,7 @@ def page_dashboard():
 #---------------------------------------------------------------------------------------
 #                                     Plotly graph Exploration des données
 #---------------------------------------------------------------------------------------
-
+#Analyse univariée
     if  Analyse_Exploratoire == 'Analyse_univariée':
         d = pd.DataFrame(attrition_df["churn"].value_counts())
         fig1 = px.pie(d, values = "churn", names = ["Non", "Oui"], hole = 0.5, opacity = 0.8,
@@ -184,6 +184,8 @@ def page_dashboard():
         with col3:
             st.plotly_chart(fig9)
 
+    #Analyse bivariée
+    
     elif Analyse_Exploratoire== 'Analyse_bivariée':
         plt.figure(figsize=(10,8))
         fig11 = px.histogram(attrition_df, x="Site", color="churn", barmode="group", title="<b> Répartition des sites suivant Churn</b>")
@@ -209,7 +211,6 @@ def page_dashboard():
         fig14= px.histogram(attrition_df, x="activité principale", color="churn", barmode="group", title="<b> Répartition des secteurs d'activités suivant Churn</b>")
         fig14.update_layout(width=400, height=400, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
-
 
         col1, col2 = st.columns(2)
         with col1:
@@ -253,10 +254,9 @@ def page_dashboard():
             height=700,
             annotations=annotations  # Ajouter les annotations pour afficher les valeurs
 ) 
-        st.plotly_chart(heatmap)   
-# Application Streamlit
-
-
+        st.plotly_chart(heatmap)  
+        
+# Analyse mensuelle
     elif Analyse_Exploratoire== 'Analyse_mensuelle':
          attrition_long['DATE_RENTA'] = pd.to_datetime(attrition_long['DATE_RENTA'])
          monthly_data_grouped = attrition_long.resample('M', on='DATE_RENTA').mean()
@@ -304,14 +304,8 @@ def page_dashboard():
 
 
 #---------------------------------------------------------------------------------------
-#                              Clustering rfm 
+#                           Approches Machine learning
 #---------------------------------------------------------------------------------------
-
-   
-#---------------------------------------------------------------------------------------
-#                                Logit Model
-#---------------------------------------------------------------------------------------
-
 
 # Création des modèles
 
@@ -321,7 +315,6 @@ def page_settings():
     with st.sidebar:
         Méthodes_ML=st.selectbox('Méthodes_Machine_learning', Approches)
 
-    
      #attrition_rfm=attrition_df_n[['ca','recence','frequence']]
     col1, col2 = st.columns([1, 5])
 
@@ -347,6 +340,10 @@ def page_settings():
         attrition_rfm= attrition_rfm.sort_values(by=i)
         attrition_rfm[j]=score
 
+#---------------------------------------------------------------------------------------
+#                              Clustering rfm 
+#---------------------------------------------------------------------------------------
+    
     if Méthodes_ML == "Clustering RFM":
         if st.sidebar.button("Inertie"):
             SSE=[]
@@ -416,6 +413,10 @@ def page_settings():
 # Afficher le tableau dans Streamlit
         st.dataframe(formatted_data)
 
+
+#---------------------------------------------------------------------------------------
+                               Logit Model
+#---------------------------------------------------------------------------------------
     elif Méthodes_ML=='Logit Binaire':
         coefficients = {
     'const': -1.1431,
@@ -506,17 +507,13 @@ def page_settings():
 
         styled_results_df = results_df.style.applymap(highlight_cells)
 
-# Streamlit app
         st.title('Résultats du logit binaire')
 
 # Display the styled results table
         st.dataframe(styled_results_df)
-
-
-
-
-
-
+#---------------------------------------------------------------------------------------
+#                           Mise en forme de la navigation des des deux pages
+#---------------------------------------------------------------------------------------
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", [ "Analyse Exploratoire", "Techniques de Machine Learning"])
 

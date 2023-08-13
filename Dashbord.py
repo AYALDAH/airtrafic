@@ -42,7 +42,6 @@ Analyses=('Analyse_univariée','Analyse_bivariée','Analyse_mensuelle')
 Entité=("Marseille","Montoir","Dunkerque","Rouen")
 Approches=("Clustering RFM", "Logit Binaire")
 
-
 def page_dashboard():
     st.title("")
 # Création d'une mise en page en colonnes avec Streamlit
@@ -65,9 +64,11 @@ def page_dashboard():
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Exploration des données', Analyses)
         st.write(' Analyse_Exploratoire: ', Analyse_Exploratoire)
+        
 #---------------------------------------------------------------------------------------
 #                                     Plotly graph Exploration des données
 #---------------------------------------------------------------------------------------
+    
 #Analyse univariée
     if  Analyse_Exploratoire == 'Analyse_univariée':
         d = pd.DataFrame(attrition_df["churn"].value_counts())
@@ -184,7 +185,7 @@ def page_dashboard():
         with col3:
             st.plotly_chart(fig9)
 
-    #Analyse bivariée
+    # Analyse bivariée
     
     elif Analyse_Exploratoire== 'Analyse_bivariée':
         plt.figure(figsize=(10,8))
@@ -306,8 +307,6 @@ def page_dashboard():
 #---------------------------------------------------------------------------------------
 #                           Approches Machine learning
 #---------------------------------------------------------------------------------------
-
-# Création des modèles
 
 def page_settings():
     st.title("")
@@ -511,9 +510,11 @@ def page_settings():
 
 # Display the styled results table
         st.dataframe(styled_results_df)
+        
 #---------------------------------------------------------------------------------------
 #                           Mise en forme de la navigation des des deux pages
 #---------------------------------------------------------------------------------------
+
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", [ "Analyse Exploratoire", "Techniques de Machine Learning"])
 

@@ -514,18 +514,11 @@ def page_settings():
 # Display the styled results table
         st.dataframe(styled_results_df)
         
-#Score
-        st.subheader('Effectif des clients par catégorie') 
-        image_effectif = Image.open('effectif_churn.jpg')
-        st.image(image_effectif) 
+# Résulta Score
+        st.subheader('Les résultats du score avec les données test') 
+        image_score = Image.open('Resultat_score.jpg')
+        st.image(image_score) 
 
-        st.subheader('Liste des clients par catégorie') 
-        image_liste = Image.open('Liste_générale.jpg')
-        st.image(image_liste) 
-      
-        st.subheader('Liste des clients inactifs') 
-        image_inactif = Image.open('Liste_oui.jpg')
-        st.image(image_inactif) 
 
 #---------------------------------------------------------------------------------------
 #                           Mise en forme de la navigation des des deux pages

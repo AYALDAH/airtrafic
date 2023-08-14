@@ -519,6 +519,14 @@ def page_settings():
         image_effectif = Image.open('effectif_churn.jpg')
         st.image(image_effectif) 
 
+        st.subheader('Liste des clients par catégorie') 
+        image_liste = Image.open('Liste_générale.jpg')
+        st.image(image_liste) 
+      
+        st.subheader('Liste des clients inactifs') 
+        image_inactif = Image.open('Liste_oui.jpg')
+        st.image(image_inactif) 
+
 #---------------------------------------------------------------------------------------
 #                           Mise en forme de la navigation des des deux pages
 #---------------------------------------------------------------------------------------

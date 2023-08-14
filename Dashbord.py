@@ -43,7 +43,7 @@ from matplotlib.ticker import MaxNLocator
 
 Analyses=('Analyse_univariée','Analyse_bivariée','Analyse_mensuelle')
 Entité=("Marseille","Montoir","Dunkerque","Rouen")
-Approches=("Clustering RFM", "Logit Binaire")
+Approches=("Clustering RFM", "Logit Binaire et Score")
 
 def page_dashboard():
     st.title("")
@@ -419,7 +419,7 @@ def page_settings():
 #---------------------------------------------------------------------------------------
 #                              Logit Model
 #---------------------------------------------------------------------------------------
-    elif Méthodes_ML=='Logit Binaire':
+    elif Méthodes_ML=='Logit Binaire et Score':
         coefficients = {
     'const': -1.1431,
     'volume': -1.7502,
@@ -509,11 +509,16 @@ def page_settings():
 
         styled_results_df = results_df.style.applymap(highlight_cells)
 
-        st.title('Résultats du logit binaire')
+        st.subheader('Résultats du logit binaire')
 
 # Display the styled results table
         st.dataframe(styled_results_df)
         
+#Score
+        st.subheader('Effectif des clients par catégorie') 
+        image_effectif = Image.open('effectif_churn.jpg')
+        st.image(image_effectif) 
+
 #---------------------------------------------------------------------------------------
 #                           Mise en forme de la navigation des des deux pages
 #---------------------------------------------------------------------------------------

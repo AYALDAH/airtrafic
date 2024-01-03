@@ -58,8 +58,6 @@ def page_dashboard():
         st.subheader("ANALYSE DATA SUR 2023")
 #RESUME
 st.subheader("RESUME")
-
-
 #Import data
     attrition_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
     attrition_df.info()

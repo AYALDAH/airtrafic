@@ -34,9 +34,6 @@ Analyses=('Analyse_mensuelle','Statistique par site')
 Entité=("Marseille","Montoir","Dunkerque","Rouen", "LE HAVRE")
 Approches=("Clustering RFM", "Logit Binaire")
 
-
-def page_dashboard():
-    st.title("")
     # Ajoutez le contenu de la page de tableau de bord ici
     #Import packages
 

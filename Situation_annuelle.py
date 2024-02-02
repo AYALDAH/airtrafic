@@ -82,7 +82,7 @@ def page_dashboard():
     if  Analyse_Exploratoire == 'Analyse_mensuelle': 
          try:
              Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d')
-    except ValueError as e:
+         except ValueError as e:
         st.error(f"Erreur lors de la conversion des dates : {e}")
         return
 

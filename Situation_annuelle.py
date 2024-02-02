@@ -56,7 +56,7 @@ def page_dashboard():
         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
         st.subheader("ANALYSE DATA SUR 2023")
 #RESUME
-st.subheader("RESUME")
+    st.subheader("RESUME")
 #Import data
 
 #sidebar configuration

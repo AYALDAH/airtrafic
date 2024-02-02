@@ -83,8 +83,8 @@ def page_dashboard():
          try:
              Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d')
          except ValueError as e:
-        st.error(f"Erreur lors de la conversion des dates : {e}")
-        return
+             st.error(f"Erreur lors de la conversion des dates : {e}")
+             return
 
     # Définir la colonne 'DATE' comme index
     Evol_df.set_index('DATE', inplace=True)

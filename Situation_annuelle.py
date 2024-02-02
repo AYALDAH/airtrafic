@@ -43,7 +43,7 @@ Approches=("Clustering RFM", "Logit Binaire")
   
 # Chemin vers l'image de logo
 # Création d'une mise en page en colonnes avec Streamlit
-def page_dashboard():
+def RESUME():
     st.title("")
     col1, col2 = st.columns([1, 5])
 
@@ -67,11 +67,13 @@ def page_dashboard():
         
 #
 # Créez une barre latérale pour la navigation entre les pages
-page = st.sidebar.radio("Visualisation", [ "Analyse Exploratoire", "Techniques de Machine Learning"])
+page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 
 # Affichage conditionnel en fonction de la page sélectionnée
 
-if page == "Analyse Exploratoire":
+if page == "Resumé:
+    RESUME()
+elif page == "Analyse Exploratoire":
     page_dashboard()
 elif page == "Techniques de Machine Learning":
     page_settings()

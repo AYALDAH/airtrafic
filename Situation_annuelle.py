@@ -81,8 +81,7 @@ def page_dashboard():
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
     if  Analyse_Exploratoire == 'Analyse_mensuelle': 
          try:
-        # Assurez-vous que la colonne 'DATE' est au format datetime
-        Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d')
+             Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d')
     except ValueError as e:
         st.error(f"Erreur lors de la conversion des dates : {e}")
         return

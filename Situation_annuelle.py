@@ -44,15 +44,15 @@ Approches=("Clustering RFM", "Logit Binaire")
 # Chemin vers l'image de logo
 # Création d'une mise en page en colonnes avec Streamlit
     def page_dashboard():
-    st.title("")
-    col1, col2 = st.columns([1, 5])
+        st.title("")
+        col1, col2 = st.columns([1, 5])
 
 # Affichage du logo dans la première colonne
-    with col1:
+         with col1:
         image = Image.open('logo_rdt.jpg')
         st.image(image)
 # Affichage du titre dans la deuxième colonne
-    with col2:
+         with col2:
         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
         st.subheader("ANALYSE DATA SUR 2023")
 #RESUME

@@ -58,9 +58,6 @@ def page_dashboard():
 #RESUME
 st.subheader("RESUME")
 #Import data
-attrition_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
-attrition_df.info()
-attrition_long=pd.read_excel("Analyse_maritime.xlsx")
 
 #sidebar configuration
 

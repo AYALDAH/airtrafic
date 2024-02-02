@@ -46,6 +46,8 @@ def page_dashboard():
   
 # Chemin vers l'image de logo
 # Création d'une mise en page en colonnes avec Streamlit
+    def page_dashboard():
+    st.title("")
     col1, col2 = st.columns([1, 5])
 
 # Affichage du logo dans la première colonne

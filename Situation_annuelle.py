@@ -57,7 +57,7 @@ def page_dashboard():
         st.subheader("ANALYSE DATA SUR 2023")
 #RESUME
     st.subheader("RESUME")
-st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023." "Les données considérées couvrent la période de janvier à fin septembre 2023.")
+    st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023." "Les données considérées couvrent la période de janvier à fin septembre 2023.")
 
 #Import data
 

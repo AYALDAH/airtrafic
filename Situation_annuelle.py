@@ -48,13 +48,13 @@ def page_dashboard():
     col1, col2 = st.columns([1, 5])
 
 # Affichage du logo dans la première colonne
-     with col1:
-         image = Image.open('logo_rdt.jpg')
-         st.image(image)
+    with col1:
+        image = Image.open('logo_rdt.jpg')
+        st.image(image)
 # Affichage du titre dans la deuxième colonne
-     with col2:
-         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
-         st.subheader("ANALYSE DATA SUR 2023")
+    with col2:
+        st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
+        st.subheader("ANALYSE DATA SUR 2023")
 #RESUME
 st.subheader("RESUME")
 #Import data

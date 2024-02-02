@@ -64,7 +64,7 @@ attrition_df.info()
 attrition_long=pd.read_excel("Analyse_maritime.xlsx")
 
 #sidebar configuration
-    with st.sidebar:
+with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
 #---------------------------------------------------------------------------------------
 #                                     Plotly graph Exploration des données

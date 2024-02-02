@@ -80,18 +80,9 @@ def page_dashboard():
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
     if  Analyse_Exploratoire == 'Analyse_mensuelle': 
-         try:
-             Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d')
-         except ValueError as e:
-             st.error(f"Erreur lors de la conversion des dates : {e}")
-             return
-
-    # Définir la colonne 'DATE' comme index
-        Evol_df.set_index('DATE', inplace=True)
-
+        Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d')
     # Grouper les données mensuellement
         monthly_data_grouped = Evol_df.resample('M').mean()
-
     # Créer un graphique Plotly Express
         fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Monthly Evolution', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')

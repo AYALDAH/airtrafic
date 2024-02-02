@@ -82,7 +82,7 @@ def page_dashboard():
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 
 #sidebar configuration
-with st.sidebar:
+    with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
 
 # Affichage conditionnel en fonction de la page sélectionnée

@@ -77,13 +77,13 @@ def page_dashboard():
 # Affichage du titre dans la deuxième colonne
     with col2:
         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
+
+# Créez une barre latérale pour la navigation entre les pages
+page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
+
 #sidebar configuration
 with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
-        
-#
-# Créez une barre latérale pour la navigation entre les pages
-page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 
 # Affichage conditionnel en fonction de la page sélectionnée
 

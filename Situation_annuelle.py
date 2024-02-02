@@ -75,7 +75,7 @@ page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Tec
 
 # Affichage conditionnel en fonction de la page sélectionnée
 
-if page == "Resumé:
+if page == "Resumé":
     RESUME()
 elif page == "Analyse Exploratoire":
     page_dashboard()

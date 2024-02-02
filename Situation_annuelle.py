@@ -57,11 +57,11 @@ def page_dashboard():
         st.subheader("ANALYSE DATA SUR 2023")
 #RESUME
     st.subheader("RESUME")
-st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023. Les données considérées couvrent la période de janvier à fin septembre 2023.
-Afin de mieux appréhender la situation de l’activité commerciale sur les 3 trimestres de 2023, les données
+st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023. Les données considérées couvrent la période de janvier à fin septembre 2023."
+"Afin de mieux appréhender la situation de l’activité commerciale sur les 3 trimestres de 2023, les données
 mensuelles du volume, du chiffre d’affaires facturé et
-de la marge ont été analysées dans la première partie.
-Les statistiques par agence ont également été présentées en partie 2. Pour mieux catégoriser les clients, une
+de la marge ont été analysées dans la première partie."
+"Les statistiques par agence ont également été présentées en partie 2. Pour mieux catégoriser les clients, une
 segmentation par clustering (construction de grappes
 où les clients sont attribués à des grappes en fonction
 de leurs caractéristiques R, F et M les plus proches) a

@@ -65,9 +65,21 @@ def RESUME():
     attrition_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
     attrition_df.info()
     attrition_long=pd.read_excel("Analyse_maritime.xlsx")
-    
-#sidebar configuration
+#
+def page_dashboard():
+    st.title("")
+    col1, col2 = st.columns([1, 5])
 
+# Affichage du logo dans la première colonne
+    with col1:
+        image = Image.open('logo_rdt.jpg')
+        st.image(image)
+# Affichage du titre dans la deuxième colonne
+    with col2:
+        st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
+#sidebar configuration
+with st.sidebar:
+        Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
         
 #
 # Créez une barre latérale pour la navigation entre les pages

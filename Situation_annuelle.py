@@ -64,12 +64,12 @@ attrition_df.info()
 attrition_long=pd.read_excel("Analyse_maritime.xlsx")
 
 #sidebar configuration
-with st.sidebar:
+
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
 #---------------------------------------------------------------------------------------
 #                                     Plotly graph Exploration des données
 #---------------------------------------------------------------------------------------
-
+with st.sidebar:
     if  Analyse_Exploratoire == 'Analyse_univariée':
         d = pd.DataFrame(attrition_df["churn"].value_counts())
         fig1 = px.pie(d, values = "churn", names = ["Non", "Oui"], hole = 0.5, opacity = 0.8,

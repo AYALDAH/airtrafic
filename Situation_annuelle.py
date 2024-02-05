@@ -116,13 +116,13 @@ def page_dashboard():
         with col1:
             st.plotly_chart(fig1)
     # Convertir la colonne 'DATE' en format de mois
-             analyse_df['Month'] = analyse_df['DATE'].dt.strftime('%B')
+        analyse_df['Month'] = analyse_df['DATE'].dt.strftime('%B')
 
     # Trier le DataFrame par volume décroissant
-             analyse_df = analyse_df.sort_values(by='VOLUME', ascending=False)
+        analyse_df = analyse_df.sort_values(by='VOLUME', ascending=False)
 
     # Sélectionner les mois avec les volumes les plus élevés (par exemple, les 5 premiers mois)
-             top_months = analyse_df.head(3)
+        top_months = analyse_df.head(3)
 
 # Afficher les résultats
                st.write('Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))

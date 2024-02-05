@@ -187,6 +187,17 @@ def page_dashboard():
     tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
     tickangle=45,  # Angle de rotation des étiquettes (facultatif)
 )
+# Personnaliser la mise en page pour enlever l'axe des abscisses
+fig3.update_layout(
+    barmode='stack',
+    title='Cascade Bar Chart by Site',
+    xaxis_title='DATE',
+    yaxis_title='Volume',
+    height=400,
+    width=800,
+    xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
+    xaxis_visible=False  # Rendre l'axe des abscisses invisible
+)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

@@ -99,7 +99,16 @@ def page_dashboard():
         tickangle=45,  # Angle de rotation des étiquettes (facultatif)
     )
         fig1.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+        analyse_df['Month'] = analyse_df['DATE'].dt.strftime('%B')
 
+        # Trier le DataFrame par volume décroissant
+        analyse_df = analyse_df.sort_values(by='VOLUME', ascending=False)
+
+        # Sélectionner les mois avec les volumes les plus élevés (par exemple, les 5 premiers mois)
+        top_months = analyse_df.head(5)
+
+        # Afficher les résultats
+        st.write('Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))
         #fig2
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')

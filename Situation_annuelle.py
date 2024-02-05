@@ -125,7 +125,7 @@ def page_dashboard():
         top_months = analyse_df.head(3)
 
 # Afficher les résultats
-               st.write('Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))
+            st.write('Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))
         with col2:
             st.plotly_chart(fig2)
 

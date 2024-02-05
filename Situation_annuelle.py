@@ -113,10 +113,9 @@ def page_dashboard():
         
 # Afficher les résultats
     # Afficher le graphique dans l'interface Streamlit
-         col1, col2 = st.columns(2)
+        col1, col2 = st.columns(2)
         with col1:
             st.plotly_chart(fig1)
-    
             st.write('Des pics de volumes moyens sont constatés aux mois de :')
         with col2:
             st.plotly_chart(fig2)

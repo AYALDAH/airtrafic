@@ -164,14 +164,6 @@ def page_dashboard():
 
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
-st.markdown(
-    """
-    <div style="background-color: orange; padding: 10px;">
-        <h1 style="color: white;">Ma Barre Latérale Orange</h1>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
 # Affichage conditionnel en fonction de la page sélectionnée
 
 if page == "Resumé":

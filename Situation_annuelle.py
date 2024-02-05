@@ -82,7 +82,7 @@ def page_dashboard():
     if  Analyse_Exploratoire == 'Analyse_mensuelle': 
         #Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d', errors='coerce')
     # Grouper les données mensuellement
-        monthly_data_grouped = Evol_df.resample('M').mean()
+        monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
     # Créer un graphique Plotly Express
         fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Monthly Evolution', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')

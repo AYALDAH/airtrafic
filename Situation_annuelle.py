@@ -165,7 +165,7 @@ def page_dashboard():
 
 #Volumes par sites
 # Création du graphique à barres empilées avec des couleurs personnalisées
-    fig3 = go.Figure()
+     fig3 = go.Figure()
 
    colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
 

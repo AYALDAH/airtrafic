@@ -167,7 +167,6 @@ def page_dashboard():
 # Création du graphique à barres empilées avec des couleurs personnalisées
 
 
-        st.plotly_chart(fig3)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

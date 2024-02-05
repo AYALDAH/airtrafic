@@ -166,11 +166,9 @@ def page_dashboard():
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 st.markdown(
     """
-    <style>
-    .sidebar {
-        background-color: orange;
-    }
-    </style>
+    <div style="background-color: orange; padding: 10px;">
+        <h1 style="color: white;">Ma Barre Latérale Orange</h1>
+    </div>
     """,
     unsafe_allow_html=True
 )

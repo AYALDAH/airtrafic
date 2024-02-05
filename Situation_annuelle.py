@@ -165,12 +165,12 @@ def page_dashboard():
         monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
 
 # Création du graphique à barres empilées avec des couleurs personnalisées
-fig = go.Figure()
-colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées
+         fig3 = go.Figure()
+         colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées
 
-for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
-    entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
-    fig.add_trace(go.Bar(
+          for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
+              entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
+              fig3.add_trace(go.Bar(
         x=entity_data['DATE'],
         y=entity_data['VOLUME'],
         name=entity,

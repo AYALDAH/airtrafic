@@ -123,7 +123,7 @@ def page_dashboard():
         st.write('Des pics de volumes moyens sont constatés aux mois de', ', '.join(top_months['Month']))
         
         #fig1
-        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='Volume Monthly Evolution', markers=True)
+        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig1.update_xaxes(
         dtick='M1',  # Marquer tous les mois
@@ -139,7 +139,7 @@ def page_dashboard():
         top_months1['Month'] = top_months1['Month'].map(mois_fr)
         
         #fig2
-        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MARGE', title='CA Monthly Evolution', markers=True)
+        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MARGE', title='Marge Monthly Evolution', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig2.update_xaxes(
     dtick='M1',  # Marquer tous les mois

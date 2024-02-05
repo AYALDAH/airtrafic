@@ -168,7 +168,7 @@ def page_dashboard():
          fig3 = go.Figure()
          colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées
 
-          for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
+         for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
               entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
               fig3.add_trace(go.Bar(
         x=entity_data['DATE'],

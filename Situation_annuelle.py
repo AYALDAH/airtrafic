@@ -113,7 +113,7 @@ def page_dashboard():
     'December': 'décembre'
 }
          #fig0
-        fig0.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+        fig0.update_layout(width=700, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
         monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
         # Trier le DataFrame par volume décroissant
         monthly_data_grouped2 = monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
@@ -124,6 +124,13 @@ def page_dashboard():
         st.write('Des pics de volumes moyens sont constatés aux mois de  :', ', '.join(top_months2['Month']))
         
         #fig1
+        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='Volume Monthly Evolution', markers=True)
+        fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
+        fig1.update_xaxes(
+        dtick='M1',  # Marquer tous les mois
+        tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
+        tickangle=45,  # Angle de rotation des étiquettes (facultatif)
+    )
         fig1.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
         monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
         # Trier le DataFrame par volume décroissant
@@ -133,7 +140,7 @@ def page_dashboard():
         top_months1['Month'] = top_months1['Month'].map(mois_fr)
         
         #fig2
-        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
+        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MARGE', title='CA Monthly Evolution', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig2.update_xaxes(
     dtick='M1',  # Marquer tous les mois

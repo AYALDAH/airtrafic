@@ -211,7 +211,7 @@ def page_dashboard():
         top_months4= top_months3.sort_values(by='ENTITE', ascending=False)
         top_months4= top_months3.head(1)
         top_months4['ENTITE']=top_months3['ENTITE']
-        st.write('Au cours des mois de ', ', '.join(top_months3['Month']), 'les sites de, ', '.join(top_months4['ENTITE']) enrégistrent les volumes les plus élévé'  )
+        st.write('Au cours des mois de ', ', '.join(top_months3['Month'])', 'les sites de, ', '.join(top_months4['ENTITE']) enrégistrent les volumes les plus élévé')
 
 
 # Créez une barre latérale pour la navigation entre les pages

@@ -13,6 +13,7 @@ import xgboost as xgb
 from mlforecast import MLForecast
 import numba
 from numba import njit
+from sklearn.impute import SimpleImputer
 from sklearn.impute import KNNImputer
 from sklearn.ensemble import RandomForestRegressor
 from window_ops.expanding import expanding_mean

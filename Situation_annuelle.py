@@ -210,6 +210,7 @@ def page_dashboard():
         # Trier le DataFrame par entité décroissant 
         top_months4= top_months3.sort_values(by='VOLUME', ascending=False)
         top_months4= top_months4.head(1)
+        top_months4['ENTITE']=top_months4['ENTITE']
         st.write('Au cours des mois de', ', '.join(top_months3['Month']), 'les sites de', ', '.join(top_months4['ENTITE']), 'enregistrent les volumes les plus élevés')
 
 

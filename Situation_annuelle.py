@@ -113,13 +113,11 @@ def page_dashboard():
     'December': 'décembre'
 }
         fig1.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
-        Evol_df['Month'] = Evol_df['DATE'].dt.strftime('%B')
-
+        monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
         # Trier le DataFrame par volume décroissant
-        Evol_df = Evol_df.sort_values(by='VOLUME', ascending=False)
-
+        monthly_data_grouped = monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
         # Sélectionner les mois avec les volumes les plus élevés 
-        top_months = Evol_df.head(3)
+        top_months = monthly_data_grouped.head(2)
         top_months['Month'] = top_months['Month'].map(mois_fr)
         #fig2
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)

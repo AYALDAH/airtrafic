@@ -182,7 +182,7 @@ def page_dashboard():
         start_date = pd.to_datetime('2023-01-01')
         end_date = pd.to_datetime('2023-12-31')
 
-       fig3.update_xaxes(
+        fig3.update_xaxes(
        range=[start_date, end_date],  # Plage de dates souhaitée
        dtick='M1',  # Marquer tous les mois
        tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)

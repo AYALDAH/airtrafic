@@ -86,6 +86,8 @@ def page_dashboard():
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
     # Créer un graphique Plotly Express
         #fig1
+        imputer = KNNImputer(n_neighbors=2, weights="distance")
+        analyse_df['VOLUME'] = imputer.fit_transform(analyse_df[['VOLUME']])
         fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig1.update_xaxes(

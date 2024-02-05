@@ -98,6 +98,20 @@ def page_dashboard():
         tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
         tickangle=45,  # Angle de rotation des étiquettes (facultatif)
     )
+        mois_fr = {
+    'January': 'janvier',
+    'February': 'février',
+    'March': 'mars',
+    'April': 'avril',
+    'May': 'mai',
+    'June': 'juin',
+    'July': 'juillet',
+    'August': 'août',
+    'September': 'septembre',
+    'October': 'octobre',
+    'November': 'novembre',
+    'December': 'décembre'
+}
         fig1.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
         Evol_df['Month'] = Evol_df['DATE'].dt.strftime('%B')
 
@@ -105,7 +119,8 @@ def page_dashboard():
         Evol_df = Evol_df.sort_values(by='VOLUME', ascending=False)
 
         # Sélectionner les mois avec les volumes les plus élevés 
-        top_months = Evol_df.head(3)
+        top_months = Evol_df.head(3).map(mois_fr)
+        
         #fig2
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')

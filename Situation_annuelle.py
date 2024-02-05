@@ -200,7 +200,7 @@ def page_dashboard():
     xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
     xaxis_visible=False  # Rendre l'axe des abscisses invisible
 )
-       st.plotly_chart(fig3)
+        st.plotly_chart(fig3)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

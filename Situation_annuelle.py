@@ -159,9 +159,49 @@ def page_dashboard():
             st.write('Les CA moyens les plus élevées sont observées en ', ', '.join(top_months1['Month']))
         with col2:
             st.plotly_chart(fig2)
-            st.write('A l''instar du CA, les marges moyennes les plus élevées sont enrégistrées en ', ', '.join(top_months2['Month']))
+            st.write('A l'''instar du CA, les marges moyennes les plus élevées sont enrégistrées en ', ', '.join(top_months2['Month']))
 
+     monthly_data_grouped = analyse_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
 
+#Volumes par sites
+# Création du graphique à barres empilées avec des couleurs personnalisées
+fig3 = go.Figure()
+
+colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
+
+for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
+    entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
+    fig3.add_trace(go.Bar(
+        x=entity_data['DATE'],
+        y=entity_data['VOLUME'],
+        name=entity,
+        text=entity_data['DATE'].dt.strftime('%b %Y'),  # Format du texte (mois)
+        textposition='inside',
+        marker_color=colors[i % len(colors)]  # Choisissez une couleur de la liste en boucle
+    ))
+
+# Définir la date de début (janvier) et la date de fin (septembre)
+start_date = pd.to_datetime('2023-01-01')
+end_date = pd.to_datetime('2023-09-30')
+
+fig3.update_xaxes(
+    range=[start_date, end_date],  # Plage de dates souhaitée
+    dtick='M1',  # Marquer tous les mois
+    tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
+    tickangle=45,  # Angle de rotation des étiquettes (facultatif)
+)
+
+# Personnaliser la mise en page pour enlever l'axe des abscisses
+fig3.update_layout(
+    barmode='stack',
+    title='Cascade Bar Chart by Site',
+    xaxis_title='DATE',
+    yaxis_title='Volume',
+    height=400,
+    width=800,
+    xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
+    xaxis_visible=False  # Rendre l'axe des abscisses invisible
+)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

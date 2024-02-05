@@ -89,15 +89,7 @@ def page_dashboard():
     # Grouper les données mensuellement
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
     # Créer un graphique Plotly Express
-        #fig1
-        
-        fig0 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
-        fig0.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
-        fig0.update_xaxes(
-        dtick='M1',  # Marquer tous les mois
-        tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
-        tickangle=45,  # Angle de rotation des étiquettes (facultatif)
-    )
+       
         mois_fr = {
     'January': 'janvier',
     'February': 'février',
@@ -113,6 +105,13 @@ def page_dashboard():
     'December': 'décembre'
 }
          #fig0
+        fig0 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
+        fig0.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
+        fig0.update_xaxes(
+        dtick='M1',  # Marquer tous les mois
+        tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
+        tickangle=45,  # Angle de rotation des étiquettes (facultatif)
+    )
         fig0.update_layout(width=700, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
         monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
         # Trier le DataFrame par volume décroissant
@@ -121,7 +120,7 @@ def page_dashboard():
         top_months = monthly_data_grouped2.head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
         st.plotly_chart(fig0)
-        st.write('Des pics de volumes moyens sont constatés aux mois de  :', ', '.join(top_months['Month']))
+        st.write('Des pics de volumes moyens sont constatés aux mois de', ', '.join(top_months['Month']))
         
         #fig1
         fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='Volume Monthly Evolution', markers=True)
@@ -160,7 +159,7 @@ def page_dashboard():
             st.write('Les CA moyens les plus élevées sont observées en  :', ', '.join(top_months1['Month']))
         with col2:
             st.plotly_chart(fig2)
-            st.write('A l''instar du CA, les marges moyennes les plus élevées sont en enrégistrées en    :', ', '.join(top_months2['Month']))
+            st.write('A l''instar du CA, les marges moyennes les plus élevées sont en enrégistrées en ', ', '.join(top_months2['Month']))
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

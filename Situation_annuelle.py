@@ -189,17 +189,6 @@ def page_dashboard():
        tickangle=45,  # Angle de rotation des étiquettes (facultatif)
 )
 
-# Personnaliser la mise en page pour enlever l'axe des abscisses
-        fig3.update_layout(
-    barmode='stack',
-    title='Cascade Bar Chart by Site',
-    xaxis_title='DATE',
-    yaxis_title='Volume',
-    height=400,
-    width=800,
-    xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
-    xaxis_visible=False  # Rendre l'axe des abscisses invisible
-)
         st.plotly_chart(fig3)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

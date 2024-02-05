@@ -121,7 +121,7 @@ def page_dashboard():
         top_months = monthly_data_grouped2.head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
         st.plotly_chart(fig0)
-        st.write('Des pics de volumes moyens sont constatés aux mois de  :', ', '.join(top_months2['Month']))
+        st.write('Des pics de volumes moyens sont constatés aux mois de  :', ', '.join(top_months['Month']))
         
         #fig1
         fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='Volume Monthly Evolution', markers=True)

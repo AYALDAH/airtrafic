@@ -206,7 +206,7 @@ def page_dashboard():
 # Sélectionner les N premières lignes pour obtenir les sites et mois avec les volumes les plus élevés
         monthly_data_grouped3 = monthly_data_grouped_sorted.nlargest(3, 'VOLUME')
         top_months3 = monthly_data_grouped3
-        top_months3['Month'] = top_months3['Month'].map(mois_fr)
+        top_months3 = top_months3.map(mois_fr)
         st.plotly_chart(fig3)
         st.write('Au cours des mois de , les sites  enrégistrent les volumes les plus élévé en ', ', '.join(top_months3['Month']))
                  

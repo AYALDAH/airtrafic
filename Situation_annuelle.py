@@ -207,7 +207,7 @@ def page_dashboard():
         monthly_data_grouped3 = monthly_data_grouped_sorted.nlargest(3, 'VOLUME')
         top_months3 = monthly_data_grouped3
         st.plotly_chart(fig3)
-        st.write('Au cours des mois de , les sites  enrégistrent les volumes les plus élévé en ', ', '.join(top_months3['Month']))
+        st.write('Au cours des mois de , les sites  enrégistrent les volumes les plus élévé en ', ', '.join(top_months3))
                  
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

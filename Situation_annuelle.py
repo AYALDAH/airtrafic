@@ -209,8 +209,9 @@ def page_dashboard():
         st.plotly_chart(fig3)
         # Trier le DataFrame par entité décroissant 
         top_months4= top_months3.sort_values(by='ENTITE', ascending=False)
-        top_months4= monthly_data_grouped3.head(1)
-        st.write('Au cours des mois de ', ', '.join(top_months3['Month']), 'les sites de, ', '.join(top_months3['ENTITE']) enrégistrent les volumes les plus élévé'  )
+        top_months4= top_months3.head(1)
+        top_months4['ENTITE']=top_months3['ENTITE']
+        st.write('Au cours des mois de ', ', '.join(top_months3['Month']), 'les sites de, ', '.join(top_months4['ENTITE']) enrégistrent les volumes les plus élévé'  )
 
 
 # Créez une barre latérale pour la navigation entre les pages

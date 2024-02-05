@@ -97,7 +97,7 @@ def page_dashboard():
         tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
         tickangle=45,  # Angle de rotation des étiquettes (facultatif)
     )
-        fig1.update_layout(width=350, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+        fig1.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
         #fig2
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)

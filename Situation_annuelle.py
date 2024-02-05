@@ -201,7 +201,7 @@ def page_dashboard():
 )
         
 # Trier le DataFrame par volume décroissant
-        monthly_data_grouped_3= monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
+        monthly_data_grouped3= monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
         top_months3 = monthly_data_grouped3.head(3)
         top_months3['Month'] = top_months3['Month'].map(mois_fr)
         st.plotly_chart(fig3)

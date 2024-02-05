@@ -91,9 +91,9 @@ def page_dashboard():
     # Créer un graphique Plotly Express
         #fig1
         
-        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
-        fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
-        fig1.update_xaxes(
+        fig0 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
+        fig0.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
+        fig0.update_xaxes(
         dtick='M1',  # Marquer tous les mois
         tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
         tickangle=45,  # Angle de rotation des étiquettes (facultatif)

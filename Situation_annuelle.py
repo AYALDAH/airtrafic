@@ -190,7 +190,7 @@ def page_dashboard():
 )
 
 # Personnaliser la mise en page pour enlever l'axe des abscisses
-       fig3.update_layout(
+        fig3.update_layout(
     barmode='stack',
     title='Cascade Bar Chart by Site',
     xaxis_title='DATE',

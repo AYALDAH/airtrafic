@@ -112,13 +112,26 @@ def page_dashboard():
     'November': 'novembre',
     'December': 'décembre'
 }
-        fig1.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+         #fig0
+        fig0.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
         monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
         # Trier le DataFrame par volume décroissant
         monthly_data_grouped2 = monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
         # Sélectionner les mois avec les volumes les plus élevés 
         top_months = monthly_data_grouped2.head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
+        st.plotly_chart(fig0)
+        st.write('Des pics de volumes moyens sont constatés aux mois de  :', ', '.join(top_months2['Month']))
+        
+        #fig1
+        fig1.update_layout(width=370, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+        monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
+        # Trier le DataFrame par volume décroissant
+        monthly_data_grouped2 = monthly_data_grouped.sort_values(by='MONTANT', ascending=False)
+        # Sélectionner les mois avec les volumes les plus élevés 
+        top_months1 = monthly_data_grouped2.head(3)
+        top_months1['Month'] = top_months1['Month'].map(mois_fr)
+        
         #fig2
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
@@ -129,7 +142,7 @@ def page_dashboard():
 )
         fig2.update_layout(width=410, height=500, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
-        monthly_data_grouped22 = monthly_data_grouped.sort_values(by='MONTANT', ascending=False)
+        monthly_data_grouped22 = monthly_data_grouped.sort_values(by='MARGE', ascending=False)
         top_months2 = monthly_data_grouped22.head(3)
         top_months2['Month'] = top_months2['Month'].map(mois_fr)
 # Afficher les résultats
@@ -137,10 +150,10 @@ def page_dashboard():
         col1, col2 = st.columns(2)
         with col1:
             st.plotly_chart(fig1)
-            st.write('    Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))
+            st.write('Les CA moyens les plus élevées sont observées en  :', ', '.join(top_months1['Month']))
         with col2:
             st.plotly_chart(fig2)
-            st.write(' Les CA moyens les plus élevées sont observées en  :', ', '.join(top_months2['Month']))
+            st.write('A l'instar du CA, les marges moyennes les plus élevées sont en enrégistrées en    :', ', '.join(top_months2['Month']))
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

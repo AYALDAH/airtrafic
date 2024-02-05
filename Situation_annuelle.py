@@ -165,6 +165,7 @@ def page_dashboard():
         monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
 
 # Création du graphique à barres empilées avec des couleurs personnalisées
+fig = go.Figure()
 
 
 # Créez une barre latérale pour la navigation entre les pages

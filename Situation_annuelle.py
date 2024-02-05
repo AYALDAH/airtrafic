@@ -61,9 +61,7 @@ def RESUME():
     st.write("Afin de mieux appréhender la situation de l’activité commerciale sur les 3 trimestres de 2023, les données mensuelles du volume, du chiffre d’affaires facturé et de la marge ont été analysées dans la première partie.")
     st.write("Les statistiques par agence ont également été présentées en partie 2. Pour mieux catégoriser les clients, une segmentation par clustering (construction de grappes où les clients sont attribués à des grappes en fonctionde leurs caractéristiques R, F et M les plus proches) a été réalisée.)")
 
-#Import data
-    Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
-    Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
+
 #
 def page_dashboard():
     st.title("")
@@ -76,6 +74,9 @@ def page_dashboard():
 # Affichage du titre dans la deuxième colonne
     with col2:
         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
+#Import data
+    Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
+    Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
 #sidebar configuration
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)

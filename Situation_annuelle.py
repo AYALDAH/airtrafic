@@ -178,6 +178,9 @@ def page_dashboard():
         textposition='inside',
         marker_color=colors[i % len(colors)]  # Choisissez une couleur de la liste en boucle
     ))
+# Définir la date de début (janvier) et la date de fin (septembre)
+        start_date = pd.to_datetime('2023-01-01')
+        end_date = pd.to_datetime('2023-09-30')
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

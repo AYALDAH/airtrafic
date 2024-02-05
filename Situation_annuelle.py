@@ -140,7 +140,7 @@ def page_dashboard():
             st.write('Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))
         with col2:
             st.plotly_chart(fig2)
-            st.write('    Les CA moyens les plus élevées sont observées en  :', ', '.join(top_months2['Month']))
+            st.write('            Les CA moyens les plus élevées sont observées en  :', ', '.join(top_months2['Month']))
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

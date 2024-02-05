@@ -165,9 +165,9 @@ def page_dashboard():
         monthly_data_grouped = analyse_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
 
 # Création du graphique à barres empilées avec des couleurs personnalisées
-       fig3 = go.Figure()
-       colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
-       for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
+        fig3 = go.Figure()
+        colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
+        for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
           entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
           fig3.add_trace(go.Bar(
         x=entity_data['DATE'],

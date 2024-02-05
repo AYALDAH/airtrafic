@@ -165,18 +165,7 @@ def page_dashboard():
         monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
 
 # Création du graphique à barres empilées avec des couleurs personnalisées
-        fig3 = go.Figure()
-        colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
-        for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
-          entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
-          fig3.add_trace(go.Bar(
-        x=entity_data['DATE'],
-        y=entity_data['VOLUME'],
-        name=entity,
-        text=entity_data['DATE'].dt.strftime('%b %Y'),  # Format du texte (mois)
-        textposition='inside',
-        marker_color=colors[i % len(colors)]  # Choisissez une couleur de la liste en boucle
-    ))
+
 
         st.plotly_chart(fig3)
 # Créez une barre latérale pour la navigation entre les pages

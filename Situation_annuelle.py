@@ -127,7 +127,7 @@ def page_dashboard():
     tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
     tickangle=45,  # Angle de rotation des étiquettes (facultatif)
 )
-        fig2.update_layout(width=450, height=500, bargap=0.1,
+        fig2.update_layout(width=410, height=500, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
         monthly_data_grouped22 = monthly_data_grouped.sort_values(by='MONTANT', ascending=False)
         top_months2 = monthly_data_grouped22.head(3)

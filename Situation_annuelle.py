@@ -162,7 +162,7 @@ def page_dashboard():
             st.write('Les marges moyennes les plus élevées sont enrégistrées en ', ', '.join(top_months2['Month']))
             
 #Volumes par sites
-        monthly_data_grouped = analyse_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
+        monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
 
 # Création du graphique à barres empilées avec des couleurs personnalisées
         fig3 = go.Figure()

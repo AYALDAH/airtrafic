@@ -103,8 +103,7 @@ def page_dashboard():
     tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
     tickangle=45,  # Angle de rotation des étiquettes (facultatif)
 )
-
-        fig2.update_layout(width=400, height=500, bargap=0.1,
+        fig2.update_layout(width=450, height=500, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
     # Afficher le graphique dans l'interface Streamlit

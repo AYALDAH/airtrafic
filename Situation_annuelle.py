@@ -108,7 +108,7 @@ def page_dashboard():
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
     # Afficher le graphique dans l'interface Streamlit
-    col1, col2 = st.columns(2)
+        col1, col2 = st.columns(2)
         with col1:
             st.plotly_chart(fig1)
 

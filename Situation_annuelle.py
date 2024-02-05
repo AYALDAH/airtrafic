@@ -169,7 +169,7 @@ def page_dashboard():
        colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
        for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
           entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
-      fig3.add_trace(go.Bar(
+          fig3.add_trace(go.Bar(
         x=entity_data['DATE'],
         y=entity_data['VOLUME'],
         name=entity,

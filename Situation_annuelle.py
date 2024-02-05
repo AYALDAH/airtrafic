@@ -129,7 +129,9 @@ def page_dashboard():
 )
         fig2.update_layout(width=450, height=500, bargap=0.1,
                   plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
-        
+        monthly_data_grouped22 = monthly_data_grouped.sort_values(by='MONTANT', ascending=False)
+        top_months = monthly_data_grouped22.head(3)
+        top_months['Month'] = top_months['Month'].map(mois_fr)
 # Afficher les résultats
     # Afficher le graphique dans l'interface Streamlit
         col1, col2 = st.columns(2)
@@ -138,7 +140,7 @@ def page_dashboard():
             st.write('Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))
         with col2:
             st.plotly_chart(fig2)
-
+            st.write('Des pics de volumes moyens sont constatés aux mois de :', ', '.join(top_months['Month']))
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

@@ -179,8 +179,8 @@ def page_dashboard():
     ))
 
      #Définir la date de début (janvier) et la date de fin (septembre)
-       start_date = pd.to_datetime('2023-01-01')
-       end_date = pd.to_datetime('2023-12-31')
+        start_date = pd.to_datetime('2023-01-01')
+        end_date = pd.to_datetime('2023-12-31')
 
        fig3.update_xaxes(
        range=[start_date, end_date],  # Plage de dates souhaitée

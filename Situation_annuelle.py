@@ -160,8 +160,20 @@ def page_dashboard():
         with col2:
             st.plotly_chart(fig2)
             st.write('A l''instar du CA, les marges moyennes les plus élevées sont enrégistrées en ', ', '.join(top_months2['Month']))
+
+
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
+st.markdown(
+    """
+    <style>
+    .sidebar {
+        background-color: orange;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 # Affichage conditionnel en fonction de la page sélectionnée
 
 if page == "Resumé":

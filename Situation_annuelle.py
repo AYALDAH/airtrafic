@@ -79,6 +79,8 @@ def page_dashboard():
 #Import data
     Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
     Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
+    imputer = KNNImputer(n_neighbors=2, weights="distance")
+    Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
 #sidebar configuration
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
@@ -88,8 +90,7 @@ def page_dashboard():
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
     # Créer un graphique Plotly Express
         #fig1
-        imputer = KNNImputer(n_neighbors=2, weights="distance")
-        Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
+        
         fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig1.update_xaxes(

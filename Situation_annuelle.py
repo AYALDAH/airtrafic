@@ -179,18 +179,18 @@ def page_dashboard():
     ))
 
      #Définir la date de début (janvier) et la date de fin (septembre)
-     start_date = pd.to_datetime('2023-01-01')
-     end_date = pd.to_datetime('2023-12-31')
+       start_date = pd.to_datetime('2023-01-01')
+       end_date = pd.to_datetime('2023-12-31')
 
-     fig3.update_xaxes(
-     range=[start_date, end_date],  # Plage de dates souhaitée
-     dtick='M1',  # Marquer tous les mois
-     tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
-     tickangle=45,  # Angle de rotation des étiquettes (facultatif)
+       fig3.update_xaxes(
+       range=[start_date, end_date],  # Plage de dates souhaitée
+       dtick='M1',  # Marquer tous les mois
+       tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
+       tickangle=45,  # Angle de rotation des étiquettes (facultatif)
 )
 
 # Personnaliser la mise en page pour enlever l'axe des abscisses
-    fig3.update_layout(
+      fig3.update_layout(
     barmode='stack',
     title='Cascade Bar Chart by Site',
     xaxis_title='DATE',
@@ -200,7 +200,7 @@ def page_dashboard():
     xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
     xaxis_visible=False  # Rendre l'axe des abscisses invisible
 )
-st.plotly_chart(fig3)
+    st.plotly_chart(fig3)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

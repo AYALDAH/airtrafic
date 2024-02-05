@@ -119,8 +119,8 @@ def page_dashboard():
         Evol_df = Evol_df.sort_values(by='VOLUME', ascending=False)
 
         # Sélectionner les mois avec les volumes les plus élevés 
-        top_months = Evol_df.head(3).map(mois_fr)
-        
+        top_months = Evol_df.head(3)
+        top_months['Month'] = top_months['Month'].map(mois_fr)
         #fig2
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')

@@ -80,7 +80,7 @@ def page_dashboard():
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
     if  Analyse_Exploratoire == 'Analyse_mensuelle': 
-        Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y-%m-%d')
+        Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'], format='%Y/%m/%d')
     # Grouper les données mensuellement
         monthly_data_grouped = Evol_df.resample('M').mean()
     # Créer un graphique Plotly Express

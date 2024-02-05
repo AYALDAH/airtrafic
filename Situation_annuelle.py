@@ -166,8 +166,18 @@ def page_dashboard():
 
 # Création du graphique à barres empilées avec des couleurs personnalisées
 fig = go.Figure()
+colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées
 
-
+for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
+    entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
+    fig.add_trace(go.Bar(
+        x=entity_data['DATE'],
+        y=entity_data['VOLUME'],
+        name=entity,
+        text=entity_data['DATE'].dt.strftime('%b %Y'),  # Format du texte (mois)
+        textposition='inside',
+        marker_color=colors[i % len(colors)]  # Choisissez une couleur de la liste en boucle
+    ))
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

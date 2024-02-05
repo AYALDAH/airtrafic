@@ -117,7 +117,7 @@ def page_dashboard():
         # Trier le DataFrame par volume décroissant
         monthly_data_grouped2 = monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
         # Sélectionner les mois avec les volumes les plus élevés 
-        top_months = monthly_data_grouped2.head(2)
+        top_months = monthly_data_grouped2.head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
         #fig2
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)

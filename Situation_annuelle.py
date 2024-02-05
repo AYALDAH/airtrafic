@@ -165,12 +165,12 @@ def page_dashboard():
 
 #Volumes par sites
 # Création du graphique à barres empilées avec des couleurs personnalisées
-fig3 = go.Figure()
+    fig3 = go.Figure()
 
-colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
+   colors = ['LightsteelBlue1','Peru','darkorange','deepskyblue','gray','lightyellow']  # Liste de couleurs personnalisées
 
-for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
-    entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
+   for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
+       entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
     fig3.add_trace(go.Bar(
         x=entity_data['DATE'],
         y=entity_data['VOLUME'],
@@ -180,11 +180,11 @@ for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
         marker_color=colors[i % len(colors)]  # Choisissez une couleur de la liste en boucle
     ))
 
-# Définir la date de début (janvier) et la date de fin (septembre)
-start_date = pd.to_datetime('2023-01-01')
-end_date = pd.to_datetime('2023-09-30')
+     #Définir la date de début (janvier) et la date de fin (septembre)
+    start_date = pd.to_datetime('2023-01-01')
+    end_date = pd.to_datetime('2023-12-31')
 
-fig3.update_xaxes(
+    fig3.update_xaxes(
     range=[start_date, end_date],  # Plage de dates souhaitée
     dtick='M1',  # Marquer tous les mois
     tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
@@ -192,7 +192,7 @@ fig3.update_xaxes(
 )
 
 # Personnaliser la mise en page pour enlever l'axe des abscisses
-fig3.update_layout(
+    fig3.update_layout(
     barmode='stack',
     title='Cascade Bar Chart by Site',
     xaxis_title='DATE',

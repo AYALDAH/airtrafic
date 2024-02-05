@@ -201,7 +201,7 @@ def page_dashboard():
 )
         
 # Trier le DataFrame par volume décroissant
-        monthly_data_grouped_sorted = monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
+        monthly_data_grouped= monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
 
 # Sélectionner les N premières lignes pour obtenir les sites et mois avec les volumes les plus élevés
         monthly_data_grouped3 = monthly_data_grouped_sorted.nlargest(3, 'VOLUME')

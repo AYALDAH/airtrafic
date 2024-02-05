@@ -86,17 +86,17 @@ def page_dashboard():
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
     # Créer un graphique Plotly Express
         #fig1
-        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Monthly Evolution', markers=True)
+        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig1.update_xaxes(
         dtick='M1',  # Marquer tous les mois
         tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
         tickangle=45,  # Angle de rotation des étiquettes (facultatif)
     )
-        fig1.update_layout(width=400, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+        fig1.update_layout(width=350, height=500, bargap=0.1, plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
         #fig2
-        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='Monthly Evolution', markers=True)
+        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig2.update_xaxes(
     dtick='M1',  # Marquer tous les mois

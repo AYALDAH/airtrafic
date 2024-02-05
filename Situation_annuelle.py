@@ -201,14 +201,14 @@ def page_dashboard():
 )
         
 # Trier le DataFrame par volume décroissant
-     monthly_data_grouped_sorted = monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
+        monthly_data_grouped_sorted = monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
 
 # Sélectionner les N premières lignes pour obtenir les sites et mois avec les volumes les plus élevés
-     monthly_data_grouped3 = monthly_data_grouped_sorted.nlargest(N, 'VOLUME')
-     top_months3 = monthly_data_grouped3.head(3)
-     top_months3['Month'] = top_months3['Month'].map(mois_fr)
-     st.plotly_chart(fig3)
-     st.write(Au cours des mois de , les sites  enrégistrent les volumes les plus élévé en ', ', '.join(top_months3['Month'])
+        monthly_data_grouped3 = monthly_data_grouped_sorted.nlargest(N, 'VOLUME')
+        top_months3 = monthly_data_grouped3.head(3)
+        top_months3['Month'] = top_months3['Month'].map(mois_fr)
+        st.plotly_chart(fig3)
+        st.write(Au cours des mois de , les sites  enrégistrent les volumes les plus élévé en ', ', '.join(top_months3['Month'])
                  
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

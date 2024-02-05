@@ -181,6 +181,12 @@ def page_dashboard():
 # Définir la date de début (janvier) et la date de fin (septembre)
         start_date = pd.to_datetime('2023-01-01')
         end_date = pd.to_datetime('2023-09-30')
+        fig.update_xaxes(
+    range=[start_date, end_date],  # Plage de dates souhaitée
+    dtick='M1',  # Marquer tous les mois
+    tickformat='%b %Y',  # Format de l'étiquette (abrégé du mois et année)
+    tickangle=45,  # Angle de rotation des étiquettes (facultatif)
+)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

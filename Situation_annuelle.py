@@ -221,7 +221,7 @@ def page_dashboard():
 # Grouper les données par entité et calculer le volume total pour chaque entité
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
 # Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité
-            top_entity_in_month = entities_volume.idxmax()
+            top_entity_in_month = entities_volume.head(3)
 # Ajouter l'entité à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
             top_entities.append(top_entity_in_month)
 

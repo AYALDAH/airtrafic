@@ -224,13 +224,18 @@ def page_dashboard():
             top_entity_in_month = entities_volume.head(3)
 # Ajouter l'entité à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
             top_entities.append(top_entity_in_month)
-      
-        for i, (month_index, _) in enumerate(top_months.iterrows()):
-            entities_list = top_entities[i].index.tolist()
-            st.write(f"Pour le mois {month_index.strftime('%B')} les entités avec le plus de volume sont :")
-            for entity in entities_list:
-                st.write(entity)
-                st.write("")  #
+            result_str = ""
+
+# Afficher les entités ayant le plus de volume parmi les mois ayant le plus de volume
+           for i, (month_index, _) in enumerate(top_months.iterrows()):
+               entities_list = top_entities[i].index.tolist()
+               result_str += f"Pour le mois {month_index.strftime('%B')} les entités avec le plus de volume sont :\n"
+               for entity in entities_list:
+                   result_str += f"{entity}\n"
+                   result_str += "\n"  # Ajouter une ligne vide pour séparer les résultats
+
+# Utiliser st.write pour afficher la chaîne de caractères une seule fois
+st.write(result_str)
                                  
        # st.write('Au cours des mois de', ', '.join(top_months['Month'], 'les sites de', ', '.join(top_entities['ENTITE']), 'enregistrent les volumes les plus élevés'))
 

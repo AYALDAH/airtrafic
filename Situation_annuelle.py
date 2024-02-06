@@ -223,7 +223,7 @@ def page_dashboard():
             top_entities_in_month = entities_volume.nlargest(3)
     # Ajouter les entités à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
             top_entities.append(top_entities_in_month)           
-            for i, (month_index, _) in enumerate(top_months.iterrows()):
+            for i, month_index in enumerate(top_months.iterrows()):
                 entities_series = top_entities[i]
                 if isinstance(entities_series, pd.Series) and isinstance(entities_series.index, pd.Index):
                     st.write(f"Pour le mois {month_index.strftime('%B')}, les entités avec le plus de volume sont : {entities_series.index.tolist()}")

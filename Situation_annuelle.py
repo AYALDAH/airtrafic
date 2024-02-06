@@ -226,7 +226,7 @@ def page_dashboard():
             top_entities.append(top_entity_in_month)
         for i, (month_index, _) in enumerate(top_months.iterrows()):
             entities_str = ', '.join(top_entities[i].index.tolist()
-            st.write(f"Pour le mois {month_index.strftime('%B')} les entités avec le plus de volume sont :{entities_str}")
+        st.write(f"Pour le mois {month_index.strftime('%B')} les entités avec le plus de volume sont :{entities_str}")
             
        # st.write('Au cours des mois de', ', '.join(top_months['Month'], 'les sites de', ', '.join(top_entities['ENTITE']), 'enregistrent les volumes les plus élevés'))
 

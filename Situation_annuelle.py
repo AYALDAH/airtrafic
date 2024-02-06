@@ -210,7 +210,7 @@ def page_dashboard():
         # Trier le DataFrame par entité décroissant 
         top_months4= monthly_data_grouped3.head(1)
        
-        st.write('Au cours des mois de', ', '.join(top_months3['Month']), 'les sites de', ', '.join(top_months3['ENTITE']), 'enregistrent les volumes les plus élevés')
+        st.write('Au cours des mois de', ', '.join(top_months3['Month']), 'les sites de', ', '.join(top_months3), 'enregistrent les volumes les plus élevés')
 
 
 # Créez une barre latérale pour la navigation entre les pages

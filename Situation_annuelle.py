@@ -228,7 +228,7 @@ def page_dashboard():
             st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont :")
             for entity, volume in entities_by_month[i].items():
                 st.write(f"{entity} avec un volume total de {volume}")
-         st.write("")
+            st.write("")
                                  
        # st.write('Au cours des mois de', ', '.join(top_months['Month'], 'les sites de', ', '.join(top_entities['ENTITE']), 'enregistrent les volumes les plus élevés'))
 

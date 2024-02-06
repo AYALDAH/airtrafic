@@ -216,7 +216,7 @@ def page_dashboard():
         top_months['Month'] = top_months['Month'].map(mois_fr)
 # Pour chaque mois sélectionné
         for month_index, month_data in top_months.iterrows():
-            month_entities_data = Evol_df[Evol_df.index.month == month_index.month]
+            month_entities_data = Evol_df.resample('M',on='DATE').mean()
 # Grouper les données par entité et calculer le volume total pour chaque entité
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
 # Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité

@@ -235,7 +235,7 @@ def page_dashboard():
                     result_str += "\n"  # Ajouter une ligne vide pour séparer les résultats
 
 # Utiliser st.write pour afficher la chaîne de caractères une seule fois
-st.write(result_str)
+            st.write(result_str)
                                  
        # st.write('Au cours des mois de', ', '.join(top_months['Month'], 'les sites de', ', '.join(top_entities['ENTITE']), 'enregistrent les volumes les plus élevés'))
 

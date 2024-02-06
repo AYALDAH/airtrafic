@@ -210,13 +210,13 @@ def page_dashboard():
 # Trier le DataFrame par volume décroissant
         # Trier le DataFrame par entité décroissant 
         top_entities = [] 
-        monthly_data_groupedP = analyse_df.resample('M',on='DATE').mean()
+        monthly_data_groupedP = Evol_df.resample('M',on='DATE').mean()
         monthly_data_groupedP['Month'] = monthly_data_groupedP.index.strftime('%B')
         top_months = monthly_data_groupedP.sort_values(by='VOLUME', ascending=False).head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
            # Filtrer les données pour le mois actuel
         for month_index, month_data in top_months.iterrows():
-            month_entities_data = analyse_df[analyse_df['MOIS'] == month_index.month]
+            month_entities_data = Evol_df[Evol_df['MOIS'] == month_index.month]
     # Grouper les données par entité et calculer le volume total pour chaque entité
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
     # Trier les entités par volume total dans l'ordre décroissant et sélectionner les trois premières entités

@@ -209,20 +209,24 @@ def page_dashboard():
     
 # Trier le DataFrame par volume décroissant
         # Trier le DataFrame par entité décroissant 
-        top_entities = [] 
-        monthly_data_groupedP = Evol_df.resample('M',on='DATE').mean()
-        monthly_data_groupedP['Month'] = monthly_data_groupedP.index.strftime('%B')
-        top_months = monthly_data_groupedP.sort_values(by='VOLUME', ascending=False).head(3)
-        top_months['Month'] = top_months['Month'].map(mois_fr)
-# Pour chaque mois sélectionné
-        for month_index, month_data in top_months.iterrows():   
-# Filtrer les données correspondant au mois
-            month_entities_data = Evol_df[Evol_df['MOIS'] == month_index.month]
-# Grouper les données par entité et calculer le volume total pour chaque entité
-            entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
-# Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité
-            top_entity_in_month = entities_volume.head(3)
-            top_entities.append(entity)             
+       top_entities = [] 
+       monthly_data_groupedP = analyse_df.resample('M',on='DATE').mean()
+       monthly_data_groupedP['Month'] = monthly_data_groupedP.index.strftime('%B')
+       top_months = monthly_data_groupedP.sort_values(by='VOLUME', ascending=False).head(3)
+       top_months['Month'] = top_months['Month'].map(mois_fr)
+
+       for month_index, month_data in top_months.iterrows():
+    # Filtrer les données pour le mois actuel
+       month_entities_data = analyse_df[analyse_df['MOIS'] == month_index.month]
+    
+    # Grouper les données par entité et calculer le volume total pour chaque entité
+       entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
+    
+    # Trier les entités par volume total dans l'ordre décroissant et sélectionner les trois premières entités
+       top_entities_in_month = entities_volume.nlargest(3)
+    
+    # Ajouter les entités à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
+       top_entities.append(top_entities_in_month)           
         st.write('Les marges moyennes les plus élevées sont enrégistrées en ', ', '.join(top_entities))
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

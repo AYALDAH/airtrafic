@@ -164,7 +164,11 @@ def page_dashboard():
         
 #Volumes par sites
         monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
-
+        analyse_df["ENTITE"] = analyse_df["ENTITE"].replace(["RDT13"], value = "MARSEILLE")
+        analyse_df["ENTITE"] = analyse_df["ENTITE"].replace(["RDT45"], value = "MONTOIR")
+        analyse_df["ENTITE"] = analyse_df["ENTITE"].replace(["RDT59"], value = "DUNKERQUE")
+        analyse_df["ENTITE"]= analyse_df["ENTITE"].replace(["RDT76"], value = "ROUEN")
+        analyse_df["ENTITE"] = analyse_df["ENTITE"].replace(["RDT76LEH"], value = "LE HAVRE")
 # Création du graphique à barres empilées avec des couleurs personnalisées
         fig3 = go.Figure()
         colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées
@@ -201,9 +205,9 @@ def page_dashboard():
 )
         
 # Trier le DataFrame par volume décroissant
-        monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
-        monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
-        monthly_data_grouped3= monthly_data_grouped.sort_values(by='VOLUME', ascending=False)
+        monthly_data_groupedP = Evol_df.resample('M',on='DATE').mean()
+        monthly_data_grouped['Month'] = monthly_data_groupedP.index.strftime('%B')
+        monthly_data_grouped3= monthly_data_groupedP.sort_values(by='VOLUME', ascending=False)
         top_months3= monthly_data_grouped3.head(3)
         top_months3['Month'] = top_months3['Month'].map(mois_fr)
         st.plotly_chart(fig3)

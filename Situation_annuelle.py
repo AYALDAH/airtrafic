@@ -223,12 +223,13 @@ def page_dashboard():
             top_entities_in_month = entities_volume.nlargest(3)
     # Ajouter les entités à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
             top_entities.append(top_entities_in_month)           
-            for i, month_index in enumerate(top_months.iterrows()):
-                entities_series = top_entities[i]
-                if isinstance(entities_series, pd.Series) and isinstance(entities_series.index, pd.Index):
-                    st.write(f"Pour le mois {month_index.strftime('%B')}, les entités avec le plus de volume sont : {entities_series.index.tolist()}")
-                else:
-                    st.write(f"Erreur: Les données pour le mois de {month_index.strftime('%B')} ne sont pas disponibles.")
+            for month_index, _ in top_months.iterrows():
+                month_data_index = top_months.index.get_loc(month_index)
+                entities_series = top_entities[month_data_index]
+               if isinstance(entities_series, pd.Series) and isinstance(entities_series.index, pd.Index):
+                   st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont : {', '.join(entities_series.index.tolist())}")
+               else:
+                   st.write(f"Erreur: Les données pour le mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

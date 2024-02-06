@@ -228,7 +228,7 @@ def page_dashboard():
                 st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont :")
                 if isinstance(entities_by_month[i], dict):
                     for entity, volume in entities_by_month[i].items():
-                    st.write(f"{entity} avec un volume total de {volume}")
+                        st.write(f"{entity} avec un volume total de {volume}")
                  else:
                  st.write("Erreur: Les données pour ce mois ne sont pas sous forme de dictionnaire.")
              st.write("")

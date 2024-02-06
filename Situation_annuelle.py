@@ -227,7 +227,7 @@ def page_dashboard():
             entities_series = top_entities[i]
             if isinstance(entities_series, pd.Series) and isinstance(entities_series.index, pd.Index):
                 mois_francais = mois_fr[month_index.strftime('%B')]
-                st.write(f"Au cours du mois de {mois_francais}, les entités avec le plus de volume sont : {', '.join(entities_series.index.tolist())}")
+                st.write(f"Au cours du mois de {mois_francais}, les entités avec les volumes les plus élevés sont : {', '.join(entities_series.index.tolist())}")
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 # Créez une barre latérale pour la navigation entre les pages

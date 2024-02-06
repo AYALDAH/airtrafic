@@ -223,10 +223,11 @@ def page_dashboard():
 # Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité
             top_entity_in_month = entities_volume.head(3)
 # Ajouter l'entité à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
-            top_entities.append(top_entity_in_month)                   
+            for entity, volume in top_entities_in_month.items():
+                if entity not in top_entities:
+                    top_entities.append(entity)             
         for i, (month_index, _) in enumerate(top_months.iterrows()):
-            entities_str = ', '.join(top_entities[i].index.tolist())
-            st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont : {entities_str}")
+            st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont : {', '.join(top_entities)}")
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

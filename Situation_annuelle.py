@@ -220,9 +220,9 @@ def page_dashboard():
     # Grouper les données par entité et calculer le volume total pour chaque entité
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
     # Trier les entités par volume total dans l'ordre décroissant et sélectionner les trois premières entités
-             top_entities_in_month = entities_volume.nlargest(3)
+            top_entities_in_month = entities_volume.nlargest(3)
     # Ajouter les entités à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
-             top_entities.append(top_entities_in_month)           
+            top_entities.append(top_entities_in_month)           
         st.write('Les marges moyennes les plus élevées sont enrégistrées en ', ', '.join(top_entities))
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

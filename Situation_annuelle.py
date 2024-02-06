@@ -226,7 +226,6 @@ def page_dashboard():
         all_entities = set()
         for entities_series in top_entities:
             all_entities.update(entities_series.index.tolist())
-            st.write(f"Les entités avec le plus de volume pour tous les mois sont : {', '.join(all_entities)}")
 # Afficher les entités avec le plus de volume pour chaque mois
         for i, (month_index, _) in enumerate(top_months.iterrows()):
             st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont : {', '.join(all_entities)}")

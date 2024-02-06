@@ -227,12 +227,12 @@ def page_dashboard():
             result_str = ""
 
 # Afficher les entités ayant le plus de volume parmi les mois ayant le plus de volume
-           for i, (month_index, _) in enumerate(top_months.iterrows()):
-               entities_list = top_entities[i].index.tolist()
-               result_str += f"Pour le mois {month_index.strftime('%B')} les entités avec le plus de volume sont :\n"
-               for entity in entities_list:
-                   result_str += f"{entity}\n"
-                   result_str += "\n"  # Ajouter une ligne vide pour séparer les résultats
+            for i, (month_index, _) in enumerate(top_months.iterrows()):
+                entities_list = top_entities[i].index.tolist()
+                result_str += f"Pour le mois {month_index.strftime('%B')} les entités avec le plus de volume sont :\n"
+                for entity in entities_list:
+                    result_str += f"{entity}\n"
+                    result_str += "\n"  # Ajouter une ligne vide pour séparer les résultats
 
 # Utiliser st.write pour afficher la chaîne de caractères une seule fois
 st.write(result_str)

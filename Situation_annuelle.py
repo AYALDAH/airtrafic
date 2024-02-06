@@ -225,7 +225,6 @@ def page_dashboard():
             top_entities.append(top_entities_in_month)           
             for month_index, _ in top_months.iterrows():
                 month_data_index = top_months.index.get_loc(month_index)
-                entities_series = top_entities[month_data_index]
                 if isinstance(entities_series, pd.Series) and isinstance(entities_series.index, pd.Index):
                    st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont : {', '.join(entities_series.index.tolist())}")
                 else:

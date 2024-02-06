@@ -205,7 +205,8 @@ def page_dashboard():
     xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
     xaxis_visible=False  # Rendre l'axe des abscisses invisible
 )
-        
+    st.plotly_chart(fig3)  
+    
 # Trier le DataFrame par volume décroissant
         monthly_data_groupedP = Evol_df.resample('M',on='DATE').mean()
         monthly_data_groupedP['Month'] = monthly_data_groupedP.index.strftime('%B')
@@ -213,11 +214,24 @@ def page_dashboard():
         top_months3= monthly_data_grouped3.head(3)
         top_months3['ENTITE']=Evol_df['ENTITE']
         top_months3['Month'] = top_months3['Month'].map(mois_fr)
-        st.plotly_chart(fig3)
         # Trier le DataFrame par entité décroissant 
-        top_months4= top_months3['ENTITE'].head(3)
+        top_entities = [] 
+        monthly_data_groupedP = Evol_df.resample('M',on='DATE').mean()
+        monthly_data_groupedP['Month'] = monthly_data_groupedP.index.strftime('%B')
+        top_months = monthly_data_groupedP.sort_values(by='VOLUME', ascending=False).head(3)
+        top_months['Month'] = top_months['Month'].map(mois_fr)
+# Pour chaque mois sélectionné
+        for month_index, month_data in top_months.iterrows():
+            month_entities_data = Evol_df[Evol_df.index.month == month_index.month]
+# Grouper les données par entité et calculer le volume total pour chaque entité
+            entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
+# Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité
+            top_entity_in_month = entities_volume.idxmax()
+# Ajouter l'entité à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
+            top_entities.append(top_entity_in_month)
+
        
-        st.write('Au cours des mois de', ', '.join(top_months3['Month']), 'les sites de', ', '.join(top_months3['Month']), 'enregistrent les volumes les plus élevés')
+        st.write('Au cours des mois de', ', '.join(top_months['Month']), 'les sites de', ', '.join(top_entities), 'enregistrent les volumes les plus élevés')
 
 
 # Créez une barre latérale pour la navigation entre les pages

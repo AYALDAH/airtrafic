@@ -215,9 +215,9 @@ def page_dashboard():
         top_months = monthly_data_groupedP.sort_values(by='VOLUME', ascending=False).head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
 # Pour chaque mois sélectionné
-        for month_index, month_data in top_months.iterrows():
-            month_entities_data = Evol_df.resample('M',on='DATE').mean()
-            month_entities_data['ENTITE']=Evol_df['ENTITE']
+        for month_index, month_data in top_months.iterrows():   
+# Filtrer les données correspondant au mois
+            month_entities_data = analyse_df[analyse_df['MOIS'] == month_index.month]
 # Grouper les données par entité et calculer le volume total pour chaque entité
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
 # Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité
@@ -227,7 +227,7 @@ def page_dashboard():
 
        
         st.write('Au cours des mois de', ', '.join(top_months['Month']))
-#, 'les sites de', ', '.join(), 'enregistrent les volumes les plus élevés'
+#, 'les sites de', ', '.join(top_entities), 'enregistrent les volumes les plus élevés'
 
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

@@ -226,9 +226,9 @@ def page_dashboard():
         for i, (month_index, _) in enumerate(top_months.iterrows()):
             entities_series = top_entities[0]
             if isinstance(entities_series, pd.Series) and isinstance(entities_series.index, pd.Index):
-                    st.write(f"Pour le mois {month_index.strftime('%B')}, les entités avec le plus de volume sont : {', '.join(entities_series.index.tolist())}")
-                else:
-                    st.write(f"Erreur: Les données pour le mois de {month_index.strftime('%B')} ne sont pas disponibles.")
+                st.write(f"Pour le mois {month_index.strftime('%B')}, les entités avec le plus de volume sont : {', '.join(entities_series.index.tolist())}")
+            else:
+                st.write(f"Erreur: Les données pour le mois de {month_index.strftime('%B')} ne sont pas disponibles.")
            
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

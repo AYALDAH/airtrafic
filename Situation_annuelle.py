@@ -206,7 +206,7 @@ def page_dashboard():
         
 # Trier le DataFrame par volume décroissant
         monthly_data_groupedP = Evol_df.resample('M',on='DATE').mean()
-        monthly_data_grouped['Month'] = monthly_data_groupedP.index.strftime('%B')
+        monthly_data_groupedP['Month'] = monthly_data_groupedP.index.strftime('%B')
         monthly_data_grouped3= monthly_data_groupedP.sort_values(by='VOLUME', ascending=False)
         top_months3= monthly_data_grouped3.head(3)
         top_months3['Month'] = top_months3['Month'].map(mois_fr)

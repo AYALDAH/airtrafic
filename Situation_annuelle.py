@@ -163,12 +163,14 @@ def page_dashboard():
 
         
 #Volumes par sites
-        monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT13"], value = "MARSEILLE")
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT45"], value = "MONTOIR")
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT59"], value = "DUNKERQUE")
         Evol_df["ENTITE"]= Evol_df["ENTITE"].replace(["RDT76"], value = "ROUEN")
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT76LEH"], value = "LE HAVRE")
+        
+        monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
+       
 # Création du graphique à barres empilées avec des couleurs personnalisées
         fig3 = go.Figure()
         colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées

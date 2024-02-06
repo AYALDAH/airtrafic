@@ -225,7 +225,7 @@ def page_dashboard():
 # Ajouter l'entité à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
             top_entities.append(top_entity_in_month)
         for i, (month_index, _) in enumerate(top_months.iterrows()):
-            st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont :")
+            st.write(f"Au cours du mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont :")
             for entity, volume in entities_by_month[i].items():
                 st.write(f"{entity} avec un volume total de {volume}")
             st.write("")

@@ -216,7 +216,7 @@ def page_dashboard():
         # Trier le DataFrame par entité décroissant 
         top_months4= Evol_df.head(3)
        
-        st.write('Au cours des mois de', ', '.join(top_months3['Month']), 'les sites de', ', '.join(Evol_df), 'enregistrent les volumes les plus élevés')
+        st.write('Au cours des mois de', ', '.join(top_months3['Month']), 'les sites de', ', '.join(monthly_data_groupedP), 'enregistrent les volumes les plus élevés')
 
 
 # Créez une barre latérale pour la navigation entre les pages

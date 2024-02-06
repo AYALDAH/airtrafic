@@ -222,10 +222,7 @@ def page_dashboard():
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
 # Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité
             top_entity_in_month = entities_volume.head(3)
-# Ajouter l'entité à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
-            for entity, volume in top_entities_in_month:
-                if entity not in top_entities:
-                    top_entities.append(entity)             
+            top_entities.append(entity)             
         for i, (month_index, _) in enumerate(top_months.iterrows()):
             st.write(f"Pour le mois de {month_index.strftime('%B')}, les entités avec le plus de volume sont :{', '.join(top_entities[i].index)}")
 # Créez une barre latérale pour la navigation entre les pages

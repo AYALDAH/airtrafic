@@ -205,7 +205,7 @@ def page_dashboard():
     xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
     xaxis_visible=False  # Rendre l'axe des abscisses invisible
 )
-       st.plotly_chart(fig3)  
+        st.plotly_chart(fig3)  
     
 # Trier le DataFrame par volume décroissant
         # Trier le DataFrame par entité décroissant 

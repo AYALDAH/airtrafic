@@ -226,8 +226,8 @@ def page_dashboard():
             top_entities.append(top_entity_in_month)
 
        
-        st.write('Au cours des mois de', ', '.join(top_months['Month']), 'les sites de', ', '.join(), 'enregistrent les volumes les plus élevés')
-
+        st.write('Au cours des mois de', ', '.join(top_months['Month']))
+#, 'les sites de', ', '.join(), 'enregistrent les volumes les plus élevés'
 
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

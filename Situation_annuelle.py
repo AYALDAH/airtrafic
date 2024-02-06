@@ -231,7 +231,7 @@ def page_dashboard():
                         st.write(f"{entity} avec un volume total de {volume}")
                 else:
                      st.write("Erreur: Les données pour ce mois ne sont pas sous forme de dictionnaire.")
-                 st.write("")
+                st.write("")
                                  
        # st.write('Au cours des mois de', ', '.join(top_months['Month'], 'les sites de', ', '.join(top_entities['ENTITE']), 'enregistrent les volumes les plus élevés'))
 

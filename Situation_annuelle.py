@@ -217,7 +217,7 @@ def page_dashboard():
 # Pour chaque mois sélectionné
         for month_index, month_data in top_months.iterrows():   
 # Filtrer les données correspondant au mois
-            month_entities_data = Evol_df[analyse_df['MOIS'] == month_index.month]
+            month_entities_data = Evol_df[Evol_df['MOIS'] == month_index.month]
 # Grouper les données par entité et calculer le volume total pour chaque entité
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
 # Trier les entités par volume total dans l'ordre décroissant et sélectionner la première entité

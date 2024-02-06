@@ -105,7 +105,7 @@ def page_dashboard():
     'December': 'décembre'
 }
          #fig0
-        fig0 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Volume Monthly Evolution', markers=True)
+        fig0 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Evolution mensuelle du Volume', markers=True)
         fig0.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig0.update_xaxes(
         dtick='M1',  # Marquer tous les mois
@@ -123,7 +123,7 @@ def page_dashboard():
         st.write('Des pics de volumes moyens sont constatés au cours des mois de', ', '.join(top_months['Month']))
         
         #fig1
-        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='CA Monthly Evolution', markers=True)
+        fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='Evolution mensuelle du CA', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig1.update_xaxes(
         dtick='M1',  # Marquer tous les mois
@@ -139,7 +139,7 @@ def page_dashboard():
         top_months1['Month'] = top_months1['Month'].map(mois_fr)
         
         #fig2
-        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MARGE', title='Marge Monthly Evolution', markers=True)
+        fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MARGE', title='Evolution mensuelle de la Marge', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig2.update_xaxes(
     dtick='M1',  # Marquer tous les mois
@@ -197,7 +197,7 @@ def page_dashboard():
 # Personnaliser la mise en page pour enlever l'axe des abscisses
         fig3.update_layout(
     barmode='stack',
-    title='Cascade Bar Chart by Site',
+    title='Volume par site et par mois',
     xaxis_title='DATE',
     yaxis_title='Volume',
     height=400,
@@ -229,7 +229,7 @@ def page_dashboard():
                 mois_francais = mois_fr[month_index.strftime('%B')]
                 st.write(f"Pour le mois de {mois_francais}, les entités avec le plus de volume sont : {', '.join(entities_series.index.tolist())}")
             else:
-                st.write(f"Erreur: Les données pour le mois de {month_index.strftime('%B')} ne sont pas disponibles.")
+                st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

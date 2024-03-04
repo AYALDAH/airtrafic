@@ -33,7 +33,7 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
 Analyses=('Analyse_mensuelle','Statistique par site')
-Entité=("Marseille","Montoir","Dunkerque","Rouen", "LE HAVRE")
+ENTITE=("Marseille","Montoir","Dunkerque","Rouen", "LE HAVRE")
 Approches=("Clustering RFM", "Logit Binaire")
 
     # Ajoutez le contenu de la page de tableau de bord ici
@@ -233,7 +233,7 @@ def page_dashboard():
 
         st.subheader("Détails par site")
         with st.sidebar:
-            selected_entity = st.selectbox( 'ENTITE', ENTITE)
+            selected_entity = st.selectbox('ENTITE',ENTITE)
 
         st.write('Entité sélectionnée:', selected_entity)
 # Filter data based on the selected entity

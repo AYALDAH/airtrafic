@@ -174,9 +174,7 @@ def page_dashboard():
 # Création du graphique à barres empilées avec des couleurs personnalisées
         fig3 = go.Figure()
         #colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées
-        palette_RdBu=px.colors.diverging.RdYlBu
-        blue_palette = px.colors.qualitative.Plotly[:3] 
-        mixed_palette = palette_RdBu + blue_palette
+        Colors=px.colors.sequential.Viridis
         for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
               entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
               fig3.add_trace(go.Bar(
@@ -185,7 +183,7 @@ def page_dashboard():
         name=entity,
         text=entity_data['DATE'].dt.strftime('%b %Y'),  # Format du texte (mois)
         textposition='inside',
-        marker_color=mixed_palette[i % len(mixed_palette)]  # Choisissez une couleur de la liste en boucle
+        marker_color=Colors[i % len(Colors)]  # Choisissez une couleur de la liste en boucle
     ))
 # Définir la date de début (janvier) et la date de fin (Decembre)
         start_date = pd.to_datetime('2023-01-01')

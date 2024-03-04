@@ -230,10 +230,34 @@ def page_dashboard():
                 st.write(f"Au cours du mois de {mois_francais}, les entités ayant les volumes les plus élevés sont : {', '.join(entities_series.index.tolist())}")
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
+
+       st.subheader("Détails par site")
+        with st.sidebar:
+             selected_entity = st.selectbox('ENTITE', Selctionner une Entité)
+
+         st.write('Entité sélectionnée:', selected_entity)
+# Filter data based on the selected entity
+         filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
+
+# Group the data by month and site, and calculate the sum of volume for each month
+         monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE_RENTA', freq='M')])['VOLUME'].sum().reset_index()
+
+
+         monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
+
+# Create the waterfall chart using Plotly Express
+         fig_waterfall = px.bar(monthly_data_grouped, x='DATE_RENTA', y='Change', title='Variation du volume moyen en 2022', barmode='overlay', labels={'DATE_RENTA': 'Date', 'Change': 'Change in Volume'},color_discrete_sequence=px.colors.qualitative.Plotly)
+
+# Update layout and appearance of the plot
+         fig_waterfall.update_layout(height=400, width=800)
+         fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
+                  plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+         st.plotly_chart(fig_waterfall)
+
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée
-
+          
 if page == "Resumé":
     RESUME()
 elif page == "Analyse Exploratoire":

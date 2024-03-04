@@ -234,7 +234,14 @@ def page_dashboard():
         st.subheader("Détails par Entité")
         with st.sidebar:
             selected_entity = st.selectbox('ENTITE',ENTITE)
-
+            
+        # Tansform entity 
+        Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT13"], value = "MARSEILLE")
+        Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT45"], value = "MONTOIR")
+        Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT59"], value = "DUNKERQUE")
+        Evol_df["ENTITE"]= Evol_df["ENTITE"].replace(["RDT76"], value = "ROUEN")
+        Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT76LEH"], value = "LE HAVRE")
+        
         st.write('Entité sélectionnée:', selected_entity)
 # Filter data based on the selected entity
         filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]

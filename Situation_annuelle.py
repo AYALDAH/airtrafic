@@ -244,7 +244,7 @@ def page_dashboard():
         monthly_data_groupedc['Change'] = monthly_data_groupedc['VOLUME'].diff().fillna(0)
 
 # Create the waterfall chart using Plotly Express
-        fig_waterfall = px.bar(monthly_data_groupedc, x='DATE', y='Change', title='Variation du volume moyen en 2022', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in Volume'},color_discrete_sequence=px.colors.qualitative.Plotly)
+        fig_waterfall = px.bar(monthly_data_groupedc, x='DATE', y='Change', title='Variation du volume moyen en 2022', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in Volume'},color='Change',color_continuous_scale='RdBu)
 
 # Update layout and appearance of the plot
         fig_waterfall.update_layout(height=400, width=800)

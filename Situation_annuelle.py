@@ -185,7 +185,7 @@ def page_dashboard():
         name=entity,
         text=entity_data['DATE'].dt.strftime('%b %Y'),  # Format du texte (mois)
         textposition='inside',
-        marker_color=colors[i % len( mixed_palette)]  # Choisissez une couleur de la liste en boucle
+        marker_color=mixed_palette[i % len(mixed_palette)]  # Choisissez une couleur de la liste en boucle
     ))
 # Définir la date de début (janvier) et la date de fin (Decembre)
         start_date = pd.to_datetime('2023-01-01')

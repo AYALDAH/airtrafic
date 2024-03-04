@@ -240,8 +240,8 @@ def page_dashboard():
         filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
 
 # Group the data by month and site, and calculate the sum of volume for each month
-         monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE_RENTA', freq='M')])['VOLUME'].sum().reset_index()
-         monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
+        monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE_RENTA', freq='M')])['VOLUME'].sum().reset_index()
+        monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
 
 # Create the waterfall chart using Plotly Express
         fig_waterfall = px.bar(monthly_data_grouped, x='DATE_RENTA', y='Change', title='Variation du volume moyen en 2022', barmode='overlay', labels={'DATE_RENTA': 'Date', 'Change': 'Change in Volume'},color_discrete_sequence=px.colors.qualitative.Plotly)

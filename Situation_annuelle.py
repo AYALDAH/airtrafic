@@ -231,7 +231,7 @@ def page_dashboard():
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 
-        st.subheader("Détails par site")
+        st.subheader("Détails par Entité")
         with st.sidebar:
             selected_entity = st.selectbox('ENTITE',ENTITE)
 
@@ -244,7 +244,7 @@ def page_dashboard():
         monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
 
 # Create the waterfall chart using Plotly Express
-        fig_waterfall = px.bar(monthly_data_grouped, x='DATE_RENTA', y='Change', title='Variation du volume moyen en 2022', barmode='overlay', labels={'DATE_RENTA': 'Date', 'Change': 'Change in Volume'},color_discrete_sequence=px.colors.qualitative.Plotly)
+        fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du volume moyen en 2022', barmode='overlay', labels={'DATE_RENTA': 'Date', 'Change': 'Change in Volume'},color_discrete_sequence=px.colors.qualitative.Plotly)
 
 # Update layout and appearance of the plot
         fig_waterfall.update_layout(height=400, width=800)

@@ -233,7 +233,7 @@ def page_dashboard():
 
         st.subheader("Détails par site")
         with st.sidebar:
-            selected_entity = st.selectbox('ENTITE', Selctionner une Entité)
+            selected_entity = st.selectbox('Selctionner une Entité', ENTITE)
 
         st.write('Entité sélectionnée:', selected_entity)
 # Filter data based on the selected entity

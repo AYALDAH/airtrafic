@@ -233,7 +233,7 @@ def page_dashboard():
 
         st.subheader("Détails par site")
         with st.sidebar:
-            selected_entity = st.selectbox( Evol_df[Evol_df['ENTITE'], ENTITE)
+            selected_entity = st.selectbox( 'ENTITE', ENTITE)
 
         st.write('Entité sélectionnée:', selected_entity)
 # Filter data based on the selected entity

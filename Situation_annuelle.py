@@ -256,7 +256,11 @@ def page_dashboard():
             fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
-            
+#Commentaires
+            monthly_data_grouped=monthly_data_grouped.sort_values(by='MARGE', ascending=TRUE)
+            low_months = monthly_data_grouped.tail(3)
+            top_months['Month'] = top_months['Month'].map(mois_fr)
+            st.write('Sur le site de '.join(selected_entity), les baisses les plus importantes de volume ont lieu en ', '.join(top_months['Month']))
         #Indicateur MONTANT
         if st.sidebar.button("MONTANT"):
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]

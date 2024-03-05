@@ -242,6 +242,7 @@ def page_dashboard():
             st.write("**Choisir un indicateur**")
         st.write('Vous avez selectionné:', selected_entity)
 # Group the data by month and site, and calculate the sum of volume for each month
+        #Indicateur VOLUME
         if st.sidebar.button("VOLUME"):
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
@@ -255,7 +256,8 @@ def page_dashboard():
             fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
-
+            
+        #Indicateur MONTANT
         if st.sidebar.button("MONTANT"):
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MONTANT'].sum().reset_index()
@@ -269,7 +271,21 @@ def page_dashboard():
             fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
+    
+ #Indicateur MARGE
+        if st.sidebar.button("MARGE"):
+            filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
+            monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MARGE'].sum().reset_index()
+            monthly_data_grouped['Change'] = monthly_data_grouped['MARGE'].diff().fillna(0)
 
+# Create the waterfall chart using Plotly Express
+            fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation de la MARGE moyenne en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in amount'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)
+
+# Update layout and appearance of the plot
+            fig_waterfall.update_layout(height=400, width=800)
+            fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
+            plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+            st.plotly_chart(fig_waterfall)
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée

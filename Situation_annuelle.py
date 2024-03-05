@@ -235,11 +235,9 @@ def page_dashboard():
 
         st.write("**Détails par Entité**")
         if st.sidebar.button("VOLUME","**Choisir un indicateur**"):
-          
             with st.sidebar:
                 selected_entity = st.selectbox('ENTITE',ENTITE)
-                  
-            st.write('Entité sélectionnée:', selected_entity)
+                st.write('Entité sélectionnée:', selected_entity)
 # Filter data based on the selected entity
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
 

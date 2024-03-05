@@ -234,12 +234,13 @@ def page_dashboard():
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 
-        st.write("**DETAILS PAR SITE**")
+       
         with st.sidebar:
             st.write("**Pour plus de Détails:**")
             st.write("**Choisir un Site**")
             selected_entity = st.selectbox('SITE',ENTITE)
             st.write("**Choisir un indicateur**")
+        st.write("**DETAILS PAR SITE**")
         st.write('Vous avez selectionné:', selected_entity)
 # Group the data by month and site, and calculate the sum of volume for each month
         #Indicateur VOLUME

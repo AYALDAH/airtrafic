@@ -239,11 +239,11 @@ def page_dashboard():
                 selected_entity = st.selectbox('ENTITE',ENTITE)
                 st.write('Entité sélectionnée:', selected_entity)
 # Filter data based on the selected entity
-            filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
+                filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
 
 # Group the data by month and site, and calculate the sum of volume for each month
-            monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
-            monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
+                monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
+                monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
 
 # Create the waterfall chart using Plotly Express
             fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du volume moyen en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in Volume'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)

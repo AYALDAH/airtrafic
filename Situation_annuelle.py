@@ -240,7 +240,7 @@ def page_dashboard():
             st.write("**Choisir une Entité**")
             selected_entity = st.selectbox('ENTITE',ENTITE)
             st.write("**Choisir un indicateur**")
-        st.write('L'''entité sélectionnée est:', selected_entity)
+        st.write('Vous avez selectionné:', selected_entity)
 # Group the data by month and site, and calculate the sum of volume for each month
         if st.sidebar.button("VOLUME"):
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]

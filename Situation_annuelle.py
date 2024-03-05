@@ -237,8 +237,8 @@ def page_dashboard():
         st.write("**DETAILS PAR ENTITE**")
         with st.sidebar:
             st.write("**Pour plus de Détails:**")
-            st.write("**Choisir une Entité**")
-            selected_entity = st.selectbox('ENTITE',ENTITE)
+            st.write("**Choisir un Site**")
+            selected_entity = st.selectbox('ENTITE',SITE)
             st.write("**Choisir un indicateur**")
         st.write('Vous avez selectionné:', selected_entity)
 # Group the data by month and site, and calculate the sum of volume for each month

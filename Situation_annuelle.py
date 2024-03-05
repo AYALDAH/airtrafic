@@ -279,7 +279,16 @@ def page_dashboard():
             fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
-    
+#Commentaires
+            monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MONTANT'].sum().reset_index()
+            monthly_data_grouped = monthly_data_grouped.resample('M',on='DATE').mean()
+            monthly_data_grouped['Change'] = monthly_data_grouped['MONTANT'].diff().fillna(0)
+            monthly_data_grouped=monthly_data_grouped.sort_values(by='Change', ascending=True)
+            monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
+            top_months = monthly_data_grouped.head(3)
+            top_months['Month'] = top_months['Month'].map(mois_fr)
+            st.write('A ', ''.join(selected_entity), 'le CA a fortement baissé en ',' '.join(top_months['Month']))
+            
  #Indicateur MARGE
         if st.sidebar.button("MARGE"):
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]

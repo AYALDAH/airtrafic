@@ -259,6 +259,7 @@ def page_dashboard():
 #Commentaires
             monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
             monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
+            monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
             monthly_data_grouped=monthly_data_grouped.sort_values(by='VOLUME', ascending=True)
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)

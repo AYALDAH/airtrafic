@@ -79,8 +79,7 @@ def page_dashboard():
 #Import data
     Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
     Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
-    imputer = KNNImputer(n_neighbors=2, weights="distance")
-    Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
+      Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
 #sidebar configuration
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
@@ -258,6 +257,7 @@ def page_dashboard():
             st.plotly_chart(fig_waterfall)
 #Commentaires
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
+            monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
             monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
             monthly_data_grouped=monthly_data_grouped.sort_values(by='VOLUME', ascending=True)
             top_months = monthly_data_grouped.head(3)

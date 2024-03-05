@@ -242,7 +242,7 @@ def page_dashboard():
 # Group the data by month and site, and calculate the sum of volume for each month
         #Indicateur VOLUME
         if st.sidebar.button("VOLUME"):
-            st.write("**DETAILS PAR SITE**")
+            st.write("**DETAILS INDICATEURS PAR SITE**")
             st.write('Vous avez selectionné:', selected_entity)
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()

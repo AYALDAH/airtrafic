@@ -234,8 +234,8 @@ def page_dashboard():
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 
         st.write("**Détails par Entité**")
-        if st.sidebar.button("VOLUME"):
-            st.write("**choisir un indicateur**")
+        if st.sidebar.button("VOLUME","**Choisir un indicateur**"):
+          
             with st.sidebar:
                 selected_entity = st.selectbox('ENTITE',ENTITE)
                   

@@ -258,7 +258,7 @@ def page_dashboard():
             st.plotly_chart(fig_waterfall)
 #Commentaires
             monthly_data_grouped=monthly_data_grouped.sort_values(by='VOLUME', ascending=True)
-            low_months = monthly_data_grouped.tail(3)
+            low_months = monthly_data_grouped.top(3)
             low_months['Month'] = low_months['Month'].map(mois_fr)
             st.write('Sur le site de '.join(selected_entity), 'les baisses les plus importantes de volume ont lieu en ',' '.join(low_months['Month']))
         #Indicateur MONTANT

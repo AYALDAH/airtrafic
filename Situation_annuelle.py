@@ -259,8 +259,8 @@ def page_dashboard():
 #Commentaires
             monthly_data_grouped=monthly_data_grouped.sort_values(by='VOLUME', ascending=True)
             low_months = monthly_data_grouped.tail(3)
-            top_months['Month'] = top_months['Month'].map(mois_fr)
-            st.write('Sur le site de '.join(selected_entity), 'les baisses les plus importantes de volume ont lieu en ',' '.join(top_months['Month']))
+            low_months['Month'] = low_months['Month'].map(mois_fr)
+            st.write('Sur le site de '.join(selected_entity), 'les baisses les plus importantes de volume ont lieu en ',' '.join(low_months['Month']))
         #Indicateur MONTANT
         if st.sidebar.button("MONTANT"):
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]

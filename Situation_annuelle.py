@@ -79,6 +79,7 @@ def page_dashboard():
 #Import data
     Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
     Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
+    from sklearn.impute import KNNImputer
     Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
 #sidebar configuration
     with st.sidebar:

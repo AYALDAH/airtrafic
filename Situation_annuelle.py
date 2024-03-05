@@ -311,7 +311,7 @@ def page_dashboard():
             monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
-            st.write('La marge sur le site', ''.join(selected_entity), ', a connu des changement négatifs au cours des mois de ',' '.join(top_months['Month']))
+            st.write('La marge sur le site', ''.join(selected_entity), ', a connu des changements négatifs au cours des mois de ',' '.join(top_months['Month']))
             
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])

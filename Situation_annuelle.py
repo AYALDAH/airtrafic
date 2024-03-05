@@ -289,7 +289,7 @@ def page_dashboard():
             monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
-            st.write('A', ''.join(selected_entity), ', le CA a fortement baissé en ','<b>' +' '.join(top_months['Month'])+'</b>' )
+            st.write('A', ''.join(selected_entity), ', le CA a fortement baissé en ',' '.join(top_months['Month']))
             
  #Indicateur MARGE
         if st.sidebar.button("MARGE"):

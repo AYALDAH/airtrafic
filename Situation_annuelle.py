@@ -234,7 +234,7 @@ def page_dashboard():
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 
-        st.write("**DETAILS PAR ENTITE**")
+        st.write("**DETAILS PAR SITE**")
         with st.sidebar:
             st.write("**Pour plus de Détails:**")
             st.write("**Choisir un Site**")

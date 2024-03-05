@@ -267,7 +267,7 @@ def page_dashboard():
             st.write('Sur le site de ', ''.join(selected_entity), 'les baisses les plus importantes de volume ont lieu en ',' '.join(top_months['Month']))
         #Indicateur MONTANT
         if st.sidebar.button("MONTANT"):
-            st.write("**DETAILS PAR SITE**")
+            st.write("**DETAILS INDICATEURS PAR SITE**")
             st.write('Vous avez selectionné:', selected_entity)
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MONTANT'].sum().reset_index()
@@ -293,7 +293,7 @@ def page_dashboard():
             
  #Indicateur MARGE
         if st.sidebar.button("MARGE"):
-            st.write("**DETAILS PAR SITE**")
+            st.write("**DETAILS INDICATEURS PAR SITE**")
             st.write('Vous avez selectionné:', selected_entity)
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MARGE'].sum().reset_index()

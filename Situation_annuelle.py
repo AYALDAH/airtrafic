@@ -257,6 +257,7 @@ def page_dashboard():
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
 #Commentaires
+            monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
             monthly_data_grouped=monthly_data_grouped.sort_values(by='VOLUME', ascending=True)
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)

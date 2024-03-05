@@ -256,7 +256,7 @@ def page_dashboard():
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
 
-         else if st.sidebar.button("MONTANT"):
+        else if st.sidebar.button("MONTANT"):
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MONTANT'].sum().reset_index()
             monthly_data_grouped['Change'] = monthly_data_grouped['MONTANT'].diff().fillna(0)

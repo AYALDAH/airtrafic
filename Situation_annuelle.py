@@ -84,7 +84,8 @@ def page_dashboard():
 #sidebar configuration
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
-    if  Analyse_Exploratoire == 'Analyse_mensuelle': 
+    if  Analyse_Exploratoire == 'Analyse_mensuelle':
+        st.write("**ANALYSE GLOBALE**")
         Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'])
     # Grouper les données mensuellement
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
@@ -233,8 +234,9 @@ def page_dashboard():
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
 
-        st.write("**Détails par Entité**")
+        st.write("**DETAILS PAR ENTITE**")
         with st.sidebar:
+            st.write("**Pour plus de Détails:**")
             st.write("**Choisir une Entité**")
             selected_entity = st.selectbox('ENTITE',ENTITE)
             st.write("**Choisir un indicateur**")
@@ -244,6 +246,20 @@ def page_dashboard():
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
             monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
+
+# Create the waterfall chart using Plotly Express
+            fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du volume moyen en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in Volume'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)
+
+# Update layout and appearance of the plot
+            fig_waterfall.update_layout(height=400, width=800)
+            fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
+            plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+            st.plotly_chart(fig_waterfall)
+
+         else if st.sidebar.button("MONTANT"):
+            filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
+            monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MONTANT'].sum().reset_index()
+            monthly_data_grouped['Change'] = monthly_data_grouped['MONTANT'].diff().fillna(0)
 
 # Create the waterfall chart using Plotly Express
             fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du volume moyen en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in Volume'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)

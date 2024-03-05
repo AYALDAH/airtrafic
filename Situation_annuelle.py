@@ -233,18 +233,17 @@ def page_dashboard():
                 st.write(f"Au cours du mois de {mois_francais}, les entités ayant les volumes les plus élevés sont : {', '.join(entities_series.index.tolist())}")
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
-
-       
         with st.sidebar:
             st.write("**Pour plus de Détails:**")
             st.write("**Choisir un Site**")
             selected_entity = st.selectbox('SITE',ENTITE)
             st.write("**Choisir un indicateur**")
-        st.write("**DETAILS PAR SITE**")
-        st.write('Vous avez selectionné:', selected_entity)
+
 # Group the data by month and site, and calculate the sum of volume for each month
         #Indicateur VOLUME
         if st.sidebar.button("VOLUME"):
+            st.write("**DETAILS PAR SITE**")
+            st.write('Vous avez selectionné:', selected_entity)
             filtered_data = Evol_df[Evol_df['ENTITE'] == selected_entity]
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
             monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)

@@ -345,7 +345,7 @@ def page_dashboard():
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=True)
                   fig = px.bar(Maritime_df1, x='TEU', y="ENTITE", orientation='h')
-                  fig.update_layout(title = dict(text = "Graphique du CA par Entité"))
+                  fig.update_layout(title = dict(text = "Graphique du TEU par Site"))
                   fig.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="TEU"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
                   fig.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')

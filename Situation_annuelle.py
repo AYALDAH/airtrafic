@@ -390,11 +390,12 @@ def page_dashboard():
                    #Répartition des sites par Marge
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MARGE'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MARGE', ascending=True)
-                  fig2 = px.bar(Maritime_df1, x='MARGE', y="ENTITE", orientation='h')
-                  fig2.update_layout(title = dict(text = "Graphique du TEU par Site"))
-                  fig2.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=450, height=400, xaxis=dict(title="MARGE"),  # Add x-axis label
+                  fig3 = px.bar(Maritime_df1, x='MARGE', y="ENTITE", orientation='h')
+                  fig3.update_layout(title = dict(text = "Graphique du TEU par Site"))
+                  fig3.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=450, height=400, xaxis=dict(title="MARGE"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
-                  fig2.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(139,0,139)')
+                  fig3.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(139,0,139)')
+                  st.plotly_chart(fig3)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

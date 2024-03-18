@@ -85,7 +85,12 @@ def page_dashboard():
     Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
     imputer = KNNImputer(n_neighbors=5)
     Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
-#sidebar configuration
+    
+#---------------------------------------------------------------------------------------
+#                                  Analyse Mensuelle
+#---------------------------------------------------------------------------------------
+    
+    #sidebar configuration
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Analyses mensuelles et par sites', Analyses)
     if  Analyse_Exploratoire == 'Analyse Mensuelle':
@@ -344,12 +349,12 @@ def page_dashboard():
           #Répartition des sites par nombre de TEU
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=True)
-                  fig = px.bar(Maritime_df1, x='TEU', y="ENTITE", orientation='h')
-                  fig.update_layout(title = dict(text = "Graphique du TEU par Site"))
-                  fig.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="TEU"),  # Add x-axis label
+                  fig1 = px.bar(Maritime_df1, x='TEU', y="ENTITE", orientation='h')
+                  fig1.update_layout(title = dict(text = "Graphique du TEU par Site"))
+                  fig1.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="TEU"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
-                  fig.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
-                  fig.show()
+                  fig1.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
+                  st.plotly_chart(fig1)
 
 def page_ML():
     st.title("")

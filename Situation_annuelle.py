@@ -326,8 +326,7 @@ def page_dashboard():
 #                                  Analyse par site
 #---------------------------------------------------------------------------------------
 
-    #Préparation des données
-      Maritime_df=pd.read_excel("Maritime_data.xlsx")
+    
  
      #Imputation variables quantitatives
       imputer = KNNImputer(n_neighbors=5)
@@ -342,7 +341,9 @@ def page_dashboard():
       imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
       Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
      
-          elif  Analyse_Exploratoire == 'Analyse par sites':
+          elif  Analyse_Exploratoire == 'Analyse par sites':                        
+                  #Préparation des données
+                  Maritime_df=pd.read_excel("Maritime_data.xlsx")
                   st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
                   seg_df1 =seg_df.groupby(['ENTITE'])['TEU'].sum().reset_index()

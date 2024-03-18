@@ -375,6 +375,7 @@ def page_dashboard():
                   col1, col2 = st.columns(2)
                   with col1:
                     st.plotly_chart(fig1)
+                    Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=False)
                     top_site_teu =Maritime_df1.head(3)
                     st.write('Les 03 sites qui ont enrégistré le plus de TEU sont', ', '.join(top_site_teu['ENTITE']))
                   with col2:

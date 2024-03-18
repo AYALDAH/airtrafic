@@ -396,7 +396,7 @@ def page_dashboard():
                   yaxis=dict(title="Site"),)
                   fig3.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(139,0,139)')
                  
-                 #Taux Moyen de Marge
+                 #Repartition des Taux Moyen de Marge
                   Maritime_df2 =Maritime_df.groupby(['ENTITE'])['Taux_Marge'].mean().reset_index()
 
                   colors = ['deepskyblue', 'salmon','violet', 'powderblue',"firebrick", "mediumslateblue"]
@@ -410,11 +410,11 @@ def page_dashboard():
                      pull=explode, textfont_size=12))  # Decrease the font size to 12
 
                  # Update layout and appearance of the plot
-                  fig4.update_layout(title=dict(text="Pie Chart"),
+                  fig4.update_layout(title=dict(text=""),
                   plot_bgcolor='rgba(0,0,0,0)',
                   paper_bgcolor='rgba(0,1,1,0)',
                   showlegend=False,  # Optional: Remove the legend
-                  width=500, height=400,
+                  width=550, height=400,
                   xaxis=dict(showline=False, showgrid=False), # Remove x-axis line and grid
                   yaxis=dict(showline=False, showgrid=False), # Remove y-axis line and grid
                   annotations=[dict(text='taux', x=0.50, y=0.50, font_size=20, showarrow=False)] )

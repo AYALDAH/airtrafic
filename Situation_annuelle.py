@@ -402,11 +402,11 @@ st.sidebar.subheader("NAVIGUER POUR DECOUVRIR 🔍👋")
 page = st.sidebar.radio("Selectionner la page qui vous interesse", ["Resumé 📝","Analyse Exploratoire📊", "Machine Learning 📈📉"])
 # Affichage conditionnel en fonction de la page sélectionnée
           
-if page == "Resumé":
+if page == "Resumé 📝":
     RESUME()
-elif page == "Analyse Exploratoire":
+elif page == "Analyse Exploratoire📊":
     page_dashboard()
-elif page == "Machine Learning":
+elif page == "Machine Learning 📈📉":
     page_ML()
 
 

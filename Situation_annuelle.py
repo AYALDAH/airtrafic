@@ -392,7 +392,7 @@ def page_dashboard():
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MARGE', ascending=True)
                   fig3 = px.bar(Maritime_df1, x='MARGE', y="ENTITE", orientation='h')
                   fig3.update_layout(title = dict(text = "Graphique du TEU par Site"))
-                  fig3.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=450, height=400, xaxis=dict(title="MARGE"),  # Add x-axis label
+                  fig3.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=400, height=400, xaxis=dict(title="MARGE"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
                   fig3.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(139,0,139)')
                  

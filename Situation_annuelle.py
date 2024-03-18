@@ -340,9 +340,11 @@ Maritime_df['PAYS_CLIENTS'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENTS']
 #Inputation des valeurs manquantes de la variable ARMATEUR
 imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
 Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
-     if  Analyse_Exploratoire == 'Analyse par sites':
-         st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
+    
+   if  Analyse_Exploratoire == 'Analyse par sites':
+       st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
          
+
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

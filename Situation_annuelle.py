@@ -353,6 +353,7 @@ def page_dashboard():
                   Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT76"], value = "ROUEN")
                   Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT76LEH"], value = "LE HAVRE")
                   st.write("**VUE GENERALE SUR L'ENSEMBLE DES SITES**")
+        
           #Répartition des sites par nombre de TEU
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=True)
@@ -385,6 +386,15 @@ def page_dashboard():
                     Maritime_df11=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MONTANT_VENTES', ascending=False)
                     top_site_teu =Maritime_df11.head(3)
                     st.write('En terme de CA facturé, les sites de', ', '.join(top_site_teu['ENTITE']),',arrivent en tête de liste')
+            
+                   #Répartition des sites par Marge
+                  Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MARGE'].sum().reset_index()
+                  Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MARGE', ascending=True)
+                  fig2 = px.bar(Maritime_df1, x='MARGE', y="ENTITE", orientation='h')
+                  fig2.update_layout(title = dict(text = "Graphique du TEU par Site"))
+                  fig2.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=450, height=400, xaxis=dict(title="MARGE"),  # Add x-axis label
+                  yaxis=dict(title="Site"),)
+                  fig2.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgbrgb(139,0,139)')
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

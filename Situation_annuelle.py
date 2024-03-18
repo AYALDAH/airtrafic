@@ -342,9 +342,9 @@ def page_dashboard():
                   Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
                   st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
-                  seg_df1 =seg_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
-                  seg_df1=seg_df1.sort_values(by='ENTITE').sort_values(by='CA', ascending=True)
-                  fig = px.bar(seg_df1, x='TEU', y="ENTITE", orientation='h')
+                  Maritime_df1 =Maritime_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
+                  Maritime_df1=Martime_df1.sort_values(by='ENTITE').sort_values(by='CA', ascending=True)
+                  fig = px.bar(Maritime_df1, x='TEU', y="ENTITE", orientation='h')
                   fig.update_layout(title = dict(text = "Graphique du CA par Entité"))
                   fig.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="CA"),  # Add x-axis label
                   yaxis=dict(title="Site"),)

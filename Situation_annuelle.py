@@ -362,7 +362,6 @@ def page_dashboard():
                   yaxis=dict(title="Site"),)
                   fig1.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
                   
-        
            #Répartition des sites par CA
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MONTANT_VENTES'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MONTANT_VENTES', ascending=True)
@@ -376,6 +375,8 @@ def page_dashboard():
                   col1, col2 = st.columns(2)
                   with col1:
                     st.plotly_chart(fig1)
+                    top_site_teu =Maritime_df1.head(3)
+                    st.write(Les 3 sites qui ont enrégistré le plus de TEU sont', ', '.join(top_site_teu['ENTITE']))
                   with col2:
                     st.plotly_chart(fig2)
 def page_ML():

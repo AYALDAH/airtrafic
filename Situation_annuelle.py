@@ -394,7 +394,7 @@ def page_dashboard():
                   fig2.update_layout(title = dict(text = "Graphique du TEU par Site"))
                   fig2.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=450, height=400, xaxis=dict(title="MARGE"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
-                  fig2.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgbrgb(139,0,139)')
+                  fig2.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(139,0,139)')
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

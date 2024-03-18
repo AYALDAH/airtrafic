@@ -358,7 +358,7 @@ def page_dashboard():
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=True)
                   fig1 = px.bar(Maritime_df1, x='TEU', y="ENTITE", orientation='h')
                   fig1.update_layout(title = dict(text = "Graphique du TEU par Site"))
-                  fig1.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=400, height=400, xaxis=dict(title="TEU"),  # Add x-axis label
+                  fig1.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=400, height=360, xaxis=dict(title="TEU"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
                   fig1.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
                   

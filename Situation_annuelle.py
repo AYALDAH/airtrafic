@@ -361,18 +361,23 @@ def page_dashboard():
                   fig1.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="TEU"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
                   fig1.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
-                  st.plotly_chart(fig1)
+                  
         
            #Répartition des sites par CA
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MONTANT_VENTES'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MONTANT_VENTES', ascending=True)
-                  fig1 = px.bar(Maritime_df1, x='MONTANT_VENTES', y="ENTITE", orientation='h')
-                  fig1.update_layout(title = dict(text = "Graphique du TEU par Site"))
-                  fig1.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="CA"),  # Add x-axis label
+                  fig2 = px.bar(Maritime_df1, x='MONTANT_VENTES', y="ENTITE", orientation='h')
+                  fig2.update_layout(title = dict(text = "Graphique du TEU par Site"))
+                  fig2.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="CA"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
-                  fig1.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(0,191,255)')
-                  st.plotly_chart(fig1)
-
+                  fig2.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(0,191,255)')
+                  
+            #Présentation en colonne
+                  col1, col2 = st.columns(2)
+                  with col1:
+                    st.plotly_chart(fig1)
+                  with colb:
+                    st.plotly_chart(fig2)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

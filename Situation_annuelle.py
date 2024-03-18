@@ -87,7 +87,7 @@ def page_dashboard():
     Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
 #sidebar configuration
     with st.sidebar:
-        Analyse_Exploratoire=st.selectbox('Statistiques mensuelles et globales', Analyses)
+        Analyse_Exploratoire=st.selectbox('Analyses mensuelles et par sites', Analyses)
     if  Analyse_Exploratoire == 'Analyse_mensuelle':
         st.write("**ANALYSE GLOBALE**")
         Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'])
@@ -320,7 +320,18 @@ def page_dashboard():
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
             st.write('La marge sur le site de', ''.join(selected_entity), ', a connu des changements négatifs au cours des mois de ',' '.join(top_months['Month']))
-            
+def page_ML():
+    st.title("")
+    col1, col2 = st.columns([1, 5])
+
+# Affichage du logo dans la première colonne
+    with col1:
+        image = Image.open('logo_rdt.jpg')
+        st.image(image)
+# Affichage du titre dans la deuxième colonne
+    with col2:
+        st.title('MODELS DE PREDICTION')
+        st.subheader("PREDICTION ET SEGMENTATION")        
 # Créez une barre latérale pour la navigation entre les pages
 page = st.sidebar.radio("Visualisation", ["Resumé","Analyse Exploratoire", "Techniques de Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée
@@ -330,6 +341,6 @@ if page == "Resumé":
 elif page == "Analyse Exploratoire":
     page_dashboard()
 elif page == "Techniques de Machine Learning":
-    page_settings()
+    page_ML()
 
 

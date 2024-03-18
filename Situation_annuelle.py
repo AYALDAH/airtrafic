@@ -398,8 +398,8 @@ def page_ML():
         st.title('MODELS DE PREDICTION')
         st.subheader("PREDICTION ET SEGMENTATION")        
 # Créez une barre latérale pour la navigation entre les pages
-st.sidebar.subheader("Filter Displayed Accounts")
-page = st.sidebar.radio("NAVIGUER POUR DECOUVRIR", ["Resumé","Analyse Exploratoire", "Machine Learning"])
+st.sidebar.subheader("NAVIGUER POUR DECOUVRIR")
+page = st.sidebar.radio("", ["Resumé","Analyse Exploratoire", "Machine Learning"])
 # Affichage conditionnel en fonction de la page sélectionnée
           
 if page == "Resumé":

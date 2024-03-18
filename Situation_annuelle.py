@@ -329,8 +329,8 @@ def page_dashboard():
                   #Préparation des données
                   Maritime_df=pd.read_excel("Maritime_data.xlsx")
                  #Imputation variables quantitatives
-                 imputer = KNNImputer(n_neighbors=5)
-                 Maritime_df['VOLUME'] = imputer.fit_transform(Maritime_df[['VOLUME']])
+                  imputer = KNNImputer(n_neighbors=5)
+                  Maritime_df['VOLUME'] = imputer.fit_transform(Maritime_df[['VOLUME']])
 
                  #Imputation variables qualitatives
                  #Inputation des valeurs manquantes de la variable PAYS_CLIENT

@@ -376,7 +376,7 @@ def page_dashboard():
                   col1, col2 = st.columns(2)
                   with col1:
                     st.plotly_chart(fig1)
-                  with colb:
+                  with col2:
                     st.plotly_chart(fig2)
 def page_ML():
     st.title("")

@@ -63,7 +63,7 @@ def RESUME():
     st.write("Afin de mieux appréhender la situation de l’activité commerciale sur les 4 trimestres de 2023, les données mensuelles du volume, du chiffre d’affaires facturé et de la marge ont été analysées dans la première partie.")
     st.write("Les statistiques par agence ont également été présentées en partie 2. Pour mieux catégoriser les clients, une segmentation par clustering (construction de grappes où les clients sont attribués à des grappes en fonctionde leurs caractéristiques R, F et M les plus proches) a été réalisée.")
 
-
+    st.image("Gifs/boat_new.gif")
 #
 def page_dashboard():
     st.title("")

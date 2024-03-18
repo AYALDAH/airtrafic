@@ -414,7 +414,7 @@ def page_dashboard():
                   plot_bgcolor='rgba(0,0,0,0)',
                   paper_bgcolor='rgba(0,1,1,0)',
                   showlegend=False,  # Optional: Remove the legend
-                  width=600, height=450,
+                  width=400, height=450,
                   xaxis=dict(showline=False, showgrid=False), # Remove x-axis line and grid
                   yaxis=dict(showline=False, showgrid=False), # Remove y-axis line and grid
                   annotations=[dict(text='taux', x=0.50, y=0.50, font_size=20, showarrow=False)] )

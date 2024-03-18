@@ -32,7 +32,7 @@ from sklearn import metrics
 from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
-Analyses=('Analyse_mensuelle','Analyse par site')
+Analyses=('Analyse Mensuelle','Analyse par sites')
 ENTITE=("MARSEILLE","MONTOIR","DUNKERQUE","ROUEN", "LE HAVRE")
 Approches=("Clustering RFM", "Logit Binaire")
 
@@ -88,8 +88,8 @@ def page_dashboard():
 #sidebar configuration
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Analyses mensuelles et par sites', Analyses)
-    if  Analyse_Exploratoire == 'Analyse_mensuelle':
-        st.write("**ANALYSE GLOBALE**")
+    if  Analyse_Exploratoire == 'Analyse Mensuelle':
+        st.write("**ANALYSE GLOBALE MENSUELLE**")
         Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'])
     # Grouper les données mensuellement
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
@@ -320,6 +320,10 @@ def page_dashboard():
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
             st.write('La marge sur le site de', ''.join(selected_entity), ', a connu des changements négatifs au cours des mois de ',' '.join(top_months['Month']))
+
+     if  Analyse_Exploratoire == 'Analyse par sites':
+         st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
+         
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

@@ -368,7 +368,7 @@ def page_dashboard():
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MONTANT_VENTES', ascending=True)
                   fig2 = px.bar(Maritime_df1, x='MONTANT_VENTES', y="ENTITE", orientation='h')
                   fig2.update_layout(title = dict(text = "Graphique du TEU par Site"))
-                  fig2.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=300, height=400, xaxis=dict(title="CA"),  # Add x-axis label
+                  fig2.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=450, height=400, xaxis=dict(title="CA"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
                   fig2.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(0,191,255)')
                   

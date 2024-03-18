@@ -321,6 +321,25 @@ def page_dashboard():
             top_months['Month'] = top_months['Month'].map(mois_fr)
             st.write('La marge sur le site de', ''.join(selected_entity), ', a connu des changements négatifs au cours des mois de ',' '.join(top_months['Month']))
 
+
+#---------------------------------------------------------------------------------------
+#                                  Analyse par site
+#---------------------------------------------------------------------------------------
+ #Préparation des données
+Maritime_df=pd.read_excel("Maritime_data.xlsx")
+ 
+#Imputation variables quantitatives
+imputer = KNNImputer(n_neighbors=5)
+Maritime_df['VOLUME'] = imputer.fit_transform(Maritime_df[['VOLUME']])
+
+#Imputation variables qualitatives
+#Inputation des valeurs manquantes de la variable PAYS_CLIENTS
+imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
+Maritime_df['PAYS_CLIENTS'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENTS']]) 
+
+#Inputation des valeurs manquantes de la variable ARMATEUR
+imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
+Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
      if  Analyse_Exploratoire == 'Analyse par sites':
          st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
          

@@ -423,6 +423,10 @@ def page_dashboard():
                   col3, col4 = st.columns(2)
                   with col3:
                     st.plotly_chart(fig3)
+                    Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MARGE'].sum().reset_index()
+                    Maritime_df11=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MARGE', ascending=False)
+                    top_site_teu =Maritime_df11.head(3)
+                    st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les marges les plus importantes au cours de l'année')
                    
                   with col4:
                     st.plotly_chart(fig4)

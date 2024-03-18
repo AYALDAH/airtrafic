@@ -384,7 +384,7 @@ def page_dashboard():
                     Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MONTANT_VENTES'].sum().reset_index()
                     Maritime_df11=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MONTANT_VENTES', ascending=False)
                     top_site_teu =Maritime_df11.head(3)
-                    st.write('En terme de CA facturé, les sites de', ', '.join(top_site_teu['ENTITE']),','arrivent en tête de liste')
+                    st.write('En terme de CA facturé, les sites de', ', '.join(top_site_teu['ENTITE']),',arrivent en tête de liste')
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

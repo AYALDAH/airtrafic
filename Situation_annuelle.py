@@ -341,9 +341,17 @@ Maritime_df['PAYS_CLIENTS'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENTS']
 imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
 Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
     
-   if  Analyse_Exploratoire == 'Analyse par sites':
-       st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
-         
+      if  Analyse_Exploratoire == 'Analyse par sites':
+          st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
+          #Répartition des sites par nombre de TEU
+          seg_df1 =seg_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
+          seg_df1=seg_df1.sort_values(by='ENTITE').sort_values(by='CA', ascending=True)
+          fig = px.bar(seg_df1, x='TEU', y="Entité", orientation='h')
+          fig.update_layout(title = dict(text = "Graphique du CA par Entité"))
+          fig.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="CA"),  # Add x-axis label
+                  yaxis=dict(title="Site"),)
+          fig.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
+          fig.show()
 
 def page_ML():
     st.title("")

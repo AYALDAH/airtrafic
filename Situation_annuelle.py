@@ -342,7 +342,7 @@ def page_dashboard():
        imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
        Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
     
-        elif  Analyse_Exploratoire == 'Analyse par sites':
+          elif  Analyse_Exploratoire == 'Analyse par sites':
                 st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
           seg_df1 =seg_df.groupby(['ENTITE'])['TEU'].sum().reset_index()

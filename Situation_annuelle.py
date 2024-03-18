@@ -341,7 +341,7 @@ Maritime_df['PAYS_CLIENT'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENT']])
 imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
 Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
     
-     if  Analyse_Exploratoire == 'Analyse par sites':
+      if  Analyse_Exploratoire == 'Analyse par sites':
           st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
           seg_df1 =seg_df.groupby(['ENTITE'])['TEU'].sum().reset_index()

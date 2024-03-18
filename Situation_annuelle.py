@@ -395,7 +395,39 @@ def page_dashboard():
                   fig3.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=450, height=400, xaxis=dict(title="MARGE"),  # Add x-axis label
                   yaxis=dict(title="Site"),)
                   fig3.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(139,0,139)')
-                  st.plotly_chart(fig3)
+                 
+                 #Taux Moyen de Marge
+                  Maritime_df2 =Maritime_df.groupby(['ENTITE'])['Taux_Marge'].mean().reset_index()
+
+                  colors = ['deepskyblue', 'salmon','violet', 'powderblue',"firebrick", "mediumslateblue"]
+                  explode = [0.1, 0]
+                  fig4 = go.Figure()
+
+                # Creer le graphique
+                  fig4.add_trace(go.Pie(labels=Maritime_df2["ENTITE"], values=Maritime_df2["Taux_Marge"],
+                     marker=dict(colors=colors, line=dict(color='white', width=0)),
+                     textinfo='percent+label', hole=0.3, sort=False,
+                     pull=explode, textfont_size=12))  # Decrease the font size to 12
+
+                 # Update layout and appearance of the plot
+                 fig4.update_layout(title=dict(text="Pie Chart"),
+                  plot_bgcolor='rgba(0,0,0,0)',
+                  paper_bgcolor='rgba(0,1,1,0)',
+                  showlegend=False,  # Optional: Remove the legend
+                  width=600, height=500,
+                  xaxis=dict(showline=False, showgrid=False), # Remove x-axis line and grid
+                  yaxis=dict(showline=False, showgrid=False), # Remove y-axis line and grid
+                  annotations=[dict(text='taux', x=0.50, y=0.50, font_size=20, showarrow=False)] )
+
+                  #Présentation en colonne
+                  col3, col4 = st.columns(2)
+                  with col3:
+                    st.plotly_chart(fig3)
+                   
+                  with col4:
+                    st.plotly_chart(fig4)
+                
+
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

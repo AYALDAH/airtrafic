@@ -340,7 +340,7 @@ def page_dashboard():
                  #Inputation des valeurs manquantes de la variable ARMATEUR
                   imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
                   Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
-                  st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
+                  st.write("**VUE GENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=True)

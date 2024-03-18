@@ -61,7 +61,7 @@ def RESUME():
     st.subheader("RESUME")
     st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023. "  "Les données considérées couvrent la période de janvier à fin Décembre." )
     st.write("Afin de mieux appréhender la situation de l’activité commerciale sur les 4 trimestres de 2023, les données mensuelles du volume, du chiffre d’affaires facturé et de la marge ont été analysées dans la première partie.")
-    st.write("Les statistiques par agence ont également été présentées en partie 2. Pour mieux catégoriser les clients, une segmentation par clustering (construction de grappes où les clients sont attribués à des grappes en fonctionde leurs caractéristiques R, F et M les plus proches) a été réalisée.")
+        st.write("Les statistiques par agence ont également été présentées et une section dédiée à la prédiction des ventes et des volumes sur les prochains mois a été mise en place. Pour mieux catégoriser les clients, une segmentation par clustering (construction de grappes où les clients sont attribués à des grappes en fonctionde leurs caractéristiques R, F et M les plus proches) a été réalisée.")
   
     cola, colb = st.columns(2)
     with cola:

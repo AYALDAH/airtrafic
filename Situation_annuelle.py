@@ -340,7 +340,7 @@ if page == "Resumé":
     RESUME()
 elif page == "Analyse Exploratoire":
     page_dashboard()
-elif page == "Techniques de Machine Learning":
+elif page == "Machine Learning":
     page_ML()
 
 

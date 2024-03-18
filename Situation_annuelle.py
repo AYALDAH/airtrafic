@@ -333,15 +333,15 @@ imputer = KNNImputer(n_neighbors=5)
 Maritime_df['VOLUME'] = imputer.fit_transform(Maritime_df[['VOLUME']])
 
 #Imputation variables qualitatives
-#Inputation des valeurs manquantes de la variable PAYS_CLIENTS
+#Inputation des valeurs manquantes de la variable PAYS_CLIENT
 imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
-Maritime_df['PAYS_CLIENTS'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENTS']]) 
+Maritime_df['PAYS_CLIENT'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENT']]) 
 
 #Inputation des valeurs manquantes de la variable ARMATEUR
 imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
 Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
     
-      if  Analyse_Exploratoire == 'Analyse par sites':
+     if  Analyse_Exploratoire == 'Analyse par sites':
           st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
           seg_df1 =seg_df.groupby(['ENTITE'])['TEU'].sum().reset_index()

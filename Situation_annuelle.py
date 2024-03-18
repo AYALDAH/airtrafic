@@ -343,7 +343,7 @@ def page_dashboard():
                   st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
-                  Maritime_df1=Martime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=True)
+                  Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=True)
                   fig = px.bar(Maritime_df1, x='TEU', y="ENTITE", orientation='h')
                   fig.update_layout(title = dict(text = "Graphique du CA par Entité"))
                   fig.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="TEU"),  # Add x-axis label

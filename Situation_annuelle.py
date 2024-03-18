@@ -325,23 +325,24 @@ def page_dashboard():
 #---------------------------------------------------------------------------------------
 #                                  Analyse par site
 #---------------------------------------------------------------------------------------
- #Préparation des données
-Maritime_df=pd.read_excel("Maritime_data.xlsx")
+
+    #Préparation des données
+    Maritime_df=pd.read_excel("Maritime_data.xlsx")
  
-#Imputation variables quantitatives
-imputer = KNNImputer(n_neighbors=5)
-Maritime_df['VOLUME'] = imputer.fit_transform(Maritime_df[['VOLUME']])
+     #Imputation variables quantitatives
+      imputer = KNNImputer(n_neighbors=5)
+      Maritime_df['VOLUME'] = imputer.fit_transform(Maritime_df[['VOLUME']])
 
-#Imputation variables qualitatives
-#Inputation des valeurs manquantes de la variable PAYS_CLIENT
-imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
-Maritime_df['PAYS_CLIENT'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENT']]) 
+      #Imputation variables qualitatives
+      #Inputation des valeurs manquantes de la variable PAYS_CLIENT
+      imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
+      Maritime_df['PAYS_CLIENT'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENT']]) 
 
-#Inputation des valeurs manquantes de la variable ARMATEUR
-imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
-Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
+       #Inputation des valeurs manquantes de la variable ARMATEUR
+       imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
+       Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
     
-          elif  Analyse_Exploratoire == 'Analyse par sites':
+        elif  Analyse_Exploratoire == 'Analyse par sites':
                 st.write("**VUE DENERALE SUR L'ENSEMBLE DES SITES**")
           #Répartition des sites par nombre de TEU
           seg_df1 =seg_df.groupby(['ENTITE'])['TEU'].sum().reset_index()

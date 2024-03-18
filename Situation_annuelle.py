@@ -378,9 +378,13 @@ def page_dashboard():
                     Maritime_df1 =Maritime_df.groupby(['ENTITE'])['TEU'].sum().reset_index()
                     Maritime_df11=Maritime_df1.sort_values(by='ENTITE').sort_values(by='TEU', ascending=False)
                     top_site_teu =Maritime_df11.head(3)
-                    st.write('Les 03 sites qui ont enrégistré le plus de TEU sont', ', '.join(top_site_teu['ENTITE']))
+                    st.write('Les 03 sites ayant enrégistré le plus de ventes de TEU sont', ', '.join(top_site_teu['ENTITE']))
                   with col2:
                     st.plotly_chart(fig2)
+                    Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MONTANT_VENTES'].sum().reset_index()
+                    Maritime_df11=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MONTANT_VENTES', ascending=False)
+                    top_site_teu =Maritime_df11.head(3)
+                    st.write('En terme de CA facturé, les sites de', ', '.join(top_site_teu['ENTITE'])'arrivent en tête de liste')
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

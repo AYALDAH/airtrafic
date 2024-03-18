@@ -273,7 +273,7 @@ def page_dashboard():
             monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
-            st.write('Sur le site de ', ''.join(selected_entity), 'les baisses les plus importantes de volume ont lieu en ',' '.join(top_months['Month']))
+            st.write('Sur le site de ', ''.join(selected_entity), 'les baisses les plus importantes de volume ont lieu en ',','.join(top_months['Month']))
         #Indicateur MONTANT
         if st.sidebar.button("MONTANT"):
             st.write("**DETAILS INDICATEURS PAR SITE**")
@@ -298,7 +298,7 @@ def page_dashboard():
             monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
-            st.write('A', ''.join(selected_entity), ', le CA a fortement baissé en ',' '.join(top_months['Month']))
+            st.write('A', ''.join(selected_entity), ', le CA a fortement baissé en ',' ,'.join(top_months['Month']))
             
  #Indicateur MARGE
         if st.sidebar.button("MARGE"):
@@ -324,7 +324,7 @@ def page_dashboard():
             monthly_data_grouped['Month'] = monthly_data_grouped.index.strftime('%B')
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
-            st.write('La marge sur le site de', ''.join(selected_entity), ', a connu des changements négatifs au cours des mois de ',' '.join(top_months['Month']))
+            st.write('La marge sur le site de', ''.join(selected_entity), ', a connu des changements négatifs au cours des mois de ',', '.join(top_months['Month']))
 
 
 #---------------------------------------------------------------------------------------

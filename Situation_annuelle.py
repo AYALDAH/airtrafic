@@ -410,7 +410,7 @@ def page_dashboard():
                      pull=explode, textfont_size=12))  # Decrease the font size to 12
 
                  # Update layout and appearance of the plot
-                 fig4.update_layout(title=dict(text="Pie Chart"),
+                  fig4.update_layout(title=dict(text="Pie Chart"),
                   plot_bgcolor='rgba(0,0,0,0)',
                   paper_bgcolor='rgba(0,1,1,0)',
                   showlegend=False,  # Optional: Remove the legend

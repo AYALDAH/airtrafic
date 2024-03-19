@@ -496,8 +496,8 @@ def page_dashboard():
                              color_continuous_scale=px.colors.sequential.Plasma,  # Échelle de couleur pour la carte
                              title="Marge par pays")  # Titre de la carte
 
-# Personnaliser le style de la carte
-                             carte_marges.update_layout(geo=dict(showcoastlines=True, showcountries=True))
+        # Personnaliser le style de la carte
+                            carte_marges.update_layout(geo=dict(showcoastlines=True, showcountries=True))
                     
                        
 def page_ML():

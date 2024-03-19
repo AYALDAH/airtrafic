@@ -283,7 +283,7 @@ def page_dashboard():
             monthly_data_grouped['Change'] = monthly_data_grouped['MONTANT'].diff().fillna(0)
 
 # Create the waterfall chart using Plotly Express
-            fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du Montant moyen en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in amount'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)
+            fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du montant moyen en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in amount'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)
 
 # Update layout and appearance of the plot
             fig_waterfall.update_layout(height=400, width=800)
@@ -430,8 +430,8 @@ def page_dashboard():
                     
                   with col4:
                     st.plotly_chart(fig4)
-                    Maritime_df2 =Maritime_df.groupby(['ENTITE'])['Taux_Marge'].mean().reset_index()
-                    Maritime_df22=Maritime_df2.sort_values(by='ENTITE').sort_values(by='Taux_Marge', ascending=False)
+                    Maritime_df[Taux_moyen] =Maritime_df.groupby(['ENTITE'])['Taux_Marge'].mean().reset_index()
+                    Maritime_df2=Maritime_df.sort_values(by='ENTITE').sort_values(by='Taux_moyen', ascending=False)
                     top_site_teu =Maritime_df11.head(3)
                     st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les taux marges les plus élevés au cours de cette année')           
                     

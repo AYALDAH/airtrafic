@@ -446,9 +446,9 @@ def page_dashboard():
                        treemap2= px.treemap(Maritime_df,path=["ARMATEUR"],title="")
                   #Présentation en colonne
                        col5, col6 = st.columns(2)
-                        with col5:
-                            st.plotly_chart(treemap1)
-                         with col6:
+                       with col5:
+                           st.plotly_chart(treemap1)
+                        with col6:
                             st.plotly_chart(treemap2)
 def page_ML():
     st.title("")

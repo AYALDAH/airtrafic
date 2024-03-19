@@ -489,16 +489,6 @@ def page_dashboard():
                            st.plotly_chart(fig_sens)
                        with col8:
                            st.plotly_chart(treemap2)
-            #carte PAYS DEPART
-                       carte_marges = px.choropleth(filtered_data, 
-                             locations="PAYS_DEPART_LO",  # Colonne contenant les noms des pays
-                             color="MARGE", hover_name="PAYS_DEPART_LO", # Colonne contenant les valeurs de la marge
-                             color_continuous_scale=px.colors.diverging.RdBu,  
-                             title="Marge par pays")  # Titre de la carte
-
-        # Personnaliser le style de la carte
-                       carte_marges.update_layout(geo=dict(showcoastlines=True, showcountries=True))
-                       st.plotly_chart(carte_marges)
                        
 def page_ML():
     st.title("")

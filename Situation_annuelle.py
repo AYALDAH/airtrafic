@@ -490,9 +490,14 @@ def page_dashboard():
                        with col8:
                            st.plotly_chart(treemap2)
             #carte PAYS DEPART
-                       world_map_PD = px.choropleth(filtered_data, locations="PAYS_DEPART_LO",hover_name="PAYS_DEPART_LO", color="MARGE", 
-                          color_continuous_scale=px.colors.sequential.Plasma)
-                       st.plotly_chart(world_map_PD)
+                       carte_marges = px.choropleth(filtered_data, 
+                             locations="PAYS_DEPART_LO",  # Colonne contenant les noms des pays
+                             color="MARGE",  # Colonne contenant les valeurs de la marge
+                             color_continuous_scale=px.colors.sequential.Plasma,  # Échelle de couleur pour la carte
+                             title="Marge par pays")  # Titre de la carte
+
+# Personnaliser le style de la carte
+carte_marges.update_layout(geo=dict(showcoastlines=True, showcountries=True))
                     
                        
 def page_ML():

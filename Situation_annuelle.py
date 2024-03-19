@@ -453,7 +453,7 @@ def page_dashboard():
                       #Pays du client
                        sector_counts = filtered_data['PAYS_CLIENT'].value_counts()
                        top_countries = sector_counts.nlargest(5).index
-                       filtered_data_top = top_countries[top_countries['PAYS_CLIENT'].isin(top_sectors)]
+                       filtered_data_top = top_countries[top_countries['PAYS_CLIENT'].isin(top_countries)]
                        pays_bar = px.bar(filtered_data_top, x='PAYS_CLIENT', y=filtered_data_top.index, orientation='h')
                        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité"))
                        pays_bar.update_layout(title='PAYS_CLIENT', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="count"),  # Add x-axis label

@@ -441,7 +441,7 @@ def page_dashboard():
                         st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
                   if st.sidebar.button("MARSEILLE"):
                        st.write("**Les statistiques du site de Marseille**")
-                       filtered_data = Maritime_df[Maritime_df['ENTITE'] == RDT13]
+                       filtered_data = Maritime_df[Maritime_df['ENTITE'] == "RDT13"]
                        treemap1= px.treemap(Maritime_df,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
                        treemap2= px.treemap(Maritime_df,path=["ARMATEUR"],title="")
                        st.plotly_chart(treemap1)

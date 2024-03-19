@@ -453,8 +453,8 @@ def page_dashboard():
                       #Pays du client
                       
                        d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=True)
-                       d_pays=d_pays.head(5)
-                       pays_bar = px.bar(d_pays, x='PAYS_CLIENT', y=d_pays.index, orientation='h')
+                       d_pays_top=d_pays.head(5)
+                       pays_bar = px.bar(d_pays_top, x='PAYS_CLIENT', y=d_pays.index, orientation='h')
                        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par site"))
                        pays_bar.update_layout(title='', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=250, height=350, xaxis=dict(title="count"),  # Add x-axis label
                   yaxis=dict(title="Pays_client"),)

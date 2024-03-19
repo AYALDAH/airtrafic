@@ -494,6 +494,8 @@ def page_dashboard():
                              locations="PAYS_DEPART_LO",  # Colonne contenant les noms des pays
                              color="MARGE",  # Colonne contenant les valeurs de la marge
                              color_continuous_scale=px.colors.sequential.Plasma,  # Échelle de couleur pour la carte
+                             color_continuous_scale=px.colors.diverging.RdBu,  # Échelle de couleur avec un meilleur contraste
+                             range_color=(-100, 100)
                              title="Marge par pays")  # Titre de la carte
 
         # Personnaliser le style de la carte

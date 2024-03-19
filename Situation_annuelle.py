@@ -459,7 +459,7 @@ def page_dashboard():
                   yaxis=dict(title="Pays_client"),)
                        pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(147,112,219)')
                   #Présentation en colonne
-                        col5, col6 = st.columns(2)
+                       col5, col6 = st.columns(2)
                          with col5:
                              st.plotly_chart(treemap1)
                          with col6:

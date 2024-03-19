@@ -462,8 +462,8 @@ def page_dashboard():
                        col5, col6 = st.columns(2)
                         with col5:
                             st.plotly_chart(treemap1)
-                        with col6:
-                            st.plotly_chart(pays_bar)
+                         with col6:
+                             st.plotly_chart(pays_bar)
                  #Armateur
                        sector_counts = filtered_data['ARMATEUR'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index

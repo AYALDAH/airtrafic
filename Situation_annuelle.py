@@ -497,7 +497,7 @@ def page_dashboard():
                              title="Marge par pays")  # Titre de la carte
 
 # Personnaliser le style de la carte
-carte_marges.update_layout(geo=dict(showcoastlines=True, showcountries=True))
+                            carte_marges.update_layout(geo=dict(showcoastlines=True, showcountries=True))
                     
                        
 def page_ML():

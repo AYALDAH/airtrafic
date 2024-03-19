@@ -448,7 +448,7 @@ def page_dashboard():
                        sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
                        top_sectors = sector_counts[sector_counts >10].index
                        filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
-                       treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="ACTIVITE PRINCIPALE")
+                       treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="ACTIVITE PRINCIPALE et PAYS_CLIENT")
                        treemap1=treemap1.update_layout( width=350, height=450)
                       
                       #Pays du client
@@ -457,7 +457,7 @@ def page_dashboard():
                        pays_bar = px.bar(d_pays, x='PAYS_CLIENT', y=d_pays.index, orientation='h')
                        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par site"))
                        pays_bar.update_layout(title='PAYS_CLIENT', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=400, height=450, xaxis=dict(title="count"),  # Add x-axis label
-                  yaxis=dict(title="Pays_client"),)
+                  yaxis=dict(title=""),)
                        pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(147,112,219)')
                   #Présentation en colonne
                        col5, col6 = st.columns(2)

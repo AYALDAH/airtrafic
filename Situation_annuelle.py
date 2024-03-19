@@ -470,7 +470,7 @@ def page_dashboard():
                        top_sectors = sector_counts[sector_counts > 10].index
                        filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
                        treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="ARMATEUR")
-                       treemap2=treemap2.update_layout( width=400, height=400)
+                       treemap2=treemap2.update_layout( width=400, height=500)
 
                 #sens
                        colors = ['deepskyblue', 'salmon']
@@ -481,7 +481,7 @@ def page_dashboard():
                        marker=dict(colors=colors, line=dict(color='white', width=0)),
                        textinfo='percent+label', hole=0.3, sort=False,
                        pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig_sens=fig_sens.update_layout( width=400, height=350)
+                       fig_sens=fig_sens.update_layout( width=400, height=500)
 
              #Présentation en colonne
                        col7, col8 = st.columns(2)

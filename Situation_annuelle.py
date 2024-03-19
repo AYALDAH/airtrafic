@@ -442,10 +442,16 @@ def page_dashboard():
                   if st.sidebar.button("MARSEILLE"):
                        st.write("**Les statistiques du site de Marseille**")
                        filtered_data = Maritime_df[Maritime_df['ENTITE'] == "MARSEILLE"]
-                       treemap1= px.treemap(filtered_data,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
-                       treemap1=treemap1.update_layout( width=400, height=400)
+                      
+                      #Secteur d'activité
+                       sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
+                       top_sectors = sector_counts[sector_counts > 10].index
+                       filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
+                       treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
+                       treemap1=treemap1.update_layout( width=500, height=500)
+                      #Armateur
                        treemap2= px.treemap(filtered_data,path=["ARMATEUR"],title="")
-                       treemap2=treemap2.update_layout( width=400, height=400)
+                       treemap2=treemap2.update_layout( width=500, height=500)
                   #Présentation en colonne
                        col5, col6 = st.columns(2)
                        with col5:

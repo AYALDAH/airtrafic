@@ -449,7 +449,7 @@ def page_dashboard():
                        top_sectors = sector_counts[sector_counts >10].index
                        filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
                        treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="ACTIVITE PRINCIPALE et PAYS_CLIENT")
-                       treemap1=treemap1.update_layout( width=350, height=400)
+                       treemap1=treemap1.update_layout( width=350, height=450)
                       
                       #Pays du client
                        d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)
@@ -481,7 +481,7 @@ def page_dashboard():
                        marker=dict(colors=colors, line=dict(color='white', width=0)),
                        textinfo='percent+label', hole=0.3, sort=False,
                        pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig_sens=fig_sens.update_layout( width=400, height=500)
+                       fig_sens=fig_sens.update_layout( width=400, height=450)
 
              #Présentation en colonne
                        col7, col8 = st.columns(2)

@@ -472,6 +472,22 @@ def page_dashboard():
                        treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="ARMATEUR")
                        treemap2=treemap2.update_layout( width=400, height=500)
 
+                #sens
+                      colors = ['deepskyblue', 'salmon']
+                      explode = [0.1, 0]
+                      fig_sens = go.Figure()
+                      sens = pd.DataFrame(filtered_data["SENS"].value_counts())
+                      fig_sens.add_trace(go.Pie(labels=sens.index, values=d_2['SENS'],
+                     marker=dict(colors=colors, line=dict(color='white', width=0)),
+                     textinfo='percent+label', hole=0.3, sort=False,
+                     pull=explode, textfont_size=12))  # Decrease the font size to 12
+
+             #Présentation en colonne
+                       col7, col8 = st.columns(2)
+                       with col7:
+                           st.plotly_chart(treemap2)
+                       with col8:
+                           st.plotly_chart(fig_sens)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

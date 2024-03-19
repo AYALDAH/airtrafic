@@ -492,7 +492,7 @@ def page_dashboard():
             #carte PAYS DEPART
                        carte_marges = px.choropleth(filtered_data, 
                              locations="PAYS_DEPART_LO",  # Colonne contenant les noms des pays
-                             color="MARGE",  # Colonne contenant les valeurs de la marge
+                             color="MARGE", hover_name="PAYS_DEPART_LO" # Colonne contenant les valeurs de la marge
                              color_continuous_scale=px.colors.diverging.RdBu,  
                              range_color=(-100, 100),
                              title="Marge par pays")  # Titre de la carte

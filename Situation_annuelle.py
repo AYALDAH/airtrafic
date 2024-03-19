@@ -489,9 +489,10 @@ def page_dashboard():
                            st.plotly_chart(fig_sens)
                        with col8:
                            st.plotly_chart(treemap2)
-            #carte zone géographique
-                       world_map_zd = px.choropleth(filtered_data, locations="PAYS_DEPART_LO", color="TEU", 
+            #carte PAYS DEPART
+                       world_map_PD = px.choropleth(filtered_data, locations="PAYS_DEPART_LO", color="TEU", 
                           color_continuous_scale=px.colors.sequential.Plasma)
+                       st.plotly_chart(world_map_PD)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

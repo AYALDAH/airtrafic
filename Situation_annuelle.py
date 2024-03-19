@@ -449,7 +449,7 @@ def page_dashboard():
                        top_sectors = sector_counts[sector_counts >10].index
                        filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
                        treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="ACTIVITE PRINCIPALE")
-                       treemap1=treemap1.update_layout( width=350, height=500)
+                       treemap1=treemap1.update_layout( width=400, height=500)
                       #Pays du client
                       
                        d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)

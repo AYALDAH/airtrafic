@@ -490,7 +490,7 @@ def page_dashboard():
                        with col8:
                            st.plotly_chart(treemap2)
             #carte PAYS DEPART
-                       world_map_PD = px.choropleth(filtered_data, locations="PAYS_DEPART_LO", color="TEU", 
+                       world_map_PD = px.choropleth(filtered_data, locations="PAYS_DEPART_LO",hover_name="PAYS_DEPART_LO", color="TEU", 
                           color_continuous_scale=px.colors.sequential.Plasma)
                        st.plotly_chart(world_map_PD)
 def page_ML():

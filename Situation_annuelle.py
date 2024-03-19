@@ -452,7 +452,7 @@ def page_dashboard():
                        treemap1=treemap1.update_layout( width=400, height=500)
                       #Pays du client
                        country_counts= filtered_data['PAYS_CLIENT'].value_counts()
-                       top_countries = country_counts.nlargest(5).index
+                       top_countries = country_counts.nlargest(5)
                        filtered_data_top = filtered_data[filtered_data['PAYS_CLIENT'].isin(top_countries)]
                        pays_bar = px.bar(filtered_data_top, y='PAYS_CLIENT', orientation='h')
                        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité"))

@@ -454,7 +454,7 @@ def page_dashboard():
                        top_sectors = sector_counts[sector_counts > 10].index
                        filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
                        treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
-                       treemap2=treemap2.update_layout( width=500, height=500)
+                       treemap2=treemap2.update_layout( width=400, height=500)
                   #Présentation en colonne
                        col5, col6 = st.columns(2)
                        with col5:

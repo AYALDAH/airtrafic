@@ -478,7 +478,7 @@ def page_dashboard():
                        fig_sens = go.Figure()
                        sens = pd.DataFrame(filtered_data["SENS"].value_counts())
                        fig_sens.add_trace(go.Pie(labels=sens.index, values=sens['SENS'],
-                       marker=dict(colors=colors, line=dict(color='white', width=0),,title="ARMATEUR ET SENS DE TRAFIC"),
+                       marker=dict(colors=colors, line=dict(color='white', width=0),title="ARMATEUR ET SENS DE TRAFIC"),
                        textinfo='percent+label', hole=0.3, sort=False,
                        pull=explode, textfont_size=12))  # Decrease the font size to 12
                        fig_sens=fig_sens.update_layout( width=400, height=500)

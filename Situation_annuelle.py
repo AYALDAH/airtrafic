@@ -437,8 +437,8 @@ def page_dashboard():
                   #Voir les détails par site
                     with st.sidebar:
                         st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
-                        if st.sidebar.button("MARSEILLE"):
-                            st.write("**Les statistiques du site de Marseille**")
+                    if st.sidebar.button("MARSEILLE"):
+                        st.write("**Les statistiques du site de Marseille**")
                         
 def page_ML():
     st.title("")

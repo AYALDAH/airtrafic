@@ -435,9 +435,11 @@ def page_dashboard():
                     top_site_teu = Maritime_df_tm.head(3)
                     st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les taux marges les plus élevés au cours de cette année')           
                   #Voir les détails par site
-                    if st.sidebar.button("MARSEILLE"):
-                        st.write("**Les statistiques du site de Marseille**")
-                        st.write('Vous avez selectionné le site de Marseille')
+                    with st.sidebar:
+                        st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
+                        if st.sidebar.button("MARSEILLE"):
+                            st.write("**Les statistiques du site de Marseille**")
+                        
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

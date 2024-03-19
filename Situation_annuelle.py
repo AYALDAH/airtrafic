@@ -448,8 +448,8 @@ def page_dashboard():
                        col5, col6 = st.columns(2)
                        with col5:
                            st.plotly_chart(treemap1)
-                        with col6:
-                            st.plotly_chart(treemap2)
+                       with col6:
+                           st.plotly_chart(treemap2)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

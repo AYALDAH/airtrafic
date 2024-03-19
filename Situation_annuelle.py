@@ -457,11 +457,11 @@ def page_dashboard():
                        pays_bar = px.bar(filtered_data_top, y='PAYS_CLIENT', orientation='h')
                        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité")
                   #Présentation en colonne
-                       col5, col6 = st.columns(2)
-                       with col5:
-                           st.plotly_chart(treemap1)
-                       with col6:
-                           st.plotly_chart(pays_bar)
+                        col5, col6 = st.columns(2)
+                         with col5:
+                            st.plotly_chart(treemap1)
+                         with col6:
+                             st.plotly_chart(pays_bar)
                  #Armateur
                        sector_counts = filtered_data['ARMATEUR'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index

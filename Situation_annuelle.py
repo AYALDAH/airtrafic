@@ -447,14 +447,14 @@ def page_dashboard():
                        sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index
                        filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
-                       treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
+                       treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="ACTIVITE PRINCIPALE")
                        treemap1=treemap1.update_layout( width=600, height=500)
                       #Armateur
                        sector_counts = filtered_data['ARMATEUR'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index
                        filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
-                       treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
-                       treemap2=treemap2.update_layout( width=400, height=500)
+                       treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="ARMATEUR")
+                       treemap2=treemap2.update_layout( width=300, height=500)
                   #Présentation en colonne
                        col5, col6 = st.columns(2)
                        with col5:

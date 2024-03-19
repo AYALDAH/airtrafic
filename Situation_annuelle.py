@@ -458,7 +458,7 @@ def page_dashboard():
                        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité"))
                        pays_bar.update_layout(title='PAYS_CLIENT', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="count"),  # Add x-axis label
                   yaxis=dict(title="PAYS_CLIENT"),)
-                       pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
+                       pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,99,71)')
 
                   #Présentation en colonne
                        col5, col6 = st.columns(2)

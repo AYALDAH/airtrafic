@@ -492,6 +492,9 @@ def page_dashboard():
             #carte PAYS DEPART
                        world_map_PD = px.choropleth(filtered_data, locations="PAYS_DEPART_LO",hover_name="PAYS_DEPART_LO", color="TEU", 
                           color_continuous_scale=px.colors.sequential.Plasma)
+                      # Add points layer
+                       world_map_PD.add_scattergeo(lon=points_lon,  # Longitude of the pointslat=points_lat,  # Latitude of the pointsmode='markers',marker=dict(color='red', size=5),  # Customize marker color and size
+                       name='Points'  # Name of the points layer)
                        st.plotly_chart(world_map_PD)
 def page_ML():
     st.title("")

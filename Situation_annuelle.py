@@ -456,8 +456,6 @@ def page_dashboard():
                        filtered_data_top = filtered_data[filtered_data['PAYS_CLIENT'].isin(top_countries)]
                        pays_bar = px.bar(filtered_data_top, y='PAYS_CLIENT', orientation='h')
                        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité")
-                       pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,99,71)')
-
                   #Présentation en colonne
                        col5, col6 = st.columns(2)
                        with col5:

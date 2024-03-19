@@ -444,11 +444,12 @@ def page_dashboard():
                        filtered_data = Maritime_df[Maritime_df['ENTITE'] == "RDT13"]
                        treemap1= px.treemap(Maritime_df,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
                        treemap2= px.treemap(Maritime_df,path=["ARMATEUR"],title="")
-                       st.plotly_chart(treemap1)
                   #Présentation en colonne
-                       #col5, col6 = st.columns(2)
-                      # with col5:
-                           #st.plotly_chart(treemap1)
+                       col5, col6 = st.columns(2)
+                        with col5:
+                            st.plotly_chart(treemap1)
+                         with col6:
+                            st.plotly_chart(treemap2)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

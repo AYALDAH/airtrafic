@@ -498,7 +498,7 @@ def page_dashboard():
 
         # Personnaliser le style de la carte
                        carte_marges.update_layout(geo=dict(showcoastlines=True, showcountries=True))
-                    
+                       st.plotly_chart(carte_marges)
                        
 def page_ML():
     st.title("")

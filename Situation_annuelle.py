@@ -490,7 +490,7 @@ def page_dashboard():
                        with col8:
                            st.plotly_chart(treemap2)
             #carte zone géographique
-                       world_map_zd = px.choropleth(filtered_data, locations="PAYS_DEPART_LO", color="Value", hover_name="Country", 
+                       world_map_zd = px.choropleth(filtered_data, locations="PAYS_DEPART_LO", color="TEU", 
                           color_continuous_scale=px.colors.sequential.Plasma)
 def page_ML():
     st.title("")

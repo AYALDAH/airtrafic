@@ -456,7 +456,7 @@ def page_dashboard():
                        filtered_data_top = filtered_data[filtered_data['PAYS_CLIENT'].isin(top_countries)]
                        pays_bar = px.bar(filtered_data_top, y='PAYS_CLIENT', orientation='h')
                        pays_bar.update_layout(title="Graphique du pourcentage par Entité",xaxis=dict(title="Count"),  # Add x-axis label yaxis=dict(title="PAYS_CLIENT"),   plot_bgcolor='rgba(0,0,0,0)',
-                       paper_bgcolor='rgba(0,1,1,0)', width=600,height=400)
+                       paper_bgcolor='rgba(0,1,1,0)', width=400,height=400)
                        pays_bar.update_traces(marker_line_width=0,  marker_opacity=0.7,marker_color='rgb(255,69,0)'  # Set marker color)
                        
                   #Présentation en colonne

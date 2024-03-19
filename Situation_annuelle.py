@@ -439,10 +439,10 @@ def page_dashboard():
                     #Site de Marseille
                     with st.sidebar:
                         st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
-                    if st.sidebar.button("MARSEILLE"):
-                        st.write("**Les statistiques du site de Marseille**")
-                        treemap1= px.treemap(Maritime_df,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
-                        st.plotly_chart(treemap1)
+                if st.sidebar.button("MARSEILLE"):
+                    st.write("**Les statistiques du site de Marseille**")
+                    treemap1= px.treemap(Maritime_df,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
+                    st.plotly_chart(treemap1)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

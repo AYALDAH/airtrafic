@@ -445,7 +445,7 @@ def page_dashboard():
                       
                       #Secteur d'activité
                        sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
-                       top_sectors = sector_counts[sector_counts > 5].index
+                       top_sectors = sector_counts[sector_counts >3].index
                        filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
                        treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="ACTIVITE PRINCIPALE")
                        treemap1=treemap1.update_layout( width=600, height=500)

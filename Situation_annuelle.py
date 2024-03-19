@@ -447,7 +447,7 @@ def page_dashboard():
                        st.plotly_chart(treemap1)
                   #Présentation en colonne
                        #col5, col6 = st.columns(2)
-                      " with col5:
+                      # with col5:
                            #st.plotly_chart(treemap1)
 def page_ML():
     st.title("")

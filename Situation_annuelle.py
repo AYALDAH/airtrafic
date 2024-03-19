@@ -462,9 +462,9 @@ def page_dashboard():
                   #Présentation en colonne
                        col5, col6 = st.columns(2)
                        with col5:
-                           st.plotly_chart(treemap1)
-                       with col6:
                            st.plotly_chart(pays_bar)
+                       with col6:
+                           st.plotly_chart(treemap1)
                  #Armateur
                        sector_counts = filtered_data['ARMATEUR'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index
@@ -481,7 +481,7 @@ def page_dashboard():
                        marker=dict(colors=colors, line=dict(color='white', width=0)),
                        textinfo='percent+label', hole=0.3, sort=False,
                        pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig_sens=fig_sens.update_layout( width=350, height=450)
+                       fig_sens=fig_sens.update_layout( width=350, height=450,title = dict(text = "SENS et ARMATEUR "))
 
              #Présentation en colonne
                        col7, col8 = st.columns(2)

@@ -469,8 +469,8 @@ def page_dashboard():
                        sector_counts = filtered_data['ARMATEUR'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index
                        filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
-                       treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="ARMATEUR")
-                       treemap2=treemap2.update_layout( width=400, height=500)
+                       treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
+                       treemap2=treemap2.update_layout( width=400, height=450)
 
                 #sens
                        colors = ['deepskyblue', 'salmon']
@@ -478,7 +478,7 @@ def page_dashboard():
                        fig_sens = go.Figure()
                        sens = pd.DataFrame(filtered_data["SENS"].value_counts())
                        fig_sens.add_trace(go.Pie(labels=sens.index, values=sens['SENS'],
-                       marker=dict(colors=colors, line=dict(color='white', width=0)),
+                       marker=dict(colors=colors, line=dict(color='white', width=0),,title="ARMATEUR ET SENS DE TRAFIC"),
                        textinfo='percent+label', hole=0.3, sort=False,
                        pull=explode, textfont_size=12))  # Decrease the font size to 12
                        fig_sens=fig_sens.update_layout( width=400, height=500)

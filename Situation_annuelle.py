@@ -481,7 +481,7 @@ def page_dashboard():
                        marker=dict(colors=colors, line=dict(color='white', width=0)),
                        textinfo='percent+label', hole=0.3, sort=False,
                        pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig_sens=fig_sens.update_layout( width=350, height=450,title = dict(text = "SENS et ARMATEUR "))
+                       fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "))
 
              #Présentation en colonne
                        col7, col8 = st.columns(2)

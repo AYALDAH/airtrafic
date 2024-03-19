@@ -430,7 +430,7 @@ def page_dashboard():
                     
                   with col4:
                     st.plotly_chart(fig4)
-                    Maritime_df['Taux_moyen'] =Maritime_df.groupby(['ENTITE'])['Taux_Marge'].mean().reset_index()
+                    Maritime_df['Taux_moyen'] =Maritime_df.groupby(['ENTITE'])['Taux_Marge'].transform('mean')
                     Maritime_df_tm=Maritime_df.sort_values(by='ENTITE').sort_values(by='Taux_moyen', ascending=False)
                     top_site_teu =Maritime_df_tm.head(3)
                     st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les taux marges les plus élevés au cours de cette année')           

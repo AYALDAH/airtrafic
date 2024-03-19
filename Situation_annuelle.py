@@ -436,7 +436,8 @@ def page_dashboard():
                     st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les taux marges les plus élevés au cours de cette année')           
                  
                     #Voir les détails par site
-                    #Site de Marseille
+                    
+                 #Site de Marseille
                   with st.sidebar:
                         st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
                   if st.sidebar.button("MARSEILLE"):
@@ -449,18 +450,29 @@ def page_dashboard():
                        filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
                        treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="ACTIVITE PRINCIPALE")
                        treemap1=treemap1.update_layout( width=400, height=500)
-                      #Armateur
+                      #Pays du client
+                       sector_counts = filtered_data['PAYS_CLIENT'].value_counts()
+                       top_sectors = sector_counts[sector_counts >5].index
+                       filtered_data_top = filtered_data[filtered_data['PAYS_CLIENT'].isin(top_sectors)]
+                       pays_bar = px.bar(filtered_data_top, x='PAYS_CLIENT', y=filtered_data_top.index, orientation='h')
+                       pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité"))
+                       pays_bar.update_layout(title='Bar Plot', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=600, height=400, xaxis=dict(title="count"),  # Add x-axis label
+                  yaxis=dict(title="PAYS_CLIENT"),)
+                       pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,69,0)')
+
+                  #Présentation en colonne
+                       col5, col6 = st.columns(2)
+                       with col5:
+                           st.plotly_chart(treemap1)
+                       with col6:
+                           st.plotly_chart(pays_bar)
+                 #Armateur
                        sector_counts = filtered_data['ARMATEUR'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index
                        filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
                        treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="ARMATEUR")
                        treemap2=treemap2.update_layout( width=400, height=500)
-                  #Présentation en colonne
-                       col5, col6 = st.columns(2)
-                       with col5:
-                           st.plotly_chart(treemap2)
-                       with col6:
-                           st.plotly_chart(treemap1)
+
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

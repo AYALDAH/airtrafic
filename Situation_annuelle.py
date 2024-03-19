@@ -452,12 +452,10 @@ def page_dashboard():
                        treemap1=treemap1.update_layout( width=400, height=500)
                       #Pays du client
                        country_counts= filtered_data['PAYS_CLIENT'].value_counts()
-                       top_countries = country_counts.nlargest(5)
+                       top_countries = country_counts.nlargest(5).index
                        filtered_data_top = filtered_data[filtered_data['PAYS_CLIENT'].isin(top_countries)]
                        pays_bar = px.bar(filtered_data_top, y='PAYS_CLIENT', orientation='h')
-                       pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité"))
-                       pays_bar.update_layout(title='PAYS_CLIENT', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=500, height=450, xaxis=dict(title="count"),  # Add x-axis label
-                  yaxis=dict(title="PAYS_CLIENT"),)
+                       pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par Entité")
                        pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(255,99,71)')
 
                   #Présentation en colonne

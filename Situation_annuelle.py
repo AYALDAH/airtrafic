@@ -460,7 +460,7 @@ def page_dashboard():
                        pays_bar.update_traces(marker_line_width=0,  marker_opacity=0.7,marker_color='rgb(255,69,0)'  # Set marker color)
                        
                   #Présentation en colonne
-                       col5, col6 = st.columns(2)
+                        col5, col6 = st.columns(2)
                          with col5:
                             st.plotly_chart(treemap1)
                          with col6:

@@ -437,6 +437,27 @@ def page_dashboard():
                  
                     #Voir les détails par site
     elif  Analyse_Exploratoire == 'Analyse par sites':
+        #Préparation des données
+        Maritime_df=pd.read_excel("Maritime_data.xlsx")
+        #Imputation variables quantitatives
+        imputer = KNNImputer(n_neighbors=5)
+        Maritime_df['VOLUME'] = imputer.fit_transform(Maritime_df[['VOLUME']])
+        
+        #Imputation variables qualitatives
+        #Inputation des valeurs manquantes de la variable PAYS_CLIENT
+        imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
+        Maritime_df['PAYS_CLIENT'] = imputer.fit_transform(Maritime_df[['PAYS_CLIENT']]) 
+
+        #Inputation des valeurs manquantes de la variable ARMATEUR
+        imputer = SimpleImputer(missing_values=np.nan, strategy="most_frequent")
+        Maritime_df['ARMATEUR'] = imputer.fit_transform(Maritime_df[['ARMATEUR']])
+
+        #Renommer les sites
+        Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT13"], value = "MARSEILLE")
+        Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT45"], value = "MONTOIR")
+        Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT59"], value = "DUNKERQUE")
+        Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT76"], value = "ROUEN")
+        Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT76LEH"], value = "LE HAVRE")
         #Site de Marseille
         st.sidebar.write("**Choississez un site pour découvrir les statistiques correspondantes**")
         if st.sidebar.button("MARSEILLE"):

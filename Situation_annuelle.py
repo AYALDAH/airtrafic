@@ -861,7 +861,7 @@ def page_dashboard():
    
         #Site du Havre
         if st.sidebar.button("LE HAVRE"):
-            st.write("**Les statistiques du site du Havre**")
+            st.write("**Les statistiques du site Le Havre**")
             filtered_data = Maritime_df[Maritime_df['ENTITE'] == "LE HAVRE"]
                       
         #Secteur d'activité

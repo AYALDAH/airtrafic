@@ -460,6 +460,7 @@ def page_dashboard():
         Maritime_df["ENTITE"] = Maritime_df["ENTITE"].replace(["RDT76LEH"], value = "LE HAVRE")
         #Site de Marseille
         st.sidebar.write("**Choississez un site pour découvrir les statistiques correspondantes**")
+        
         if st.sidebar.button("MARSEILLE"):
             st.write("**Les statistiques du site de Marseille**")
             filtered_data = Maritime_df[Maritime_df['ENTITE'] == "MARSEILLE"]
@@ -492,7 +493,7 @@ def page_dashboard():
             treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
             treemap2=treemap2.update_layout( width=400, height=450)
 
-                #sens
+        #sens
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
             fig_sens = go.Figure()
@@ -503,13 +504,13 @@ def page_dashboard():
             pull=explode, textfont_size=12))  # Decrease the font size to 12
             fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "))
 
-             #Présentation en colonne
+        #Présentation en colonne
             col7, col8 = st.columns(2)
             with col7:
                 st.plotly_chart(fig_sens)
             with col8:
                 st.plotly_chart(treemap2)
-            #Cloroplètre
+        #Cloroplètre
                       #Depart
             palette_couleur = ["#FFD700", "#800080", "#FF0000"] 
             somme_marges_par_pays = filtered_data.groupby(['ENTITE','PAYS_DEPART_LO', 'code_iso_d'])['MARGE','MONTANT_VENTES','VOLUME','TEU'].sum().reset_index()
@@ -522,7 +523,7 @@ def page_dashboard():
             Chloroplètre_2= px.choropleth(somme_marges_par_pays, locations="code_iso_a", hover_name="PAYS_ARRIVEE_Lo", color="MARGE",hover_data=somme_marges_par_pays.columns,projection="natural earth",color_continuous_scale=palette_couleur)
             Chloroplètre_2=Chloroplètre_2.update_layout( width=800, height=800,title = dict(text = "Pays Arrivée"))
             st.plotly_chart(Chloroplètre_2)
-            #Les TEU
+        #Les TEU
                        # Update layout and appearance of the plot
                        #Type TEU
             colors = ['deepskyblue', 'salmon']

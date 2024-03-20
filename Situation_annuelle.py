@@ -528,7 +528,7 @@ def page_dashboard():
                        #Type TEU
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
-            d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
+            d_2 = pd.DataFrame(filtered_data["TYPE_DOSSIER"].value_counts())
             fig7 = go.Figure()
             fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
             fig7=fig7.update_layout(title=dict(text=" Type, Nombre et Taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
@@ -537,8 +537,8 @@ def page_dashboard():
             explode = [0.1, 0]
                     #Nombre de teu  et taille
             fig8 = go.Figure()
-            d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
-            d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
+            d_3 = pd.DataFrame(filtered_data["TEU_2"].value_counts())
+            d_4 = pd.DataFrame(filtered_data["TAILLE_TC"].value_counts())
 
                       #nb_teu
             fig8=go.Figure()
@@ -628,7 +628,7 @@ def page_dashboard():
                        #Type TEU
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
-            d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
+            d_2 = pd.DataFrame(filtered_data["TYPE_DOSSIER"].value_counts())
             fig7 = go.Figure()
             fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
             fig7=fig7.update_layout(title=dict(text=" Type, Nombre et Taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
@@ -637,8 +637,8 @@ def page_dashboard():
             explode = [0.1, 0]
                     #Nombre de teu  et taille
             fig8 = go.Figure()
-            d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
-            d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
+            d_3 = pd.DataFrame(filtered_data["TEU_2"].value_counts())
+            d_4 = pd.DataFrame(filtered_data["TAILLE_TC"].value_counts())
 
                       #nb_teu
             fig8=go.Figure()
@@ -728,7 +728,7 @@ def page_dashboard():
                        #Type TEU
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
-            d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
+            d_2 = pd.DataFrame(filtered_data["TYPE_DOSSIER"].value_counts())
             fig7 = go.Figure()
             fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
             fig7=fig7.update_layout(title=dict(text=" Type, Nombre et Taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
@@ -737,8 +737,8 @@ def page_dashboard():
             explode = [0.1, 0]
                     #Nombre de teu  et taille
             fig8 = go.Figure()
-            d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
-            d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
+            d_3 = pd.DataFrame(filtered_data["TEU_2"].value_counts())
+            d_4 = pd.DataFrame(filtered_data["TAILLE_TC"].value_counts())
 
                       #nb_teu
             fig8=go.Figure()
@@ -827,7 +827,7 @@ def page_dashboard():
                        #Type TEU
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
-            d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
+            d_2 = pd.DataFrame(filtered_data["TYPE_DOSSIER"].value_counts())
             fig7 = go.Figure()
             fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
             fig7=fig7.update_layout(title=dict(text=" Type, Nombre et Taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
@@ -836,8 +836,8 @@ def page_dashboard():
             explode = [0.1, 0]
                     #Nombre de teu  et taille
             fig8 = go.Figure()
-            d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
-            d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
+            d_3 = pd.DataFrame(filtered_data["TEU_2"].value_counts())
+            d_4 = pd.DataFrame(filtered_data["TAILLE_TC"].value_counts())
 
                       #nb_teu
             fig8=go.Figure()
@@ -927,7 +927,7 @@ def page_dashboard():
                        #Type TEU
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
-            d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
+            d_2 = pd.DataFrame(filtered_data["TYPE_DOSSIER"].value_counts())
             fig7 = go.Figure()
             fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
             fig7=fig7.update_layout(title=dict(text=" Type, Nombre et Taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
@@ -936,8 +936,8 @@ def page_dashboard():
             explode = [0.1, 0]
                     #Nombre de teu  et taille
             fig8 = go.Figure()
-            d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
-            d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
+            d_3 = pd.DataFrame(filtered_data["TEU_2"].value_counts())
+            d_4 = pd.DataFrame(filtered_data["TAILLE_TC"].value_counts())
 
                       #nb_teu
             fig8=go.Figure()

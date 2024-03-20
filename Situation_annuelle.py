@@ -543,8 +543,8 @@ def page_dashboard():
 
                 #Site de Rouen
                     
-                       elif st.sidebar.button("ROUEN"):
-                           st.write("**Les statistiques du site de Rouen**")
+                    if st.sidebar.button("ROUEN"):
+                        st.write("**Les statistiques du site de Rouen**")
                        filtered_data = Maritime_df[Maritime_df['ENTITE'] == "ROUEN"]
                       
                       #Secteur d'activité

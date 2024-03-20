@@ -490,7 +490,7 @@ def page_dashboard():
                        with col8:
                            st.plotly_chart(treemap2)
             #Cloroplètre
-                       px.cloropleth(filtered_data,location="code_iso_d",hover_name="PAYS_DEPART_LO",colors="MARGE")
+                       px.choropleth(filtered_data, location="code_iso_d", hover_name="PAYS_DEPART_LO", color="MARGE")
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

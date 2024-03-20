@@ -492,8 +492,7 @@ def page_dashboard():
             #Cloroplètre
                        palette_couleur = ["#FFD700", "#800080", "#FF0000"] 
                        somme_marges_par_pays= filtered_data.groupby('PAYS_DEPART_LO')['MARGE'].sum().reset_index()
-                       merged_data = filtered_data.merge(somme_marges_par_pays, how='left', left_on='code_iso_d', right_on='PAYS_DEPART_LO')
-                       Chloroplètre_1= px.choropleth(somme_marges_par_pays, locations="code_iso_d", hover_name="PAYS_DEPART_LO", color="MARGE",hover_data=filtered_data.columns,projection="natural earth",color_continuous_scale=palette_couleur)
+                       Chloroplètre_1= px.choropleth(somme_marges_par_pays, locations="code_iso_d", hover_name="PAYS_DEPART_LO", color="MARGE",hover_data=somme_marges_par_pays.columns,projection="natural earth",color_continuous_scale=palette_couleur)
                        Chloroplètre_1=Chloroplètre_1.update_layout( width=800, height=800,title = dict(text = "Pays de Départ" ))
                        st.plotly_chart(Chloroplètre_1)
 

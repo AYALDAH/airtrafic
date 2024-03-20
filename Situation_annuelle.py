@@ -436,7 +436,7 @@ def page_dashboard():
                     st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les taux marges les plus élevés au cours de cette année')           
                  
                     #Voir les détails par site
-        elif  Analyse_Exploratoire == 'Analyse par sites':      
+    elif  Analyse_Exploratoire == 'Analyse par sites':      
                  #Site de Marseille
                   st.sidebar.write("**Choississez un site pour découvrir les statistiques correspondantes**")
                   if st.sidebar.button("MARSEILLE"):

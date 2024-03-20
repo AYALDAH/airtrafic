@@ -438,7 +438,7 @@ def page_dashboard():
                     #Voir les détails par site
                     
                  #Site de Marseille
-                  st.write("**Choississez un site pour découvrir les statistiques correspondantes**")
+                  st.sidebar.write("**Choississez un site pour découvrir les statistiques correspondantes**")
                   if st.sidebar.button("MARSEILLE"):
                        st.write("**Les statistiques du site de Marseille**")
                        filtered_data = Maritime_df[Maritime_df['ENTITE'] == "MARSEILLE"]

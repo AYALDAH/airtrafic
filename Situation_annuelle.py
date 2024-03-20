@@ -56,7 +56,7 @@ def RESUME():
 # Affichage du titre dans la deuxième colonne
     with col2:
         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
-        st.subheader("ANALYSE DATA SUR 2023")
+        st.subheader("ANALYSE DE DONNEE SUR 2023")
 #RESUME
     st.subheader("RESUME")
     st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023. "  "Les données considérées couvrent la période de janvier à fin Décembre." )

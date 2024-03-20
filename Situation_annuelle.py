@@ -330,7 +330,9 @@ def page_dashboard():
 #---------------------------------------------------------------------------------------
 #                                  Analyse par site
 #---------------------------------------------------------------------------------------
-    elif  Analyse_Exploratoire == 'Analyse par sites':                        
+    elif  Analyse_Exploratoire == 'Analyse par sites':   
+                    with st.sidebar:
+                    st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
                   #Préparation des données
                   Maritime_df=pd.read_excel("Maritime_data.xlsx")
                  #Imputation variables quantitatives
@@ -438,8 +440,7 @@ def page_dashboard():
                     #Voir les détails par site
                     
                  #Site de Marseille
-             with st.sidebar:
-                 st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
+
                   if st.sidebar.button("MARSEILLE"):
                        st.write("**Les statistiques du site de Marseille**")
                        filtered_data = Maritime_df[Maritime_df['ENTITE'] == "MARSEILLE"]

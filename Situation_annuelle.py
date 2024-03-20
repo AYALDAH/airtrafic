@@ -507,38 +507,36 @@ def page_dashboard():
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
             d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
-                       fig7 = go.Figure()
-                       fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig7=fig7.update_layout(title=dict(text=" Type, nombre et la taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
-                       xaxis=dict(showline=False, showgrid=False),yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='sens', x=0.50, y=0.45, font_size=20, showarrow=False)] )
-                       colors = ['deepskyblue', 'salmon','lightgreen']
-                       explode = [0.1, 0]
+            fig7 = go.Figure()
+            fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
+            fig7=fig7.update_layout(title=dict(text=" Type, Nombre et Taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
+            xaxis=dict(showline=False, showgrid=False),yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='sens', x=0.50, y=0.45, font_size=20, showarrow=False)] )
+            colors = ['deepskyblue', 'salmon','lightgreen']
+            explode = [0.1, 0]
                     #Nombre de teu  et taille
-                       fig8 = go.Figure()
-                       d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
-                       d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
+            fig8 = go.Figure()
+            d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
+            d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
 
                       #nb_teu
-                       fig8=go.Figure()
-                       fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU_2'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
-                       pull=explode, textfont_size=12)) 
-                       fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=290, height=400,
-                       xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
-                       yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='taille_tc', x=0.52, y=0.5, font_size=20, showarrow=False)])
-                     #taille_tc
-                       fig9 = go.Figure()
-                       fig9.add_trace(go.Pie(labels=d_4.index, values=d_4['TAILLE_TC'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
-                       pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig9=fig9.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False, width=250, height=400,xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
-                       yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='nb_teu', x=0.5, y=0.5, font_size=20, showarrow=False)])
-   
-                       col9, col10,col11= st.columns(3)
-                       with col9:
-                           st.plotly_chart(fig7)
-                       with col10:
-                           st.plotly_chart(fig8)
-                       with col11:
-                           st.plotly_chart(fig9)
+            fig8=go.Figure()
+            fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU_2'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12)) 
+            fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=290, height=400,
+            xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
+            yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='taille_tc', x=0.52, y=0.5, font_size=20, showarrow=False)])
+                    #taille_tc
+            fig9 = go.Figure()
+            fig9.add_trace(go.Pie(labels=d_4.index, values=d_4['TAILLE_TC'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
+            pull=explode, textfont_size=12))  # Decrease the font size to 12
+            fig9=fig9.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False, width=250, height=400,xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
+            yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='nb_teu', x=0.5, y=0.5, font_size=20, showarrow=False)])
+            col9, col10,col11= st.columns(3)
+            with col9:
+                st.plotly_chart(fig7)
+            with col10:
+                st.plotly_chart(fig8)
+            with col11:
+                st.plotly_chart(fig9)
 
                 #Site de Rouen
                   if st.sidebar.button("ROUEN"):

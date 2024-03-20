@@ -509,7 +509,7 @@ def page_dashboard():
                        explode = [0.1, 0]
                        d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
                        fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig7=fig.update_layout(title=dict(text=" Type, nombre et la taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
+                       fig7=fig7.update_layout(title=dict(text=" Type, nombre et la taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
                        xaxis=dict(showline=False, showgrid=False),yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='sens', x=0.50, y=0.45, font_size=20, showarrow=False)] )
                        colors = ['deepskyblue', 'salmon','lightgreen']
                        explode = [0.1, 0]

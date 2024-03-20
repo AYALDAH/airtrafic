@@ -505,6 +505,8 @@ def page_dashboard():
             #Les TEU
                        # Update layout and appearance of the plot
                        #Type TEU
+                       colors = ['deepskyblue', 'salmon']
+                       explode = [0.1, 0]
                        d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
                        fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
                        fig7=fig.update_layout(title=dict(text=" Type, nombre et la taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,  # Optional: Remove the legendwidth=310, height=400,

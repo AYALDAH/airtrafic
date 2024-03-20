@@ -542,9 +542,8 @@ def page_dashboard():
                            st.plotly_chart(fig9)
 
                 #Site de Rouen
-                       with st.sidebar:
-                           st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
-                       if st.sidebar.button("ROUEN"):
+                    
+                       elif st.sidebar.button("ROUEN"):
                            st.write("**Les statistiques du site de Rouen**")
                        filtered_data = Maritime_df[Maritime_df['ENTITE'] == "ROUEN"]
                       

@@ -526,7 +526,7 @@ def page_dashboard():
         #Les TEU
                        # Update layout and appearance of the plot
                        #Type TEU
-            colors = ['deepskyblue', 'salmon']
+            colors = ['deepskyblue', 'salmon','orange)]
             explode = [0.1, 0]
             d_2 = pd.DataFrame(filtered_data["TYPE_DOSSIER"].value_counts())
             fig7 = go.Figure()

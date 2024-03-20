@@ -969,7 +969,7 @@ def page_ML():
 # Affichage du titre dans la deuxième colonne
     with col2:
         st.title('MODELS DE PREDICTION')
-        st.subheader("PREDICTION ET SEGMENTATION")        
+        st.subheader(" SEGMENTATION ET PREDICTION")        
 # Créez une barre latérale pour la navigation entre les pages
 st.sidebar.subheader("NAVIGUER POUR DECOUVRIR 📋🔍")
 page = st.sidebar.radio("Selectionner la page qui vous interesse", ["Resumé 📝","Analyse Exploratoire📊", "Machine Learning 📈📉"])

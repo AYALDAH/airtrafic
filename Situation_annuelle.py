@@ -437,7 +437,6 @@ def page_dashboard():
                  
                     #Voir les détails par site
     elif  Analyse_Exploratoire == 'Analyse par sites':
-        #Site de Marseille
         st.sidebar.write("**Choississez un site pour découvrir les statistiques correspondantes**")
         if st.sidebar.button("MARSEILLE"):
         st.write("**Les statistiques du site de Marseille**")

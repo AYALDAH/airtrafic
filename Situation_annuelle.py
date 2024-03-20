@@ -586,11 +586,11 @@ def page_dashboard():
                      fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "))
 
              #Présentation en colonne
-                    col7, col8 = st.columns(2)
-                    with col7:
-                        st.plotly_chart(fig_sens)
-                    with col8:
-                        st.plotly_chart(treemap2)
+                     col7, col8 = st.columns(2)
+                     with col7:
+                         st.plotly_chart(fig_sens)
+                     with col8:
+                         st.plotly_chart(treemap2)
             #Cloroplètre
                       #Depart
                     palette_couleur = ["#FFD700", "#800080", "#FF0000"] 

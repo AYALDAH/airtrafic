@@ -492,7 +492,7 @@ def page_dashboard():
             #Cloroplètre
                        palette_couleur = ["#FFD700", "#800080", "#FF0000"] 
                        Chloroplètre= px.choropleth(filtered_data, locations="code_iso_d", hover_name="PAYS_DEPART_LO", color="MARGE",hover_data=filtered_data.columns,projection="natural earth",color_continuous_scale=palette_couleur)
-                       Chloroplètre=Chloroplètre.update_layout( width=600, height=600,title = dict(text = "Pays de Départ et Arrivée"))
+                       Chloroplètre=Chloroplètre.update_layout( width=800, height=800,title = dict(text = "Pays de Départ et Arrivée"))
                        st.plotly_chart(Chloroplètre)
 def page_ML():
     st.title("")

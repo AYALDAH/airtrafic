@@ -516,12 +516,12 @@ def page_dashboard():
                        explode = [0.1, 0]
                     #Nombre de teu  et taille
                        fig8 = go.Figure()
-                       d_3 = pd.DataFrame(Maritime_df["TEU"].value_counts())
+                       d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
                        d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
 
                       #nb_teu
                        fig8=go.Figure()
-                       fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
+                       fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU_2'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
                        pull=explode, textfont_size=12)) 
                        fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,  # Optional: Remove the legendwidth=290, height=400,
                        xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid

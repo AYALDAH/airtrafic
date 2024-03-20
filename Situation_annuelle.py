@@ -547,101 +547,100 @@ def page_dashboard():
                      filtered_data = Maritime_df[Maritime_df['ENTITE'] == "ROUEN"]
                       
                       #Secteur d'activité
-                      sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
-                      top_sectors = sector_counts[sector_counts >10].index
-                      filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
-                      treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
-                      treemap1=treemap1.update_layout( width=400, height=450)
+                     sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
+                     top_sectors = sector_counts[sector_counts >10].index
+                     filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
+                     treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
+                     treemap1=treemap1.update_layout( width=400, height=450)
                       
                       #Pays du client
-                      d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)
-                      d_pays=d_pays.head(3)
-                      pays_bar = px.bar(d_pays, x='PAYS_CLIENT', y=d_pays.index, orientation='h')
-                      pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par site"))
-                      pays_bar.update_layout(title=' PAYS_CLIENT et ACTIVITE PRINCIPALE', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=350, height=400, xaxis=dict(title="count"),  # Add x-axis label
+                     d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)
+                     d_pays=d_pays.head(3)
+                     pays_bar = px.bar(d_pays, x='PAYS_CLIENT', y=d_pays.index, orientation='h')
+                     pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par site"))
+                     pays_bar.update_layout(title=' PAYS_CLIENT et ACTIVITE PRINCIPALE', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=350, height=400, xaxis=dict(title="count"),  # Add x-axis label
                   yaxis=dict(title=""),)
-                       pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(225,69,0)')
+                     pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(225,69,0)')
                   #Présentation en colonne
-                       col5, col6 = st.columns(2)
-                       with col5:
-                           st.plotly_chart(pays_bar)
-                       with col6:
-                           st.plotly_chart(treemap1)
+                     col5, col6 = st.columns(2)
+                     with col5:
+                         st.plotly_chart(pays_bar)
+                     with col6:
+                         st.plotly_chart(treemap1)
                  #Armateur
-                       sector_counts = filtered_data['ARMATEUR'].value_counts()
-                       top_sectors = sector_counts[sector_counts > 10].index
-                       filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
-                       treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
-                       treemap2=treemap2.update_layout( width=400, height=450)
+                     sector_counts = filtered_data['ARMATEUR'].value_counts()
+                     top_sectors = sector_counts[sector_counts > 10].index
+                     filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
+                     treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
+                     treemap2=treemap2.update_layout( width=400, height=450)
 
                 #sens
-                       colors = ['deepskyblue', 'salmon']
-                       explode = [0.1, 0]
-                       fig_sens = go.Figure()
-                       sens = pd.DataFrame(filtered_data["SENS"].value_counts())
-                       fig_sens.add_trace(go.Pie(labels=sens.index, values=sens['SENS'],
-                       marker=dict(colors=colors, line=dict(color='white', width=0)),
-                       textinfo='percent+label', hole=0.3, sort=False,
-                       pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "))
+                    colors = ['deepskyblue', 'salmon']
+                    explode = [0.1, 0]
+                    fig_sens = go.Figure()
+                    sens = pd.DataFrame(filtered_data["SENS"].value_counts())
+                    fig_sens.add_trace(go.Pie(labels=sens.index, values=sens['SENS'],
+                    marker=dict(colors=colors, line=dict(color='white', width=0)),
+                    textinfo='percent+label', hole=0.3, sort=False,
+                    pull=explode, textfont_size=12))  # Decrease the font size to 12
+                    fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "))
 
              #Présentation en colonne
-                       col7, col8 = st.columns(2)
-                       with col7:
-                           st.plotly_chart(fig_sens)
-                       with col8:
-                           st.plotly_chart(treemap2)
+                    col7, col8 = st.columns(2)
+                    with col7:
+                        st.plotly_chart(fig_sens)
+                    with col8:
+                        st.plotly_chart(treemap2)
             #Cloroplètre
                       #Depart
-                       palette_couleur = ["#FFD700", "#800080", "#FF0000"] 
-                       somme_marges_par_pays = filtered_data.groupby(['ENTITE','PAYS_DEPART_LO', 'code_iso_d'])['MARGE','MONTANT_VENTES','VOLUME','TEU'].sum().reset_index()
-                       Chloroplètre_1= px.choropleth(somme_marges_par_pays, locations="code_iso_d", hover_name="PAYS_DEPART_LO", color="MARGE",projection="natural earth",hover_data=somme_marges_par_pays.columns,color_continuous_scale=palette_couleur)
-                       Chloroplètre_1=Chloroplètre_1.update_layout( width=800, height=800,title = dict(text = "Pays de Départ" ))
-                       st.plotly_chart(Chloroplètre_1)
+                    palette_couleur = ["#FFD700", "#800080", "#FF0000"] 
+                    somme_marges_par_pays = filtered_data.groupby(['ENTITE','PAYS_DEPART_LO', 'code_iso_d'])['MARGE','MONTANT_VENTES','VOLUME','TEU'].sum().reset_index()
+                    Chloroplètre_1= px.choropleth(somme_marges_par_pays, locations="code_iso_d", hover_name="PAYS_DEPART_LO", color="MARGE",projection="natural earth",hover_data=somme_marges_par_pays.columns,color_continuous_scale=palette_couleur)
+                    Chloroplètre_1=Chloroplètre_1.update_layout( width=800, height=800,title = dict(text = "Pays de Départ" ))
+                    st.plotly_chart(Chloroplètre_1)
                       #Arrivée
-                       palette_couleur = ["#8B4513", "#87CEEB", "#FF6347"]
-                       somme_marges_par_pays = filtered_data.groupby(['ENTITE','PAYS_ARRIVEE_Lo', 'code_iso_a'])['MARGE','MONTANT_VENTES','VOLUME','TEU'].sum().reset_index()
-                       Chloroplètre_2= px.choropleth(somme_marges_par_pays, locations="code_iso_a", hover_name="PAYS_ARRIVEE_Lo", color="MARGE",hover_data=somme_marges_par_pays.columns,projection="natural earth",color_continuous_scale=palette_couleur)
-                       Chloroplètre_2=Chloroplètre_2.update_layout( width=800, height=800,title = dict(text = "Pays Arrivée"))
-                       st.plotly_chart(Chloroplètre_2)
+                    palette_couleur = ["#8B4513", "#87CEEB", "#FF6347"]
+                    somme_marges_par_pays = filtered_data.groupby(['ENTITE','PAYS_ARRIVEE_Lo', 'code_iso_a'])['MARGE','MONTANT_VENTES','VOLUME','TEU'].sum().reset_index()
+                    Chloroplètre_2= px.choropleth(somme_marges_par_pays, locations="code_iso_a", hover_name="PAYS_ARRIVEE_Lo", color="MARGE",hover_data=somme_marges_par_pays.columns,projection="natural earth",color_continuous_scale=palette_couleur)
+                    Chloroplètre_2=Chloroplètre_2.update_layout( width=800, height=800,title = dict(text = "Pays Arrivée"))
+                    st.plotly_chart(Chloroplètre_2)
             #Les TEU
                        # Update layout and appearance of the plot
                        #Type TEU
-                       colors = ['deepskyblue', 'salmon']
-                       explode = [0.1, 0]
-                       d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
-                       fig7 = go.Figure()
-                       fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig7=fig7.update_layout(title=dict(text=" Type, nombre et la taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
-                       xaxis=dict(showline=False, showgrid=False),yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='sens', x=0.50, y=0.45, font_size=20, showarrow=False)] )
-                       colors = ['deepskyblue', 'salmon','lightgreen']
-                       explode = [0.1, 0]
+                    colors = ['deepskyblue', 'salmon']
+                    explode = [0.1, 0]
+                    d_2 = pd.DataFrame(Maritime_df["TYPE_DOSSIER"].value_counts())
+                    fig7 = go.Figure()
+                    fig7.add_trace(go.Pie(labels=d_2.index, values=d_2['TYPE_DOSSIER'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12))  # Decrease the font size to 12
+                    fig7=fig7.update_layout(title=dict(text=" Type, nombre et la taille du TEU"),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=310, height=400,
+                    xaxis=dict(showline=False, showgrid=False),yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='sens', x=0.50, y=0.45, font_size=20, showarrow=False)] )
+                    colors = ['deepskyblue', 'salmon','lightgreen']
+                    explode = [0.1, 0]
                     #Nombre de teu  et taille
-                       fig8 = go.Figure()
-                       d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
-                       d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
+                    fig8 = go.Figure()
+                    d_3 = pd.DataFrame(Maritime_df["TEU_2"].value_counts())
+                    d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
 
                       #nb_teu
-                       fig8=go.Figure()
-                       fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU_2'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
-                       pull=explode, textfont_size=12)) 
-                       fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=290, height=400,
-                       xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
-                       yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='taille_tc', x=0.52, y=0.5, font_size=20, showarrow=False)])
+                    fig8=go.Figure()
+                    fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU_2'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
+                    pull=explode, textfont_size=12)) 
+                    fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=290, height=400,
+                    xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
+                    yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='taille_tc', x=0.52, y=0.5, font_size=20, showarrow=False)])
                      #taille_tc
-                       fig9 = go.Figure()
-                       fig9.add_trace(go.Pie(labels=d_4.index, values=d_4['TAILLE_TC'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
-                       pull=explode, textfont_size=12))  # Decrease the font size to 12
-                       fig9=fig9.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False, width=250, height=400,xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
-                       yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='nb_teu', x=0.5, y=0.5, font_size=20, showarrow=False)])
-   
-                       col9, col10,col11= st.columns(3)
-                       with col9:
-                           st.plotly_chart(fig7)
-                       with col10:
-                           st.plotly_chart(fig8)
-                       with col11:
-                           st.plotly_chart(fig9)
+                    fig9 = go.Figure()
+                    fig9.add_trace(go.Pie(labels=d_4.index, values=d_4['TAILLE_TC'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
+                    pull=explode, textfont_size=12))  # Decrease the font size to 12
+                    fig9=fig9.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False, width=250, height=400,xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
+                    yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='nb_teu', x=0.5, y=0.5, font_size=20, showarrow=False)])
+                    col9, col10,col11= st.columns(3)
+                    with col9:
+                        st.plotly_chart(fig7)
+                    with col10:
+                        st.plotly_chart(fig8)
+                    with col11:
+                        st.plotly_chart(fig9)
 
 
 def page_ML():

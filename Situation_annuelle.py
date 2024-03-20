@@ -512,30 +512,30 @@ def page_dashboard():
                        colors = ['deepskyblue', 'salmon','lightgreen']
                        explode = [0.1, 0]
                     #Nombre de teu  et taille
-                      fig8 = go.Figure()
-                      d_3 = pd.DataFrame(Maritime_df["TEU"].value_counts())
-                      d_4 = pd.DataFrame(attrition_df["TAILLE_TC"].value_counts())
+                       fig8 = go.Figure()
+                       d_3 = pd.DataFrame(Maritime_df["TEU"].value_counts())
+                       d_4 = pd.DataFrame(attrition_df["TAILLE_TC"].value_counts())
 
                       #nb_teu
-                      fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
-                      pull=explode, textfont_size=12)) 
-                      fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,  # Optional: Remove the legendwidth=290, height=400,
-                      xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
-                      yaxis=dict(showline=False, showgrid=False)# Remove y-axis line and grid,annotations=[dict(text='taille_tc', x=0.52, y=0.5, font_size=20, showarrow=False)])
+                       fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
+                       pull=explode, textfont_size=12)) 
+                       fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,  # Optional: Remove the legendwidth=290, height=400,
+                       xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
+                       yaxis=dict(showline=False, showgrid=False)# Remove y-axis line and grid,annotations=[dict(text='taille_tc', x=0.52, y=0.5, font_size=20, showarrow=False)])
                      #taille_tc
-                      fig9 = go.Figure()
-                      fig9.add_trace(go.Pie(labels=d_4.index, values=d_4['TAILLE_TC'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
-                      pull=explode, textfont_size=12))  # Decrease the font size to 12
-                      fig9=fig9.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False, width=300, height=400,xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
-                      yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='nb_teu', x=0.5, y=0.5, font_size=20, showarrow=False)])
+                       fig9 = go.Figure()
+                       fig9.add_trace(go.Pie(labels=d_4.index, values=d_4['TAILLE_TC'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
+                       pull=explode, textfont_size=12))  # Decrease the font size to 12
+                       fig9=fig9.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False, width=300, height=400,xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
+                       yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='nb_teu', x=0.5, y=0.5, font_size=20, showarrow=False)])
    
-                      col1, col2,col3= st.columns(3)
-                      with col1:
-                          st.plotly_chart(fig7)
-                      with col2:
-                          st.plotly_chart(fig8)
-                      with col3:
-                          st.plotly_chart(fig9)
+                       col9, col10,col11= st.columns(3)
+                       with col9:
+                           st.plotly_chart(fig7)
+                       with col10:
+                           st.plotly_chart(fig8)
+                      with col11:
+                           st.plotly_chart(fig9)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

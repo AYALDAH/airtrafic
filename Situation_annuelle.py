@@ -32,7 +32,7 @@ from sklearn import metrics
 from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
-Analyses=('Analyse Mensuelle','Analyse générale des sites','Analyse par sites')
+Analyses=('Analyse Mensuelle','Analyse globale des sites','Analyse par sites')
 ENTITE=("MARSEILLE","MONTOIR","DUNKERQUE","ROUEN", "LE HAVRE")
 Approches=("Clustering RFM", "Logit Binaire")
 
@@ -330,7 +330,7 @@ def page_dashboard():
 #---------------------------------------------------------------------------------------
 #                                  Analyse des sites
 #---------------------------------------------------------------------------------------
-    elif  Analyse_Exploratoire == 'Analyse générale des sites':   
+    elif  Analyse_Exploratoire == 'Analyse globale des sites':   
                   #Préparation des données
                   Maritime_df=pd.read_excel("Maritime_data.xlsx")
                  #Imputation variables quantitatives

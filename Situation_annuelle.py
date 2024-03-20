@@ -331,8 +331,6 @@ def page_dashboard():
 #                                  Analyse par site
 #---------------------------------------------------------------------------------------
     elif  Analyse_Exploratoire == 'Analyse par sites':   
-                    with st.sidebar:
-                        st.write("**Choisir un site pour découvrir les statatistiques correspondantes**")
                   #Préparation des données
                   Maritime_df=pd.read_excel("Maritime_data.xlsx")
                  #Imputation variables quantitatives

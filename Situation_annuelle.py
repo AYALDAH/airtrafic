@@ -517,7 +517,7 @@ def page_dashboard():
                     #Nombre de teu  et taille
                        fig8 = go.Figure()
                        d_3 = pd.DataFrame(Maritime_df["TEU"].value_counts())
-                       d_4 = pd.DataFrame(attrition_df["TAILLE_TC"].value_counts())
+                       d_4 = pd.DataFrame(Maritime_df["TAILLE_TC"].value_counts())
 
                       #nb_teu
                        fig8=go.Figure()

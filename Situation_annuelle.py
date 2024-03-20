@@ -436,34 +436,34 @@ def page_dashboard():
                     st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les taux marges les plus élevés au cours de cette année')           
                  
                     #Voir les détails par site
-    elif  Analyse_Exploratoire == 'Analyse par sites':      
-                 #Site de Marseille
-                  st.sidebar.write("**Choississez un site pour découvrir les statistiques correspondantes**")
-                  if st.sidebar.button("MARSEILLE"):
-                       st.write("**Les statistiques du site de Marseille**")
-                       filtered_data = Maritime_df[Maritime_df['ENTITE'] == "MARSEILLE"]
+    elif  Analyse_Exploratoire == 'Analyse par sites':
+        #Site de Marseille
+        st.sidebar.write("**Choississez un site pour découvrir les statistiques correspondantes**")
+        if st.sidebar.button("MARSEILLE"):
+        st.write("**Les statistiques du site de Marseille**")
+        filtered_data = Maritime_df[Maritime_df['ENTITE'] == "MARSEILLE"]
                       
-                      #Secteur d'activité
-                       sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
-                       top_sectors = sector_counts[sector_counts >10].index
-                       filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
-                       treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
-                       treemap1=treemap1.update_layout( width=400, height=450)
+        #Secteur d'activité
+        sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
+        top_sectors = sector_counts[sector_counts >10].index
+        filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
+        treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
+        treemap1=treemap1.update_layout( width=400, height=450)
                       
-                      #Pays du client
-                       d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)
-                       d_pays=d_pays.head(3)
-                       pays_bar = px.bar(d_pays, x='PAYS_CLIENT', y=d_pays.index, orientation='h')
-                       pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par site"))
-                       pays_bar.update_layout(title=' PAYS_CLIENT et ACTIVITE PRINCIPALE', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=350, height=400, xaxis=dict(title="count"),  # Add x-axis label
-                  yaxis=dict(title=""),)
-                       pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(225,69,0)')
-                  #Présentation en colonne
-                       col5, col6 = st.columns(2)
-                       with col5:
-                           st.plotly_chart(pays_bar)
-                       with col6:
-                           st.plotly_chart(treemap1)
+        #Pays du client
+        d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)
+        d_pays=d_pays.head(3)
+        pays_bar = px.bar(d_pays, x='PAYS_CLIENT', y=d_pays.index, orientation='h')
+        pays_bar.update_layout(title = dict(text = "Graphique du pourcentage par site"))
+        pays_bar.update_layout(title=' PAYS_CLIENT et ACTIVITE PRINCIPALE', plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,1,1,0)', width=350, height=400, xaxis=dict(title="count"),  # Add x-axis label
+        yaxis=dict(title=""),)
+        pays_bar.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(225,69,0)')
+        #Présentation en colonne
+        col5, col6 = st.columns(2)
+         with col5:
+             st.plotly_chart(pays_bar)
+        with col6:
+             st.plotly_chart(treemap1)
                  #Armateur
                        sector_counts = filtered_data['ARMATEUR'].value_counts()
                        top_sectors = sector_counts[sector_counts > 10].index

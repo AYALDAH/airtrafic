@@ -533,9 +533,9 @@ def page_dashboard():
                        with col9:
                            st.plotly_chart(fig7)
                        with col10:
-                           st.plotly_chart(fig8)
+                          st.plotly_chart(fig8)
                       with col11:
-                           st.plotly_chart(fig9)
+                          st.plotly_chart(fig9)
 def page_ML():
     st.title("")
     col1, col2 = st.columns([1, 5])

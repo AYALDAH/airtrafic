@@ -103,6 +103,7 @@ def page_dashboard():
 # Grouper les données mensuellement
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
 # Créer un graphique Plotly Express
+#Définir les Mois en Français
        
         mois_fr = {
     'January': 'janvier',
@@ -118,7 +119,8 @@ def page_dashboard():
     'November': 'novembre',
     'December': 'décembre'
 }
-         #fig0
+         #Evolution mensuelle du volume
+      
         fig0 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='VOLUME', title='Evolution mensuelle du Volume', markers=True)
         fig0.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig0.update_xaxes(
@@ -134,9 +136,11 @@ def page_dashboard():
         top_months = monthly_data_grouped2.head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
         st.plotly_chart(fig0)
+        #Commentaire
         st.write('Des pics de volumes moyens sont constatés au cours des mois de', ', '.join(top_months['Month']))
         
-        #fig1
+        #Evolution menuelle du CA
+      
         fig1 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MONTANT', title='Evolution mensuelle du CA', markers=True)
         fig1.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig1.update_xaxes(
@@ -152,7 +156,8 @@ def page_dashboard():
         top_months1 = monthly_data_grouped2.head(3)
         top_months1['Month'] = top_months1['Month'].map(mois_fr)
         
-        #fig2
+        #Evolution menuelle de la Marge
+      
         fig2 = px.line(monthly_data_grouped, x=monthly_data_grouped.index, y='MARGE', title='Evolution mensuelle de la Marge', markers=True)
         fig2.update_traces(texttemplate='%{y:.2f}', textposition='top center', mode='markers+lines+text')
         fig2.update_xaxes(
@@ -165,7 +170,8 @@ def page_dashboard():
         monthly_data_grouped22 = monthly_data_grouped.sort_values(by='MARGE', ascending=False)
         top_months2 = monthly_data_grouped22.head(3)
         top_months2['Month'] = top_months2['Month'].map(mois_fr)
-# Afficher les résultats
+
+    # Afficher les en colonne
     # Afficher le graphique dans l'interface Streamlit
         col1, col2 = st.columns(2)
         with col1:
@@ -176,7 +182,8 @@ def page_dashboard():
             st.write('Les marges moyennes les plus élevées sont enrégistrées en ', ', '.join(top_months2['Month']))
 
         
-#Volumes par sites
+#Visualiser les volumes par site et par Mois
+#Renommer les Entités/Sites   
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT13"], value = "MARSEILLE")
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT45"], value = "MONTOIR")
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT59"], value = "DUNKERQUE")

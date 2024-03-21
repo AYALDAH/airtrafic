@@ -209,11 +209,11 @@ def page_dashboard():
         fig3.update_xaxes(range=[start_date, end_date], dtick='M1',tickformat='%b %Y',tickangle=45
 )
 # Personnaliser la mise en page pour enlever l'axe des abscisses
-        fig3.update_layout(barmode='stack',title='Volume par site et par mois',xaxis_title='DATE',yaxis_title='Volume',height=400,width=800,xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
+        fig3.update_layout(barmode='stack',title='Volume par site et par mois',xaxis_title='DATE',yaxis_title='Volume',height=400,width=800,xaxis_showticklabels=False,
     xaxis_visible=False  # Rendre l'axe des abscisses invisible
 )
 #Afficher le graphique      
-     st.plotly_chart(fig3)  
+       st.plotly_chart(fig3)  
 
 #Commentaires du graphique
     

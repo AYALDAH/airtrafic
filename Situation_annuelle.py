@@ -200,12 +200,7 @@ def page_dashboard():
         Colors=px.colors.sequential.Cividis
         for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
               entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
-              fig3.add_trace(go.Bar(
-        x=entity_data['DATE'],
-        y=entity_data['VOLUME'],
-        name=entity,
-        text=entity_data['DATE'].dt.strftime('%b %Y'),  # Format du texte (mois)
-        textposition='inside',
+              fig3.add_trace(go.Bar(x=entity_data['DATE'],y=entity_data['VOLUME'],name=entity,text=entity_data['DATE'].dt.strftime('%b %Y'),  # Format du texte (mois)textposition='inside',
         marker_color=Colors[i % len(Colors)]  # Choisissez une couleur de la liste en boucle
     ))
 # Définir la date de début (janvier) et la date de fin (Decembre)
@@ -217,9 +212,12 @@ def page_dashboard():
         fig3.update_layout(barmode='stack',title='Volume par site et par mois',xaxis_title='DATE',yaxis_title='Volume',height=400,width=800,xaxis_showticklabels=False,  # Enlever les étiquettes de l'axe des abscisses
     xaxis_visible=False  # Rendre l'axe des abscisses invisible
 )
-        st.plotly_chart(fig3)  
+#Afficher le graphique      
+      st.plotly_chart(fig3)  
+
+#Commentaires du graphique
     
-# Trier le DataFrame par volume décroissant
+        # Trier le DataFrame par volume décroissant
         # Trier le DataFrame par entité décroissant 
         top_entities = [] 
         monthly_data_groupedP = Evol_df.resample('M',on='DATE').mean()
@@ -227,15 +225,15 @@ def page_dashboard():
         top_months = monthly_data_groupedP.sort_values(by='VOLUME', ascending=False).head(3)
         top_months['Month'] = top_months['Month'].map(mois_fr)
         
-           # Filtrer les données pour le mois actuel
+        # Filtrer les données pour le mois actuel
         for month_index, month_data in top_months.iterrows():
             month_entities_data = Evol_df[Evol_df['MOIS'] == month_index.month]
             
-    # Grouper les données par entité et calculer le volume total pour chaque entité
+        # Grouper les données par entité et calculer le volume total pour chaque entité
             entities_volume = month_entities_data.groupby('ENTITE')['VOLUME'].sum()
-    # Trier les entités par volume total dans l'ordre décroissant et sélectionner les trois premières entités
+        # Trier les entités par volume total dans l'ordre décroissant et sélectionner les trois premières entités
             top_entities_in_month = entities_volume.nlargest(3)
-    # Ajouter les entités à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
+       # Ajouter les entités à la liste des entités ayant le plus de volume parmi les mois ayant le plus de volume
             top_entities.append(top_entities_in_month)     
         for i, (month_index, _) in enumerate(top_months.iterrows()):
             entities_series = top_entities[i]
@@ -244,13 +242,16 @@ def page_dashboard():
                 st.write(f"Au cours du mois de {mois_francais}, les entités ayant les volumes les plus élevés sont : {', '.join(entities_series.index.tolist())}")
             else:
                 st.write(f"Erreur: Au cours du mois de {month_index.strftime('%B')} ne sont pas disponibles.")
+    
+# Visualisation des détails par site pour chaque indicateur (VOLUME,CA,MARGE)( Graphique de variation)
+#Choix des Sites
         with st.sidebar:
             st.write("**Pour plus de Détails:**")
             st.write("**Choisir un Site**")
             selected_entity = st.selectbox('SITE',ENTITE)
             st.write("**Choisir un indicateur**")
 
-# Group the data by month and site, and calculate the sum of volume for each month
+# Grouper les données par site et par mois,et calculer la somme des volume pour chque mois
         #Indicateur VOLUME
         if st.sidebar.button("VOLUME"):
             st.write("**VARIATION DES INDICATEURS PAR SITE**")
@@ -259,15 +260,16 @@ def page_dashboard():
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
             monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
 
-# Create the waterfall chart using Plotly Express
+           # Créer un waterfall pour le volume
             fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du volume moyen en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in Volume'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)
 
-# Update layout and appearance of the plot
+           # Mise en forme du graphique
             fig_waterfall.update_layout(height=400, width=800)
             fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
-#Commentaires Volume
+           
+          #Commentaires Volume
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
             monthly_data_grouped = monthly_data_grouped.resample('M',on='DATE').mean()
             monthly_data_grouped['Change'] = monthly_data_grouped['VOLUME'].diff().fillna(0)
@@ -276,7 +278,8 @@ def page_dashboard():
             top_months = monthly_data_grouped.head(3)
             top_months['Month'] = top_months['Month'].map(mois_fr)
             st.write('Sur le site de ', ''.join(selected_entity), 'les baisses les plus importantes de volume ont lieu en ',','.join(top_months['Month']))
-        #Indicateur MONTANT
+        
+         #Indicateur MONTANT
         if st.sidebar.button("MONTANT"):
             st.write("**VARIATION DES INDICATEURS PAR SITE**")
             st.write('Vous avez selectionné:', selected_entity)
@@ -284,15 +287,16 @@ def page_dashboard():
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MONTANT'].sum().reset_index()
             monthly_data_grouped['Change'] = monthly_data_grouped['MONTANT'].diff().fillna(0)
 
-# Create the waterfall chart using Plotly Express
+         # Créer un waterfall pour le CA
             fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation du montant moyen en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in amount'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)
 
-# Update layout and appearance of the plot
+         # Mise en forme du graphique
             fig_waterfall.update_layout(height=400, width=800)
             fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
-#Commentaires Montant
+          
+          #Commentaires Montant
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MONTANT'].sum().reset_index()
             monthly_data_grouped = monthly_data_grouped.resample('M',on='DATE').mean()
             monthly_data_grouped['Change'] = monthly_data_grouped['MONTANT'].diff().fillna(0)
@@ -302,7 +306,7 @@ def page_dashboard():
             top_months['Month'] = top_months['Month'].map(mois_fr)
             st.write('A', ''.join(selected_entity), ', le CA a fortement baissé en ',' ,'.join(top_months['Month']))
             
- #Indicateur MARGE
+        #Indicateur MARGE
         if st.sidebar.button("MARGE"):
             st.write("**VARIATION DES INDICATEURS PAR SITE**")
             st.write('Vous avez selectionné:', selected_entity)
@@ -310,15 +314,15 @@ def page_dashboard():
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MARGE'].sum().reset_index()
             monthly_data_grouped['Change'] = monthly_data_grouped['MARGE'].diff().fillna(0)
 
-# Create the waterfall chart using Plotly Express
+        # Créer un waterfall pour la MARGE
             fig_waterfall = px.bar(monthly_data_grouped, x='DATE', y='Change', title='Variation de la marge moyenne en 2023', barmode='overlay', labels={'DATE': 'Date', 'Change': 'Change in amount'},color='Change',color_continuous_scale='RdBu',color_continuous_midpoint=0)
 
-# Update layout and appearance of the plot
+        # Mise en forme du graphique
             fig_waterfall.update_layout(height=400, width=800)
             fig_waterfall.update_layout(width=700, height=500, bargap=0.1,
             plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
             st.plotly_chart(fig_waterfall)
-#Commentaires Marge
+        #Commentaires Marge
             monthly_data_grouped = filtered_data.groupby([pd.Grouper(key='DATE', freq='M')])['MARGE'].sum().reset_index()
             monthly_data_grouped = monthly_data_grouped.resample('M',on='DATE').mean()
             monthly_data_grouped['Change'] = monthly_data_grouped['MARGE'].diff().fillna(0)

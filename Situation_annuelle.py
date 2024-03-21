@@ -213,7 +213,7 @@ def page_dashboard():
     xaxis_visible=False  # Rendre l'axe des abscisses invisible
 )
 #Afficher le graphique      
-    st.plotly_chart(fig3)  
+     st.plotly_chart(fig3)  
 
 #Commentaires du graphique
     

@@ -924,7 +924,7 @@ def page_dashboard():
             treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
             treemap2=treemap2.update_layout( width=400, height=450)
 
-                #sens
+        #sens
             colors = ['deepskyblue', 'salmon']
             explode = [0.1, 0]
             fig_sens = go.Figure()
@@ -935,7 +935,7 @@ def page_dashboard():
             pull=explode, textfont_size=12))  # Decrease the font size to 12
             fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "))
 
-             #Présentation en colonne
+        #Présentation en colonne
             col7, col8 = st.columns(2)
             with col7:
                 st.plotly_chart(fig_sens)
@@ -954,6 +954,7 @@ def page_dashboard():
             Chloroplètre_2= px.choropleth(somme_marges_par_pays, locations="code_iso_a", hover_name="PAYS_ARRIVEE_Lo", color="MARGE",hover_data=somme_marges_par_pays.columns,projection="natural earth",color_continuous_scale=palette_couleur)
             Chloroplètre_2=Chloroplètre_2.update_layout( width=800, height=800,title = dict(text = "Pays Arrivée"))
             st.plotly_chart(Chloroplètre_2)
+          
             #Les TEU
                        # Update layout and appearance of the plot
                        #Type TEU
@@ -966,18 +967,20 @@ def page_dashboard():
             xaxis=dict(showline=False, showgrid=False),yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='type', x=0.50, y=0.45, font_size=20, showarrow=False)] )
             colors = ['deepskyblue', 'salmon','khaki']
             explode = [0.1, 0]
-                    #Nombre de teu  et taille
+          
+            #Nombre de teu  et taille
             fig8 = go.Figure()
             d_3 = pd.DataFrame(filtered_data["TEU_2"].value_counts())
             d_4 = pd.DataFrame(filtered_data["TAILLE_TC"].value_counts())
 
-                      #nb_teu
+            #nb_teu
             fig8=go.Figure()
             fig8.add_trace(go.Pie(labels=d_3.index, values=d_3['TEU_2'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,pull=explode, textfont_size=12)) 
             fig8=fig8.update_layout(title=dict(text=""),plot_bgcolor='rgba(0,0,0,0)',paper_bgcolor='rgba(0,1,1,0)',showlegend=False,width=290, height=400,
             xaxis=dict(showline=False, showgrid=False),  # Remove x-axis line and grid
             yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='nb_teu', x=0.52, y=0.5, font_size=20, showarrow=False)])
-                    #taille_tc
+          
+            #taille_tc
             fig9 = go.Figure()
             fig9.add_trace(go.Pie(labels=d_4.index, values=d_4['TAILLE_TC'],marker=dict(colors=colors, line=dict(color='white', width=0)),textinfo='percent+label', hole=0.3, sort=False,
             pull=explode, textfont_size=12))  # Decrease the font size to 12

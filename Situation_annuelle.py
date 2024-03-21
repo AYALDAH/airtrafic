@@ -36,12 +36,9 @@ from sklearn import metrics
 from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
-
-
- 
-#---------------------------------------------------------------------------------------
-#                                  Sidebar configuration 
-#---------------------------------------------------------------------------------------
+                                                    #---------------------------------------------------------------------------------------
+                                                    #                                  Sidebar configuration 
+                                                    #---------------------------------------------------------------------------------------
 #Définir les variables 
 Analyses=('Analyse Mensuelle','Analyse globale des sites','Analyse par sites')
 ENTITE=("MARSEILLE","MONTOIR","DUNKERQUE","ROUEN", "LE HAVRE")
@@ -66,13 +63,13 @@ def RESUME():
     st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023. "  "Les données considérées couvrent la période de janvier à fin Décembre." )
     st.write("Afin de mieux appréhender la situation de l’activité commerciale sur les 4 trimestres de 2023, les données mensuelles du volume, du chiffre d’affaires facturé et de la marge ont été analysées dans la première partie.")
     st.write("Les statistiques par agence ont également été présentées et une section dédiée à la prédiction des ventes et des volumes sur les prochains mois a été mise en place. Pour mieux catégoriser les clients, une segmentation par clustering (construction de grappes où les clients sont attribués à des grappes en fonctionde leurs caractéristiques R, F et M les plus proches) a été réalisée.")
-  
+# Affichage des bâteaux
     cola, colb = st.columns(2)
     with cola:
         st.image("boat_new.gif")
     with colb:
         st.image("boat_new.gif")
-#
+#Definir la page d'exploration des données
 def page_dashboard():
     st.title("")
     col1, col2 = st.columns([1, 5])
@@ -84,25 +81,26 @@ def page_dashboard():
 # Affichage du titre dans la deuxième colonne
     with col2:
         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
-#Import data
+
+    
+                                                            #---------------------------------------------------------------------------------------
+                                                            #                                  Analyse Mensuelle
+                                                            #---------------------------------------------------------------------------------------
+#Importation et traitement des données mensuelles 
     Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
     Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
     imputer = KNNImputer(n_neighbors=5)
     Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
-    
-#---------------------------------------------------------------------------------------
-#                                  Analyse Mensuelle
-#---------------------------------------------------------------------------------------
-    
-    #sidebar configuration
+  
+#sidebar configuration
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Analyses mensuelles et par sites', Analyses)
     if  Analyse_Exploratoire == 'Analyse Mensuelle':
         st.write("**ANALYSE GLOBALE MENSUELLE**")
         Evol_df['DATE'] = pd.to_datetime(Evol_df['DATE'])
-    # Grouper les données mensuellement
+# Grouper les données mensuellement
         monthly_data_grouped = Evol_df.resample('M',on='DATE').mean()
-    # Créer un graphique Plotly Express
+# Créer un graphique Plotly Express
        
         mois_fr = {
     'January': 'janvier',

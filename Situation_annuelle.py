@@ -189,13 +189,15 @@ def page_dashboard():
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT59"], value = "DUNKERQUE")
         Evol_df["ENTITE"]= Evol_df["ENTITE"].replace(["RDT76"], value = "ROUEN")
         Evol_df["ENTITE"] = Evol_df["ENTITE"].replace(["RDT76LEH"], value = "LE HAVRE")
-        
+
+#Grouper les données de volumes par Mois
+      
         monthly_data_grouped = Evol_df.groupby(['ENTITE', pd.Grouper(key='DATE', freq='M')])['VOLUME'].sum().reset_index()
        
-# Création du graphique à barres empilées avec des couleurs personnalisées
+# Création du graphique à barres empilées avec des couleurs personnalisées (Volumes par mois et par Sites)
         fig3 = go.Figure()
         #colors = ['chocolate','Peru','darkorange','deepskyblue','silver','lightyellow']  # Liste de couleurs personnalisées
-        Colors=px.colors.sequential.Cividis
+        Colors=px.colors.sequential.OrRd
         for i, entity in enumerate(monthly_data_grouped['ENTITE'].unique()):
               entity_data = monthly_data_grouped[monthly_data_grouped['ENTITE'] == entity]
               fig3.add_trace(go.Bar(

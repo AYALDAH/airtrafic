@@ -1,3 +1,7 @@
+                                                           #---------------------------------------------------------------------------------------
+                                                           #                                  Sidebar configuration 
+                                                           #---------------------------------------------------------------------------------------
+#Importation des packages
 import streamlit as st
 import pandas as pd
 import streamlit as  st
@@ -32,17 +36,17 @@ from sklearn import metrics
 from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
-Analyses=('Analyse Mensuelle','Analyse globale des sites','Analyse par sites')
-ENTITE=("MARSEILLE","MONTOIR","DUNKERQUE","ROUEN", "LE HAVRE")
-Approches=("Clustering RFM", "Logit Binaire")
 
-    # Ajoutez le contenu de la page de tableau de bord ici
-    #Import packages
 
+ 
 #---------------------------------------------------------------------------------------
 #                                  Sidebar configuration 
 #---------------------------------------------------------------------------------------
-  
+#Définir les variables 
+Analyses=('Analyse Mensuelle','Analyse globale des sites','Analyse par sites')
+ENTITE=("MARSEILLE","MONTOIR","DUNKERQUE","ROUEN", "LE HAVRE")
+Approches=("Clustering RFM", "PROPHET")
+
 # Chemin vers l'image de logo
 # Création d'une mise en page en colonnes avec Streamlit
 def RESUME():

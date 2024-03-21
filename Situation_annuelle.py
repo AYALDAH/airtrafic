@@ -853,6 +853,7 @@ def page_dashboard():
             Chloroplètre_2= px.choropleth(somme_marges_par_pays, locations="code_iso_a", hover_name="PAYS_ARRIVEE_Lo", color="MARGE",hover_data=somme_marges_par_pays.columns,projection="natural earth",color_continuous_scale=palette_couleur)
             Chloroplètre_2=Chloroplètre_2.update_layout( width=800, height=800,title = dict(text = "Pays Arrivée"))
             st.plotly_chart(Chloroplètre_2)
+          
             #Les TEU
                        # Update layout and appearance of the plot
                        #Type TEU

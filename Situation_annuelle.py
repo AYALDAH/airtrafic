@@ -333,11 +333,18 @@ def page_dashboard():
             st.write('La marge sur le site de', ''.join(selected_entity), ', a connu des changements négatifs au cours des mois de ',', '.join(top_months['Month']))
 
 
-#---------------------------------------------------------------------------------------
-#                                  Analyse des sites
-#---------------------------------------------------------------------------------------
+                                                                      #---------------------------------------------------------------------------------------
+                                                                      #                                  Analyse des sites
+                                                                      #---------------------------------------------------------------------------------------
+
+  
+  #---------------------------------------------------------------------------------------
+  #                                  Analyse global des sites
+  #---------------------------------------------------------------------------------------
+  # Analyse globale des sites
     elif  Analyse_Exploratoire == 'Analyse globale des sites':   
-                  #Préparation des données
+    #Préparation des données
+    #Importation des données
                   Maritime_df=pd.read_excel("Maritime_data.xlsx")
                  #Imputation variables quantitatives
                   imputer = KNNImputer(n_neighbors=5)
@@ -393,7 +400,7 @@ def page_dashboard():
                     top_site_teu =Maritime_df11.head(3)
                     st.write('En terme de CA facturé, les sites de', ', '.join(top_site_teu['ENTITE']),',arrivent en tête de liste')
             
-                   #Répartition des sites par Marge
+              #Répartition des sites par Marge
                   Maritime_df1 =Maritime_df.groupby(['ENTITE'])['MARGE'].sum().reset_index()
                   Maritime_df1=Maritime_df1.sort_values(by='ENTITE').sort_values(by='MARGE', ascending=True)
                   fig3 = px.bar(Maritime_df1, x='MARGE', y="ENTITE", orientation='h')
@@ -402,20 +409,20 @@ def page_dashboard():
                   yaxis=dict(title="Site"),)
                   fig3.update_traces(marker_line_width=0, marker_opacity=0.7, marker_color='rgb(139,0,139)')
                  
-                 #Repartition des Taux Moyen de Marge
+              #Repartition des Taux Moyen de Marge
                   Maritime_df2 =Maritime_df.groupby(['ENTITE'])['Taux_Marge'].mean().reset_index()
 
                   colors = ['deepskyblue', 'salmon','violet', 'powderblue',"firebrick", "mediumslateblue"]
                   explode = [0.1, 0]
                   fig4 = go.Figure()
 
-                # Creer le graphique
+              # Creer le graphique
                   fig4.add_trace(go.Pie(labels=Maritime_df2["ENTITE"], values=Maritime_df2["Taux_Marge"],
                      marker=dict(colors=colors, line=dict(color='white', width=0)),
                      textinfo='percent+label', hole=0.3, sort=False,
                      pull=explode, textfont_size=12))  # Decrease the font size to 12
 
-                 # Update layout and appearance of the plot
+                # Mise en forme du graphique
                   fig4.update_layout(title=dict(text=""),
                   plot_bgcolor='rgba(0,0,0,0)',
                   paper_bgcolor='rgba(0,1,1,0)',
@@ -425,7 +432,7 @@ def page_dashboard():
                   yaxis=dict(showline=False, showgrid=False), # Remove y-axis line and grid
                   annotations=[dict(text='taux', x=0.50, y=0.50, font_size=20, showarrow=False)] )
 
-                  #Présentation en colonne
+                #Présentation en colonne
                   col3, col4 = st.columns(2)
                   with col3:
                     st.plotly_chart(fig3)
@@ -440,8 +447,13 @@ def page_dashboard():
                     Maritime_df_tm=Maritime_df2.sort_values(by='ENTITE').sort_values(by='Taux_Marge', ascending=False)
                     top_site_teu = Maritime_df_tm.head(3)
                     st.write('Les sites de', ', '.join(top_site_teu['ENTITE']),',ont réalisé les taux marges les plus élevés au cours de cette année')           
+
+  
+  #---------------------------------------------------------------------------------------
+  #                                  Analyse par sites
+  #---------------------------------------------------------------------------------------
                  
-                    #Voir les détails par site
+       #Voir les détails par site
     elif  Analyse_Exploratoire == 'Analyse par sites':
         #Préparation des données
         Maritime_df=pd.read_excel("Maritime_data.xlsx")

@@ -37,7 +37,7 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
                                                     #---------------------------------------------------------------------------------------
-                                                    #                                  Sidebar configuration 
+                                                    #                                  Sidebar configuration et Résumé
                                                     #---------------------------------------------------------------------------------------
 #Définir les variables 
 Analyses=('Analyse Mensuelle','Analyse globale des sites','Analyse par sites')
@@ -69,6 +69,12 @@ def RESUME():
         st.image("boat_new.gif")
     with colb:
         st.image("boat_new.gif")
+
+
+    
+                                                            #---------------------------------------------------------------------------------------
+                                                            #                                  Analyse Mensuelle
+                                                            #---------------------------------------------------------------------------------------
 #Definir la page d'exploration des données
 def page_dashboard():
     st.title("")
@@ -82,17 +88,13 @@ def page_dashboard():
     with col2:
         st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
 
-    
-                                                            #---------------------------------------------------------------------------------------
-                                                            #                                  Analyse Mensuelle
-                                                            #---------------------------------------------------------------------------------------
-#Importation et traitement des données mensuelles 
+  #Importation et traitement des données mensuelles 
     Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
     Stat_mens=pd.read_excel("Analyse_maritime.xlsx")
     imputer = KNNImputer(n_neighbors=5)
     Evol_df['VOLUME'] = imputer.fit_transform(Evol_df[['VOLUME']])
   
-#sidebar configuration
+#Configuration de la barre pour le choix des analyses
     with st.sidebar:
         Analyse_Exploratoire=st.selectbox('Analyses mensuelles et par sites', Analyses)
     if  Analyse_Exploratoire == 'Analyse Mensuelle':

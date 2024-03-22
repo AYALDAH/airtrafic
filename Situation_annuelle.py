@@ -255,7 +255,7 @@ def page_dashboard():
 # Visualisation des détails par site pour chaque indicateur (VOLUME,CA,MARGE)( Graphique de variation)
 #Choix des Sites
         with st.sidebar:
-            st.write("**Pour plus de Détails sur les variations:**")
+            st.write("**Pour plus de détails sur les variations:**")
             st.write("**Choisissez un Site**")
             selected_entity = st.selectbox('SITE',ENTITE)
             st.write("**Choisissez un indicateur**")

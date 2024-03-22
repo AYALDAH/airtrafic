@@ -489,7 +489,8 @@ def page_dashboard():
             sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
             top_sectors = sector_counts[sector_counts >10].index
             filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
-            treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
+            colors = ["#ff7f0e", "#1f77b4", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+            treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="";color_continuous_scale=colors)
             treemap1=treemap1.update_layout( width=400, height=450)
                       
         #Pays du client
@@ -511,7 +512,8 @@ def page_dashboard():
             sector_counts = filtered_data['ARMATEUR'].value_counts()
             top_sectors = sector_counts[sector_counts > 10].index
             filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
-            treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
+            colors = ["#ff7f0e", "#1f77b4", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
+            treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="";color_continuous_scale=colors)
             treemap2=treemap2.update_layout( width=400, height=450)
 
         #sens

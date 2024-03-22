@@ -68,7 +68,7 @@ def ACCUEIL():
     st.subheader("MODE D'EMPLOI")
     st.write("-Choisir la page à visualiser sur la barre latérale gauche" )
     st.write("-Naviguer sur les différentes pages en chisissant les options" )
-    st.write("Si vous choisissez la page Analyse Exploratoire, vous avez plusieurs options dans le menu déroulant.)
+    st.write("Si vous choisissez la page Analyse Exploratoire, vous avez plusieurs options dans le menu déroulant.")
     st.write("La première option est Analyse Mensuelle, qui prend en compte les details mensuels par site (Choisir le site dans le deuxieme menu déroulant)")
   # Affichage des bâteaux
     cola, colb = st.columns(2)

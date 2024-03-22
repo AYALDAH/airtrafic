@@ -512,7 +512,7 @@ def page_dashboard():
             sector_counts = filtered_data['ARMATEUR'].value_counts()
             top_sectors = sector_counts[sector_counts > 10].index
             filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
-            color=custom_color_scale_without_green = ["#00bfff", "#1f77b4", "#ff7f0e", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f",  "#c5b0d5", "#17becf","#aec7e8"]
+            color=custom_color_scale_without_green = ["#00bfff", "#1f77b4", "#ff9896", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f",  "#c5b0d5", "#17becf","#aec7e8"]
             treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="",color_discrete_sequence=color)
             treemap2=treemap2.update_layout( width=400, height=450)
 

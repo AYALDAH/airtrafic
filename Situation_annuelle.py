@@ -37,7 +37,7 @@ from sklearn.metrics import silhouette_samples, silhouette_score
 from matplotlib.ticker import MaxNLocator
 
                                                     #---------------------------------------------------------------------------------------
-                                                    #                                  Sidebar configuration et Résumé
+                                                    #                                  Sidebar configuration et Acceuil
                                                     #---------------------------------------------------------------------------------------
 #Définir les variables 
 Analyses=('Analyse Mensuelle','Analyse globale des sites','Analyse par sites')
@@ -1030,7 +1030,7 @@ def page_ML():
 st.sidebar.image("logo_rdt.jpg", width=250)
 # Créez une barre latérale pour la navigation entre les pages
 st.sidebar.subheader("NAVIGUER POUR DECOUVRIR 📋🔍")
-page = st.sidebar.radio("Selectionner la page qui vous interesse", ["ACCUEIL 📝","Analyse Exploratoire📊", "Machine Learning 📈📉"])
+page = st.sidebar.radio("Selectionnez la page qui vous intéresse", ["ACCUEIL 📝","Analyse Exploratoire📊", "Machine Learning 📈📉"])
 # Affichage conditionnel en fonction de la page sélectionnée
           
 if page == "ACCUEIL 📝":

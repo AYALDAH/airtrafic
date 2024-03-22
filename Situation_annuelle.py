@@ -1007,6 +1007,8 @@ def page_ML():
     with col2:
         st.title('MODELS DE PREDICTION')
         #st.subheader(" SEGMENTATION ET PREDICTION")        
+
+st.sidebar.image("logo_rdt.jpg", width=100)
 # Créez une barre latérale pour la navigation entre les pages
 st.sidebar.subheader("NAVIGUER POUR DECOUVRIR 📋🔍")
 page = st.sidebar.radio("Selectionner la page qui vous interesse", ["Resumé 📝","Analyse Exploratoire📊", "Machine Learning 📈📉"])

@@ -490,7 +490,7 @@ def page_dashboard():
             top_sectors = sector_counts[sector_counts >10].index
             filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
             colors = Colors=px.colors.sequential.Cividis
-            treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
+            treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="",color_continuous_scale = 'RdBu')
             treemap1=treemap1.update_layout( width=400, height=450)
                       
         #Pays du client

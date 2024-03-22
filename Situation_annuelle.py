@@ -70,6 +70,8 @@ def ACCUEIL():
     st.write("-Naviguer sur les différentes pages en chisissant les options" )
     st.write("Si vous choisissez la page Analyse Exploratoire, vous avez plusieurs options dans le menu déroulant.")
     st.write("La première option est Analyse Mensuelle, qui prend en compte les details mensuels par site (Choisir le site dans le deuxieme menu déroulant)")
+    st.write("La deuxième option est Analyse globale des sites, qui présente de manière globale des statistiques sur les sites")
+    st.write("La troisième option de cette page donne la possibilité de visualiser les statistique de chaque individuellement en choisissant le boutton du site qui vous intéresse.")
   # Affichage des bâteaux
     cola, colb = st.columns(2)
     with cola:

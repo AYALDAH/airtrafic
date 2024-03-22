@@ -66,12 +66,12 @@ def ACCUEIL():
     # Pour mieux catégoriser les clients, une segmentation par clustering (construction de grappes où les clients sont attribués à des grappes en fonctionde leurs caractéristiques R, F et M les plus proches) a été réalisée.
 #Mode D'emploi
     st.subheader("MODE D'EMPLOI")
-    st.write("-Choisir la page à visualiser sur la barre latérale gauche" )
-    st.write("-Naviguer sur les différentes pages en chisissant les options" )
+    st.write("-Selectionnez la page à visualiser sur la barre latérale gauche" )
+    st.write("-Naviguer sur les différentes pages en selectionnant les options" )
     st.write("I-Si vous choisissez la page Analyse Exploratoire, vous avez plusieurs options dans le menu déroulant.")
-    st.write("La première option est Analyse Mensuelle, qui prend en compte les details mensuels par site (Choisir le site dans le deuxieme menu déroulant)")
+    st.write("La première option est Analyse Mensuelle, qui prend en compte les détails mensuels par site (Choisir le site dans le deuxième menu déroulant)")
     st.write("La deuxième option est Analyse globale des sites, qui présente de manière globale des statistiques sur les sites")
-    st.write("La troisième option de cette page donne la possibilité de visualiser les statistique de chaque individuellement en choisissant le boutton du site qui vous intéresse.")
+    st.write("La troisième option de cette page donne la possibilité de visualiser les statistiques de chaque individuellement en choisissant le bouton du site qui vous intéresse.")
   # Affichage des bâteaux
     cola, colb = st.columns(2)
     with cola:

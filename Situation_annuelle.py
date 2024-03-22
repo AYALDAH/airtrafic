@@ -46,7 +46,7 @@ Approches=("Clustering RFM", "PROPHET")
 
 # Chemin vers l'image de logo
 # Création d'une mise en page en colonnes avec Streamlit
-def RESUME():
+def ACCUEIL():
     st.title("")
     col1, col2 = st.columns([1, 5])
 
@@ -56,15 +56,17 @@ def RESUME():
         st.image(image)
 # Affichage du titre dans la deuxième colonne
     with col2:
-        st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
+        st.title('ACCUEIL')
         #st.subheader("RESUME")
 #RESUME
-    #st.subheader("RESUME")
+    st.subheader("RESUME")
     st.write("Les statistiques présentées dans ce rapport se réfèrent à l’activité maritime de la Rhodanienne de Transit en 2023. "  "Les données considérées couvrent la période de janvier à fin Décembre." )
     st.write("Afin de mieux appréhender la situation de l’activité commerciale sur les 4 trimestres de 2023, les données mensuelles du volume, du chiffre d’affaires facturé et de la marge ont été analysées dans la première partie.")
     st.write("Les statistiques par agence ont également été présentées et une section dédiée à la prédiction des ventes et des volumes sur les prochains mois a été mise en place.")
     # Pour mieux catégoriser les clients, une segmentation par clustering (construction de grappes où les clients sont attribués à des grappes en fonctionde leurs caractéristiques R, F et M les plus proches) a été réalisée.
-# Affichage des bâteaux
+    st.subheader("MODE D'ENMPLOI")
+  
+  # Affichage des bâteaux
     cola, colb = st.columns(2)
     with cola:
         st.image("boat_new.gif")
@@ -87,7 +89,7 @@ def page_dashboard():
         st.image(image)
 # Affichage du titre dans la deuxième colonne
     with col2:
-        st.title('SITUATION CONMERCIALE À FIN DECEMBRE 2023')
+        st.title('SITUATION CONMERCIALE EN 2023')
 
   #Importation et traitement des données mensuelles 
     Evol_df=pd.read_excel("Evolution_mensuelle_2023.xlsx")
@@ -1022,11 +1024,11 @@ def page_ML():
 st.sidebar.image("logo_rdt.jpg", width=250)
 # Créez une barre latérale pour la navigation entre les pages
 st.sidebar.subheader("NAVIGUER POUR DECOUVRIR 📋🔍")
-page = st.sidebar.radio("Selectionner la page qui vous interesse", ["Resumé 📝","Analyse Exploratoire📊", "Machine Learning 📈📉"])
+page = st.sidebar.radio("Selectionner la page qui vous interesse", ["ACCUEIL 📝","Analyse Exploratoire📊", "Machine Learning 📈📉"])
 # Affichage conditionnel en fonction de la page sélectionnée
           
-if page == "Resumé 📝":
-    RESUME()
+if page == "ACCUEIL 📝":
+    ACCUEIL()
 elif page == "Analyse Exploratoire📊":
     page_dashboard()
 elif page == "Machine Learning 📈📉":

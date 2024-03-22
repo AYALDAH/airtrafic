@@ -255,10 +255,10 @@ def page_dashboard():
 # Visualisation des détails par site pour chaque indicateur (VOLUME,CA,MARGE)( Graphique de variation)
 #Choix des Sites
         with st.sidebar:
-            st.write("**Pour plus de Détails:**")
-            st.write("**Choisir un Site**")
+            st.write("**Pour plus de Détails sur les variation:**")
+            st.write("**Choisissez un Site**")
             selected_entity = st.selectbox('SITE',ENTITE)
-            st.write("**Choisir un indicateur**")
+            st.write("**Choisissez un indicateur**")
 
 # Grouper les données par site et par mois,et calculer la somme des volume pour chque mois
         #Indicateur VOLUME

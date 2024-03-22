@@ -491,7 +491,7 @@ def page_dashboard():
             filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
             colors = Colors=px.colors.sequential.Cividis
             treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
-            treemap1=treemap1.update_layout( width=400, height=450,color_continuous_scale=colors)
+            treemap1=treemap1.update_layout( width=400, height=450)
                       
         #Pays du client
             d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)
@@ -514,7 +514,7 @@ def page_dashboard():
             filtered_data_top = filtered_data[filtered_data['ARMATEUR'].isin(top_sectors)]
             colors = ["#ff7f0e", "#1f77b4", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
             treemap2= px.treemap(filtered_data_top,path=["ARMATEUR"],title="")
-            treemap2=treemap2.update_layout( width=400, height=450,color_continuous_scale=colors)
+            treemap2=treemap2.update_layout( width=400, height=450)
 
         #sens
             colors = ['deepskyblue', 'salmon']

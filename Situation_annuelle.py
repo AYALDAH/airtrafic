@@ -491,7 +491,7 @@ def page_dashboard():
             filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
             colors = Colors=px.colors.sequential.Cividis
             treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="")
-            treemap1=treemap1.update_layout( width=400, height=450)
+            treemap1=treemap1.update_layout( width=400, height=450, coloraxis_colorscale="cividis")
                       
         #Pays du client
             d_pays=pd.DataFrame(filtered_data["PAYS_CLIENT"].value_counts()).sort_values(by='PAYS_CLIENT', ascending=False)

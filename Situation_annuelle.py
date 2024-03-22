@@ -523,8 +523,8 @@ def page_dashboard():
             marker=dict(colors=colors, line=dict(color='white', width=0)),
             textinfo='percent+label', hole=0.3, sort=False,
             pull=explode, textfont_size=12))  # Decrease the font size to 12
-            fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "))
-            yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='sens', x=0.52, y=0.5, font_size=20, showarrow=False)])
+            fig_sens=fig_sens.update_layout( width=320, height=450,title = dict(text = "SENS et ARMATEUR "),yaxis=dict(showline=False, showgrid=False),annotations=[dict(text='taille_tc', x=0.52, y=0.5, font_size=20, showarrow=False)])
+            
 
         #Présentation en colonne
             col7, col8 = st.columns(2)

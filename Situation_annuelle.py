@@ -489,7 +489,7 @@ def page_dashboard():
             sector_counts = filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].value_counts()
             top_sectors = sector_counts[sector_counts >10].index
             filtered_data_top = filtered_data[filtered_data['SECTEUR_ACTIVITE_PRINCIPAL'].isin(top_sectors)]
-            color=custom_color_scale_without_green = ["#ADD8E6", "#8B4513", "#FFFF00", "#40E0D0", "#808080","#FFA07A", "#FF6347", "#FF69B4", "#8A2BE2", "#D8BFD8", "#FA8072", "#E6E6FA"]
+            color=custom_color_scale_without_green = ["#00FFFF", "#8B4513", "#808080", "#0000FF", "#808080","#FFA07A", "#FF6347", "#FF69B4", "#8A2BE2", "#D8BFD8","#FA8072", "#E6E6FA"]
             treemap1= px.treemap(filtered_data_top,path=["SECTEUR_ACTIVITE_PRINCIPAL"],title="",color_discrete_sequence=color)
             treemap1=treemap1.update_layout( width=400, height=450)
                       
